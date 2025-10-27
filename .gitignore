@@ -1,0 +1,11 @@
+server
+server_san
+server_static
+server_debug
+
+*.o
+*.orig
+*~
+
+obj/
+*.log
