@@ -16,6 +16,12 @@ bool Interface::Parser(int argc, char** argv) {
             return false; //печать справки
         }
         po::notify(vm);
+
+        if (params.port < 1024 || params.port > 49151) {
+            std::cerr << "Error: Port must be in range 1024-49151" << std::endl;
+            return false;
+        }
+
     } catch (const std::exception& e) {
         std::cerr << "Error parsing arguments: " << e.what() << std::endl;
         return false;
