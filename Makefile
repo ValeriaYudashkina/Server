@@ -13,9 +13,9 @@ SANFLAGS=-fsanitize=address -fsanitize=leak -fsanitize=undefined
 
 LDFLAGS=-lboost_program_options
 
-SOURCES := $(SRC_DIR)/main.cpp $(SRC_DIR)/Interface.cpp
+SOURCES := $(SRC_DIR)/main.cpp $(SRC_DIR)/Interface.cpp $(SRC_DIR)/Logger.cpp
 OBJECTS := $(SOURCES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
-DEPS := $(INCLUDE_DIR)/Interface.h
+DEPS := $(INCLUDE_DIR)/Interface.h $(INCLUDE_DIR)/Logger.h
 
 .PHONY: all clean format static sanitize debug help
 
@@ -51,5 +51,3 @@ format:
 clean:
 	rm -f $(PROJECT) $(STATIC) $(SANITIZED) $(DEBUG_BIN) $(OBJ_DIR)/*.o *.orig
 	@rmdir $(OBJ_DIR) 2>/dev/null || true
-
-

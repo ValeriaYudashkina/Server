@@ -1,4 +1,5 @@
 #include "Interface.h"
+#include "Logger.h"
 #include <iostream>
 #include <string>
 
@@ -7,20 +8,23 @@ bool isValidPort(unsigned short port) {
 }
 
 int main(int argc, char** argv) {
+    Logger logger;
     Interface iface;
 
     if (argc == 1) {
         iface.printHelp();
     }
-
     if (!iface.Parser(argc, argv)) {
         iface.printHelp();
         return 0;
     }
     Params params = iface.getParams();
+    logger.init(params.logFile);
+    logger.logInfo("Server configuration parsing completed");
 
     if (!isValidPort(params.port)) {
-        std::cerr << "Error: Invalid port number" << std::endl;
+        std::string error_msg = "Invalid port number: " + std::to_string(params.port);
+        logger.logError(error_msg, true);
         return 1;
     }
 
