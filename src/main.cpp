@@ -1,5 +1,6 @@
 #include "Interface.h"
 #include "Logger.h"
+#include "UserDatabase.h"
 #include <iostream>
 #include <string>
 
@@ -21,6 +22,11 @@ int main(int argc, char** argv) {
     Params params = iface.getParams();
     logger.init(params.logFile);
     logger.logInfo("Server configuration parsing completed");
+
+    UserDatabase userDb;
+    if (!userDb.load(params.dbFile, logger)) {
+        return 1;
+    }
 
     if (!isValidPort(params.port)) {
         std::string error_msg = "Invalid port number: " + std::to_string(params.port);
