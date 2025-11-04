@@ -5,7 +5,7 @@ INCLUDE_DIR=include
 PROJECT=server
 STATIC=server_static
 SANITIZED=server_san
-DEBUG_BIN=$(PROGECT)_debug
+DEBUG_BIN=$(PROJECT)_debug
 
 CXXFLAGS=-O2 -Wall -DNDEBUG -std=c++17 -I./$(INCLUDE_DIR)
 DBGFLAGS=-g -Og -I./$(INCLUDE_DIR)
@@ -13,9 +13,9 @@ SANFLAGS=-fsanitize=address -fsanitize=leak -fsanitize=undefined
 
 LDFLAGS=-lboost_program_options
 
-SOURCES := $(SRC_DIR)/main.cpp $(SRC_DIR)/Interface.cpp $(SRC_DIR)/Logger.cpp $(SRC_DIR)/UserDatabase.cpp
+SOURCES := $(SRC_DIR)/main.cpp $(SRC_DIR)/Interface.cpp $(SRC_DIR)/Logger.cpp $(SRC_DIR)/UserDatabase.cpp $(SRC_DIR)/DataProcessor.cpp $(SRC_DIR)/test_dataprocessor.cpp
 OBJECTS := $(SOURCES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
-DEPS := $(INCLUDE_DIR)/Interface.h $(INCLUDE_DIR)/Logger.h $(INCLUDE_DIR)/UserDatabase.h
+DEPS := $(INCLUDE_DIR)/Interface.h $(INCLUDE_DIR)/Logger.h $(INCLUDE_DIR)/UserDatabase.h $(INCLUDE_DIR)/DataProcessor.h
 
 .PHONY: all clean format static sanitize debug help
 
@@ -37,6 +37,9 @@ $(SANITIZED) : $(OBJECTS)
 
 $(DEBUG_BIN) : $(OBJECTS)
 	$(CXX)  $^  $(LDFLAGS) -o $@
+
+test_dataprocessor: $(OBJ_DIR)/test_dataprocessor.o $(OBJ_DIR)/DataProcessor.o $(OBJ_DIR)/Logger.o
+	$(CXX)  $^  -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(DEPS)
 	@mkdir -p $(OBJ_DIR)

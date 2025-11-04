@@ -1,6 +1,7 @@
 # Курсовая работа: Программная реализация сетевого сервера
 
 # Сборка проекта
+make clean
 make
 
 # Просмотр справки
@@ -11,4 +12,10 @@ make
 ./server
 
 # Запуск с параметрами
-./server --file mydb.conf --log server.log --port 44444
+./server --file ../test_users.db --log server.log --port 44444
+
+### Тестирование DataProcessor
+# Сборка программы
+make test_dataprocessor
+# Запуск тестов
+./test_dataprocessor

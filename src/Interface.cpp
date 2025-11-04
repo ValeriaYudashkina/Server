@@ -1,5 +1,6 @@
 #include "Interface.h"
 #include <iostream>
+#include <stdexcept>
 
 Interface::Interface() : desc("Allowed options") {
     desc.add_options()

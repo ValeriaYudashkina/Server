@@ -1,6 +1,7 @@
 #include "Interface.h"
 #include "Logger.h"
 #include "UserDatabase.h"
+#include "DataProcessor.h"
 #include <iostream>
 #include <string>
 
@@ -13,10 +14,11 @@ int main(int argc, char** argv) {
     Interface iface;
 
     if (argc == 1) {
-        iface.printHelp();
+        iface.printHelp(); // вывод справки и запуск сервера
     }
+
     if (!iface.Parser(argc, argv)) {
-        iface.printHelp();
+        iface.printHelp(); // вывод справки и завершение программы
         return 0;
     }
     Params params = iface.getParams();

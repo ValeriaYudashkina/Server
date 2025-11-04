@@ -2,6 +2,7 @@
 #include <iostream>
 #include <chrono>
 #include <iomanip>
+#include <ctime>
 
 void Logger::init(const std::string& log_path) {
     logPath = log_path;
@@ -24,11 +25,13 @@ void Logger::logError(const std::string& message, bool isCritical) {
         file.flush();
         file.close();
     } else {
-        std::cout << "ERROR: Cannot write to " << logPath << std::endl;
+        std::cerr << "LOGGER ERROR: Cannot write log to " << logPath << std::endl;
     }
 
     if (isCritical) {
         std::cerr << "CRITICAL ERROR: " << message << std::endl;
+    } else {
+        std::cerr << "ERROR: " << message << std::endl;
     }
 }
 void Logger::logInfo(const std::string& message) {
@@ -41,6 +44,6 @@ void Logger::logInfo(const std::string& message) {
         file.flush();
         file.close();
     } else {
-        std::cout << "ERROR: Cannot write to " << logPath << std::endl;
+        std::cerr << "LOGGER ERROR: Cannot write log to " << logPath << std::endl;
     }
 }
