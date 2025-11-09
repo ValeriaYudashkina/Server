@@ -13,7 +13,7 @@ SANFLAGS=-fsanitize=address -fsanitize=leak -fsanitize=undefined
 
 LDFLAGS=-lboost_program_options
 
-SOURCES := $(SRC_DIR)/main.cpp $(SRC_DIR)/Interface.cpp $(SRC_DIR)/Logger.cpp $(SRC_DIR)/UserDatabase.cpp $(SRC_DIR)/DataProcessor.cpp $(SRC_DIR)/test_dataprocessor.cpp
+SOURCES := $(SRC_DIR)/main.cpp $(SRC_DIR)/Interface.cpp $(SRC_DIR)/Logger.cpp $(SRC_DIR)/UserDatabase.cpp $(SRC_DIR)/DataProcessor.cpp
 OBJECTS := $(SOURCES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 DEPS := $(INCLUDE_DIR)/Interface.h $(INCLUDE_DIR)/Logger.h $(INCLUDE_DIR)/UserDatabase.h $(INCLUDE_DIR)/DataProcessor.h
 
@@ -37,9 +37,6 @@ $(SANITIZED) : $(OBJECTS)
 
 $(DEBUG_BIN) : $(OBJECTS)
 	$(CXX)  $^  $(LDFLAGS) -o $@
-
-test_dataprocessor: $(OBJ_DIR)/test_dataprocessor.o $(OBJ_DIR)/DataProcessor.o $(OBJ_DIR)/Logger.o
-	$(CXX)  $^  -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(DEPS)
 	@mkdir -p $(OBJ_DIR)
