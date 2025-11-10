@@ -11,15 +11,18 @@ CXXFLAGS=-O2 -Wall -DNDEBUG -std=c++17 -I./$(INCLUDE_DIR)
 DBGFLAGS=-g -Og -I./$(INCLUDE_DIR)
 SANFLAGS=-fsanitize=address -fsanitize=leak -fsanitize=undefined
 
-LDFLAGS=-lboost_program_options
+LDFLAGS=-lboost_program_options -lcryptopp
 
-SOURCES := $(SRC_DIR)/main.cpp $(SRC_DIR)/Interface.cpp $(SRC_DIR)/Logger.cpp $(SRC_DIR)/UserDatabase.cpp $(SRC_DIR)/DataProcessor.cpp
+SOURCES := $(SRC_DIR)/main.cpp $(SRC_DIR)/Interface.cpp $(SRC_DIR)/Logger.cpp $(SRC_DIR)/UserDatabase.cpp $(SRC_DIR)/DataProcessor.cpp $(SRC_DIR)/Authenticator.cpp $(SRC_DIR)/Server.cpp
+
 OBJECTS := $(SOURCES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
-DEPS := $(INCLUDE_DIR)/Interface.h $(INCLUDE_DIR)/Logger.h $(INCLUDE_DIR)/UserDatabase.h $(INCLUDE_DIR)/DataProcessor.h
+
+DEPS := $(INCLUDE_DIR)/Interface.h $(INCLUDE_DIR)/Logger.h $(INCLUDE_DIR)/UserDatabase.h $(INCLUDE_DIR)/DataProcessor.h $(INCLUDE_DIR)/Authenticator.h $(INCLUDE_DIR)/Server.h
 
 .PHONY: all clean format static sanitize debug help
 
 all: $(PROJECT)
+
 static: $(STATIC)
 
 sanitize: CXXFLAGS := $(DBGFLAGS) $(SANFLAGS)
@@ -27,20 +30,20 @@ sanitize: LDFLAGS += $(SANFLAGS)
 sanitize: clean $(SANITIZED)
 
 $(PROJECT) : $(OBJECTS)
-	$(CXX)  $^ $(LDFLAGS) -o $@
+	$(CXX) $^ $(LDFLAGS) -o $@
 
 $(STATIC) : $(OBJECTS)
-	$(CXX) -static  $^  $(LDFLAGS) -o $@
+	$(CXX) -static $^ $(LDFLAGS) -o $@
 
 $(SANITIZED) : $(OBJECTS)
-	$(CXX)  $^  $(LDFLAGS) -o $@
+	$(CXX) $^ $(LDFLAGS) -o $@
 
 $(DEBUG_BIN) : $(OBJECTS)
-	$(CXX)  $^  $(LDFLAGS) -o $@
+	$(CXX) $^ $(LDFLAGS) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(DEPS)
 	@mkdir -p $(OBJ_DIR)
-	$(CXX) -c $(CXXFLAGS)  $<  -o $@
+	$(CXX) -c $(CXXFLAGS) $< -o $@
 
 debug: CXXFLAGS := $(DBGFLAGS)
 debug: clean $(DEBUG_BIN)

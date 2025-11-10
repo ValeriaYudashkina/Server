@@ -13,9 +13,3 @@ make
 
 # Запуск с параметрами
 ./server --file ../test_users.db --log server.log --port 44444
-
-### Тестирование DataProcessor
-# Сборка программы
-make test_dataprocessor
-# Запуск тестов
-./test_dataprocessor
