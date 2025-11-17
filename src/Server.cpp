@@ -148,7 +148,6 @@ void Server::processVectors(int sock) {
     if (rc != sizeof(num_vectors)) {
         throw vector_error("Failed to receive number of vectors");
     }
-    num_vectors = ntohl(num_vectors);
     logger.logInfo("Receiving " + std::to_string(num_vectors) + " vectors");
     for (uint32_t i = 0; i < num_vectors; ++i) {
         uint32_t vector_len;
@@ -156,7 +155,6 @@ void Server::processVectors(int sock) {
         if (rc != sizeof(vector_len)) {
              throw vector_error("Failed to receive vector length");
         }
-        vector_len = ntohl(vector_len);
         
         size_t total_bytes_needed = vector_len * sizeof(int32_t);
 
@@ -168,16 +166,8 @@ void Server::processVectors(int sock) {
         if (rc != (ssize_t)total_bytes_needed) {
             throw vector_error("Vector data size mismatch");
         }
-
-        for (auto& value : data) {
-            value = ntohl(value);
-        }
         int32_t result = processor.calculateAverage(data, logger);
-
-        uint32_t num_results = htonl(1);
-        int32_t net_result = htonl(result);
-
-        send(sock, &num_results, sizeof(num_results), 0);
+        int32_t net_result = (result);
         send(sock, &net_result, sizeof(net_result), 0);
         
         logger.logInfo("Processed vector " + std::to_string(i+1) + ", result: " + std::to_string(result));
