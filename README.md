@@ -3,6 +3,7 @@
 # Сборка проекта
 make clean
 make
+make unit_test
 
 # Просмотр справки
 ./server --help
@@ -13,3 +14,6 @@ make
 
 # Запуск с параметрами
 ./server --file ../test_users.db --log server.log --port 44444
+
+# Запуск модульного тестирования
+./server_tests
