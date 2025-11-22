@@ -19,7 +19,7 @@ OBJECTS := $(SOURCES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 DEPS := $(INCLUDE_DIR)/Interface.h $(INCLUDE_DIR)/Logger.h $(INCLUDE_DIR)/UserDatabase.h $(INCLUDE_DIR)/DataProcessor.h $(INCLUDE_DIR)/Authenticator.h $(INCLUDE_DIR)/Server.h
 
-.PHONY: all clean format static sanitize debug help
+.PHONY: all clean format static sanitize debug help test unit_test clean_test
 
 all: $(PROJECT)
 
@@ -51,6 +51,32 @@ debug: clean $(DEBUG_BIN)
 format:
 	astyle $(SRC_DIR)/*.cpp $(INCLUDE_DIR)/*.h
 
-clean:
+# Модульное тестирование
+TEST_DIR = tests
+TEST_SRC = $(wildcard $(TEST_DIR)/*.cpp)
+TEST_OBJ = $(filter-out $(OBJ_DIR)/main.o, $(OBJECTS)) $(TEST_SRC:$(TEST_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+TEST_BIN = server_tests
+
+TEST_CXXFLAGS = -g -I./$(INCLUDE_DIR) -I$(TEST_DIR)
+TEST_LDFLAGS = -lUnitTest++ -lboost_program_options -lcryptopp
+
+test: unit_test
+
+unit_test: $(TEST_BIN)
+	@echo "Модульное тестирование сервера"
+	./$(TEST_BIN)
+
+$(TEST_BIN): $(TEST_OBJ)
+	$(CXX) $^ $(TEST_LDFLAGS) -o $@
+
+$(OBJ_DIR)/%.o: $(TEST_DIR)/%.cpp
+	@mkdir -p $(OBJ_DIR)
+	$(CXX) -c $(TEST_CXXFLAGS) $< -o $@
+
+clean_test:
+	rm -f $(TEST_BIN) $(OBJ_DIR)/*Test.o $(OBJ_DIR)/Test*.o
+	rm -f test_*.log test_db.conf
+
+clean: clean_test
 	rm -f $(PROJECT) $(STATIC) $(SANITIZED) $(DEBUG_BIN) $(OBJ_DIR)/*.o *.orig
 	@rmdir $(OBJ_DIR) 2>/dev/null || true
