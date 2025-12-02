@@ -1,0 +1,88 @@
+\hypertarget{Server_8cpp}{}\doxysection{Файл src/\+Server.cpp}
+\label{Server_8cpp}\index{src/Server.cpp@{src/Server.cpp}}
+
+
+Реализация основного серверного модуля  
+
+
+{\ttfamily \#include \char`\"{}Server.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$system\+\_\+error$>$}\newline
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include $<$netinet/in.\+h$>$}\newline
+Граф включаемых заголовочных файлов для Server.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Server_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Макросы}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{Server_8cpp_ad974fe981249f5e84fbf1683b012c9f8}{BUFLEN}}~1024
+\begin{DoxyCompactList}\small\item\em Максимальный размер буфера для текстового сообщения аутентификации \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{Server_8cpp_ab8a877013bb0d18a5dc6091419a5a220}{QLEN}}~10
+\begin{DoxyCompactList}\small\item\em Стандартная очередь для listen. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{Server_8cpp_aa2f8c9b543b77619bbbffd0d35febf6b}{AUTH\+\_\+\+DATA\+\_\+\+LENGTH}}~(16 + 40)
+\begin{DoxyCompactList}\small\item\em 16 символов SALT + 40 символов HASH \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Реализация основного серверного модуля 
+
+
+
+См. определение в файле \mbox{\hyperlink{Server_8cpp_source}{Server.\+cpp}}
+
+
+
+\doxysubsection{Макросы}
+\mbox{\Hypertarget{Server_8cpp_aa2f8c9b543b77619bbbffd0d35febf6b}\label{Server_8cpp_aa2f8c9b543b77619bbbffd0d35febf6b}} 
+\index{Server.cpp@{Server.cpp}!AUTH\_DATA\_LENGTH@{AUTH\_DATA\_LENGTH}}
+\index{AUTH\_DATA\_LENGTH@{AUTH\_DATA\_LENGTH}!Server.cpp@{Server.cpp}}
+\doxysubsubsection{\texorpdfstring{AUTH\_DATA\_LENGTH}{AUTH\_DATA\_LENGTH}}
+{\footnotesize\ttfamily \#define AUTH\+\_\+\+DATA\+\_\+\+LENGTH~(16 + 40)}
+
+
+
+16 символов SALT + 40 символов HASH 
+
+
+
+См. определение в файле \mbox{\hyperlink{Server_8cpp_source}{Server.\+cpp}} строка \mbox{\hyperlink{Server_8cpp_source_l00019}{19}}
+
+\mbox{\Hypertarget{Server_8cpp_ad974fe981249f5e84fbf1683b012c9f8}\label{Server_8cpp_ad974fe981249f5e84fbf1683b012c9f8}} 
+\index{Server.cpp@{Server.cpp}!BUFLEN@{BUFLEN}}
+\index{BUFLEN@{BUFLEN}!Server.cpp@{Server.cpp}}
+\doxysubsubsection{\texorpdfstring{BUFLEN}{BUFLEN}}
+{\footnotesize\ttfamily \#define BUFLEN~1024}
+
+
+
+Максимальный размер буфера для текстового сообщения аутентификации 
+
+
+
+См. определение в файле \mbox{\hyperlink{Server_8cpp_source}{Server.\+cpp}} строка \mbox{\hyperlink{Server_8cpp_source_l00017}{17}}
+
+\mbox{\Hypertarget{Server_8cpp_ab8a877013bb0d18a5dc6091419a5a220}\label{Server_8cpp_ab8a877013bb0d18a5dc6091419a5a220}} 
+\index{Server.cpp@{Server.cpp}!QLEN@{QLEN}}
+\index{QLEN@{QLEN}!Server.cpp@{Server.cpp}}
+\doxysubsubsection{\texorpdfstring{QLEN}{QLEN}}
+{\footnotesize\ttfamily \#define QLEN~10}
+
+
+
+Стандартная очередь для listen. 
+
+
+
+См. определение в файле \mbox{\hyperlink{Server_8cpp_source}{Server.\+cpp}} строка \mbox{\hyperlink{Server_8cpp_source_l00018}{18}}
+

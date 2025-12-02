@@ -1,3 +1,8 @@
+/**
+ * @file Authenticator.cpp
+ * @brief Реализация класса Authenticator для аутентификации пользователей
+ */
+
 #include "Authenticator.h"
 #include "UserDatabase.h"
 #include "Logger.h"
@@ -10,12 +15,37 @@
 
 namespace CPP = CryptoPP;
 
+/**
+ * @brief Проверка строки на соответствие шестнадцатеричному формату
+ * @param str Проверяемая строка
+ * @param logger Ссылка на журнал для записи ошибок
+ * @return true - строка содержит только hex-символы,
+ *         false - строка содержит недопустимые символы
+ * @details Допустимые символы: 0-9, A-F, a-f
+ */
 bool Authenticator::isValidHex(const std::string& str) const {
     return std::all_of(str.begin(), str.end(), [](char c) {
         return (c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f');
     });
 }
 
+/**
+ * @brief Проверка аутентификационных данных пользователя
+ * @param login Логин пользователя
+ * @param salt_hash_client Строка формата SALT16 + HASH (56 символов)
+ * @param db Ссылка на базу данных пользователей
+ * @param logger Ссылка на журнал для записи ошибок
+ * @return true - аутентификация успешна,
+ *         false - аутентификация не пройдена
+ * @details Алгоритм проверки:
+ *          1. Проверка длины сообщения (16+40=56 символов)
+ *          2. Валидация hex-формата SALT и HASH
+ *          3. Поиск пользователя в базе данных
+ *          4. Вычисление хеша SHA-1 от (SALT + PASSWORD)
+ *          5. Сравнение вычисленного хеша с полученным
+ * @note Используется схема: HASH = SHA1(SALT || PASSWORD)
+ * @warning При несовпадении хешей в журнал записывается ошибка аутентификации
+ */
 bool Authenticator::verify(const std::string& login, const std::string& salt_hash_client, 
                            UserDatabase& db, Logger& logger) const {
     

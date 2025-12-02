@@ -1,0 +1,36 @@
+\hypertarget{Interface_8cpp_source}{}\doxysection{Interface.\+cpp}
+\label{Interface_8cpp_source}\index{src/Interface.cpp@{src/Interface.cpp}}
+\mbox{\hyperlink{Interface_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Interface_8h}{Interface.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00014}\mbox{\hyperlink{classInterface_a4406d74c75bdfe150bf72be1f1cda8b1}{00014}} \mbox{\hyperlink{classInterface_a4406d74c75bdfe150bf72be1f1cda8b1}{Interface::Interface}}() : desc(\textcolor{stringliteral}{"{}Allowed options"{}}) \{}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00015}00015     \mbox{\hyperlink{classInterface_a795825f7ff6cb8cad3972af64a1d2ffc}{desc}}.add\_options()}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00016}00016     (\textcolor{stringliteral}{"{}help,h"{}}, \textcolor{stringliteral}{"{}Show help"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00017}00017     (\textcolor{stringliteral}{"{}file,f"{}}, po::value<std::string>(\&\mbox{\hyperlink{classInterface_a98f3efba14c789b06833cf26c629f7fb}{params}}.\mbox{\hyperlink{structParams_a6f4d509e8e2f912cf54499c614fc521c}{dbFile}})-\/>default\_value(\textcolor{stringliteral}{"{}etc/vcalc.conf"{}}), \textcolor{stringliteral}{"{}User database file"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00018}00018     (\textcolor{stringliteral}{"{}log,l"{}}, po::value<std::string>(\&\mbox{\hyperlink{classInterface_a98f3efba14c789b06833cf26c629f7fb}{params}}.\mbox{\hyperlink{structParams_a0df9a020ab892dd684833c2ec4c2f41c}{logFile}})-\/>default\_value(\textcolor{stringliteral}{"{}var/log/vcalc.log"{}}), \textcolor{stringliteral}{"{}Log file"{}})}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00019}00019     (\textcolor{stringliteral}{"{}port,p"{}}, po::value<unsigned short>(\&\mbox{\hyperlink{classInterface_a98f3efba14c789b06833cf26c629f7fb}{params}}.\mbox{\hyperlink{structParams_afe8ac84d583f6b4809d2e88ba6c00b21}{port}})-\/>default\_value(33333), \textcolor{stringliteral}{"{}Server port"{}});}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00020}00020 \}}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00031}\mbox{\hyperlink{classInterface_a59fc9c5eb181b48cc55a4a6d8fee637f}{00031}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classInterface_a59fc9c5eb181b48cc55a4a6d8fee637f}{Interface::Parser}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}** argv) \{}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00032}00032     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00033}00033         po::store(po::parse\_command\_line(argc, argv, \mbox{\hyperlink{classInterface_a795825f7ff6cb8cad3972af64a1d2ffc}{desc}}), \mbox{\hyperlink{classInterface_a6111e9544f9be79f4cf0fa4500e6d4ac}{vm}});}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00034}00034         \textcolor{keywordflow}{if} (\mbox{\hyperlink{classInterface_a6111e9544f9be79f4cf0fa4500e6d4ac}{vm}}.count(\textcolor{stringliteral}{"{}help"{}})) \{}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00035}00035             \textcolor{keywordflow}{return} \textcolor{keyword}{false}; \textcolor{comment}{//печать справки}}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00036}00036         \}}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00037}00037         po::notify(\mbox{\hyperlink{classInterface_a6111e9544f9be79f4cf0fa4500e6d4ac}{vm}});}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00038}00038     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& e) \{}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00039}00039         std::cerr << \textcolor{stringliteral}{"{}Error parsing arguments: "{}} << e.what() << std::endl;}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00040}00040         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00041}00041     \}}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00042}00042     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00043}00043 \}}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00049}\mbox{\hyperlink{classInterface_a4887efaf3962df462f13a900143ad10f}{00049}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classInterface_a4887efaf3962df462f13a900143ad10f}{Interface::printHelp}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00050}00050     std::cout << \mbox{\hyperlink{classInterface_a795825f7ff6cb8cad3972af64a1d2ffc}{desc}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{Interface_8cpp_source_l00051}00051 \}}
+
+\end{DoxyCode}

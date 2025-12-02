@@ -1,0 +1,35 @@
+\hypertarget{Interface_8h_source}{}\doxysection{Interface.\+h}
+\label{Interface_8h_source}\index{include/Interface.h@{include/Interface.h}}
+\mbox{\hyperlink{Interface_8h}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00006}00006 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00007}00007 \textcolor{preprocessor}{\#include <boost/program\_options.hpp>}}
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00008}00008 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00009}00009 \textcolor{keyword}{namespace }po = boost::program\_options;}
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00015}\mbox{\hyperlink{structParams}{00015}} \textcolor{keyword}{struct }\mbox{\hyperlink{structParams}{Params}} \{}
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00016}\mbox{\hyperlink{structParams_a6f4d509e8e2f912cf54499c614fc521c}{00016}}     std::string \mbox{\hyperlink{structParams_a6f4d509e8e2f912cf54499c614fc521c}{dbFile}}; }
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00017}\mbox{\hyperlink{structParams_a0df9a020ab892dd684833c2ec4c2f41c}{00017}}     std::string \mbox{\hyperlink{structParams_a0df9a020ab892dd684833c2ec4c2f41c}{logFile}}; }
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00018}\mbox{\hyperlink{structParams_afe8ac84d583f6b4809d2e88ba6c00b21}{00018}}     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} \mbox{\hyperlink{structParams_afe8ac84d583f6b4809d2e88ba6c00b21}{port}}; }
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00019}00019 \};}
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00025}\mbox{\hyperlink{classInterface}{00025}} \textcolor{keyword}{class }\mbox{\hyperlink{classInterface}{Interface}} \{}
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00026}00026 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00027}\mbox{\hyperlink{classInterface_a795825f7ff6cb8cad3972af64a1d2ffc}{00027}}     po::options\_description \mbox{\hyperlink{classInterface_a795825f7ff6cb8cad3972af64a1d2ffc}{desc}}; }
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00028}\mbox{\hyperlink{classInterface_a6111e9544f9be79f4cf0fa4500e6d4ac}{00028}}     po::variables\_map \mbox{\hyperlink{classInterface_a6111e9544f9be79f4cf0fa4500e6d4ac}{vm}}; }
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00029}\mbox{\hyperlink{classInterface_a98f3efba14c789b06833cf26c629f7fb}{00029}}     \mbox{\hyperlink{structParams}{Params}} \mbox{\hyperlink{classInterface_a98f3efba14c789b06833cf26c629f7fb}{params}}; }
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00031}00031 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00036}00036     \mbox{\hyperlink{classInterface_a4406d74c75bdfe150bf72be1f1cda8b1}{Interface}}();}
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00046}00046     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classInterface_a59fc9c5eb181b48cc55a4a6d8fee637f}{Parser}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}** argv);}
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00052}\mbox{\hyperlink{classInterface_a1108830b84b28acadc167e128abd2ec1}{00052}}     \mbox{\hyperlink{structParams}{Params}} \mbox{\hyperlink{classInterface_a1108830b84b28acadc167e128abd2ec1}{getParams}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00053}00053         \textcolor{keywordflow}{return} \mbox{\hyperlink{classInterface_a98f3efba14c789b06833cf26c629f7fb}{params}};}
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00054}00054     \}}
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00059}00059     \textcolor{keywordtype}{void} \mbox{\hyperlink{classInterface_a4887efaf3962df462f13a900143ad10f}{printHelp}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Interface_8h_source_l00060}00060 \};}
+
+\end{DoxyCode}

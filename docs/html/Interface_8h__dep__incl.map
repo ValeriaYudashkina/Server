@@ -1,0 +1,5 @@
+<map id="include/Interface.h" name="include/Interface.h">
+<area shape="rect" id="node1" title="Заголовочный файл модуля Interface &#45; обработка параметров командной строки" alt="" coords="70,5,213,32"/>
+<area shape="rect" id="node2" href="$Interface_8cpp.html" title="Реализация класса Interface для обработки параметров командной строки" alt="" coords="5,80,136,107"/>
+<area shape="rect" id="node3" href="$main_8cpp.html" title="Точка входа серверной программы" alt="" coords="161,80,266,107"/>
+</map>

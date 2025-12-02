@@ -1,0 +1,152 @@
+\hypertarget{main_8cpp}{}\doxysection{Файл src/main.cpp}
+\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+
+
+Точка входа серверной программы  
+
+
+{\ttfamily \#include \char`\"{}Interface.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Logger.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}User\+Database.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Data\+Processor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Authenticator.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Server.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+Граф включаемых заголовочных файлов для main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{main_8cpp_a453e6d08d6e79d915a577ce2156b5896}{is\+Valid\+Port}} (unsigned short port)
+\begin{DoxyCompactList}\small\item\em Проверка валидности номера порта \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Главная функция программы \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Точка входа серверной программы 
+
+\begin{DoxyAuthor}{Автор}
+Юдашкина В.\+О. 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyCopyright}{Авторство}
+ИБСТ ПГУ 
+\end{DoxyCopyright}
+
+
+См. определение в файле \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{main_8cpp_a453e6d08d6e79d915a577ce2156b5896}\label{main_8cpp_a453e6d08d6e79d915a577ce2156b5896}} 
+\index{main.cpp@{main.cpp}!isValidPort@{isValidPort}}
+\index{isValidPort@{isValidPort}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{isValidPort()}{isValidPort()}}
+{\footnotesize\ttfamily bool is\+Valid\+Port (\begin{DoxyParamCaption}\item[{unsigned short}]{port }\end{DoxyParamCaption})}
+
+
+
+Проверка валидности номера порта 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em port} & Номер порта для проверки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true -\/ порт в допустимом диапазоне, false -\/ порт вне диапазона 
+\end{DoxyReturn}
+\begin{DoxyNote}{Заметки}
+Диапазон допустимых портов\+: 1024-\/49151 
+\end{DoxyNote}
+
+
+См. определение в файле \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}} строка \mbox{\hyperlink{main_8cpp_source_l00038}{38}}
+
+\mbox{\Hypertarget{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Главная функция программы 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em argc} & Количество аргументов командной строки \\
+\hline
+{\em argv} & Массив аргументов командной строки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+0 -\/ успешное завершение, 1 -\/ ошибка инициализации, 2 -\/ ошибка выполнения
+\end{DoxyReturn}
+Выполняет инициализацию всех модулей и запускает сервер 
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::exception} & при критических ошибках выполнения \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyNote}{Заметки}
+При запуске без параметров выводит справку и запускает сервер 
+\end{DoxyNote}
+\texorpdfstring{$<$}{<} Объект для ведения журнала работы сервера
+
+\texorpdfstring{$<$}{<} Объект для обработки параметров командной строки
+
+Парсинг аргументов командной строки
+
+Если парсинг не удался или запрошена справка, выводит справку и завершает работу
+
+Получение параметров конфигурации
+
+Извлекает распарсенные параметры для дальнейшего использования
+
+Инициализация системы журналирования
+
+Настраивает журнал на запись в указанный файл
+
+Загрузка базы данных пользователей
+
+Загружает пары \char`\"{}логин\+:пароль\char`\"{} из указанного файла
+
+\texorpdfstring{$<$}{<} Критическая ошибка\+: не удалось загрузить базу данных
+
+Инициализация модулей обработки
+
+Создает объекты для аутентификации и обработки данных
+
+Проверка валидности порта
+
+Убеждается, что указанный порт находится в допустимом диапазоне
+
+\texorpdfstring{$<$}{<} Критическая ошибка\+: неверный порт
+
+Вывод информации о конфигурации
+
+Отображает в консоли успешно загруженные параметры
+
+Создание и запуск сервера
+
+Основной блок выполнения программы
+
+\texorpdfstring{$<$}{<} Запуск основного цикла сервера
+
+Обработка критических ошибок выполнения
+
+Записывает в журнал ошибку и завершает работу
+
+См. определение в файле \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}} строка \mbox{\hyperlink{main_8cpp_source_l00053}{53}}
+

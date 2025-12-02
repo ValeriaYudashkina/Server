@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Программная реализация сетевого сервера: Файл src/Server.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Программная реализация сетевого сервера<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Курсовая работа по разработке серверной программы для клиент-серверной системы обработки данных</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Макросы</a>  </div>
+  <div class="headertitle"><div class="title">Файл Server.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Реализация основного серверного модуля  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="Server_8h_source.html">Server.h</a>&quot;</code><br />
+<code>#include &lt;cstring&gt;</code><br />
+<code>#include &lt;system_error&gt;</code><br />
+<code>#include &lt;arpa/inet.h&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;sys/socket.h&gt;</code><br />
+<code>#include &lt;netinet/in.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для Server.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="Server_8cpp__incl.png" border="0" usemap="#asrc_2Server_8cpp" alt=""/></div>
+<map name="asrc_2Server_8cpp" id="asrc_2Server_8cpp">
+<area shape="rect" title="Реализация основного серверного модуля" alt="" coords="952,5,1065,32"/>
+<area shape="rect" href="Server_8h.html" title="Заголовочный файл модуля Server &#45; основной серверный модуль" alt="" coords="613,80,687,107"/>
+<area shape="rect" title=" " alt="" coords="5,229,68,256"/>
+<area shape="rect" title=" " alt="" coords="888,155,991,181"/>
+<area shape="rect" title=" " alt="" coords="1015,155,1111,181"/>
+<area shape="rect" title=" " alt="" coords="919,80,986,107"/>
+<area shape="rect" title=" " alt="" coords="1011,80,1119,107"/>
+<area shape="rect" title=" " alt="" coords="1143,80,1235,107"/>
+<area shape="rect" title=" " alt="" coords="1259,80,1334,107"/>
+<area shape="rect" title=" " alt="" coords="1358,80,1443,107"/>
+<area shape="rect" title=" " alt="" coords="1467,80,1547,107"/>
+<area shape="rect" href="UserDatabase_8h.html" title="Заголовочный файл модуля UserDatabase &#45; работа с базой пользователей" alt="" coords="225,155,352,181"/>
+<area shape="rect" title=" " alt="" coords="662,229,721,256"/>
+<area shape="rect" href="Authenticator_8h.html" title="Заголовочный файл модуля Authenticator &#45; аутентификация пользователей" alt="" coords="589,155,711,181"/>
+<area shape="rect" href="DataProcessor_8h.html" title="Заголовочный файл модуля DataProcessor &#45; обработка числовых данных" alt="" coords="75,155,201,181"/>
+<area shape="rect" href="Logger_8h.html" title="Заголовочный файл модуля Logger &#45; журналирование работы сервера" alt="" coords="786,155,863,181"/>
+<area shape="rect" title=" " alt="" coords="377,155,454,181"/>
+<area shape="rect" title=" " alt="" coords="479,155,565,181"/>
+<area shape="rect" title=" " alt="" coords="263,229,314,256"/>
+<area shape="rect" title=" " alt="" coords="105,229,171,256"/>
+<area shape="rect" title=" " alt="" coords="788,229,861,256"/>
+</map>
+</div>
+</div>
+<p><a href="Server_8cpp_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Макросы</h2></td></tr>
+<tr class="memitem:ad974fe981249f5e84fbf1683b012c9f8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Server_8cpp.html#ad974fe981249f5e84fbf1683b012c9f8">BUFLEN</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="memdesc:ad974fe981249f5e84fbf1683b012c9f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Максимальный размер буфера для текстового сообщения аутентификации  <a href="Server_8cpp.html#ad974fe981249f5e84fbf1683b012c9f8">Подробнее...</a><br /></td></tr>
+<tr class="separator:ad974fe981249f5e84fbf1683b012c9f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8a877013bb0d18a5dc6091419a5a220"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Server_8cpp.html#ab8a877013bb0d18a5dc6091419a5a220">QLEN</a>&#160;&#160;&#160;10</td></tr>
+<tr class="memdesc:ab8a877013bb0d18a5dc6091419a5a220"><td class="mdescLeft">&#160;</td><td class="mdescRight">Стандартная очередь для listen.  <a href="Server_8cpp.html#ab8a877013bb0d18a5dc6091419a5a220">Подробнее...</a><br /></td></tr>
+<tr class="separator:ab8a877013bb0d18a5dc6091419a5a220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2f8c9b543b77619bbbffd0d35febf6b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Server_8cpp.html#aa2f8c9b543b77619bbbffd0d35febf6b">AUTH_DATA_LENGTH</a>&#160;&#160;&#160;(16 + 40)</td></tr>
+<tr class="memdesc:aa2f8c9b543b77619bbbffd0d35febf6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">16 символов SALT + 40 символов HASH  <a href="Server_8cpp.html#aa2f8c9b543b77619bbbffd0d35febf6b">Подробнее...</a><br /></td></tr>
+<tr class="separator:aa2f8c9b543b77619bbbffd0d35febf6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p >Реализация основного серверного модуля </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8cpp_source.html">Server.cpp</a></p>
+</div><h2 class="groupheader">Макросы</h2>
+<a id="aa2f8c9b543b77619bbbffd0d35febf6b" name="aa2f8c9b543b77619bbbffd0d35febf6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2f8c9b543b77619bbbffd0d35febf6b">&#9670;&nbsp;</a></span>AUTH_DATA_LENGTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AUTH_DATA_LENGTH&#160;&#160;&#160;(16 + 40)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>16 символов SALT + 40 символов HASH </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8cpp_source.html">Server.cpp</a> строка <a class="el" href="Server_8cpp_source.html#l00019">19</a></p>
+
+</div>
+</div>
+<a id="ad974fe981249f5e84fbf1683b012c9f8" name="ad974fe981249f5e84fbf1683b012c9f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad974fe981249f5e84fbf1683b012c9f8">&#9670;&nbsp;</a></span>BUFLEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BUFLEN&#160;&#160;&#160;1024</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Максимальный размер буфера для текстового сообщения аутентификации </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8cpp_source.html">Server.cpp</a> строка <a class="el" href="Server_8cpp_source.html#l00017">17</a></p>
+
+</div>
+</div>
+<a id="ab8a877013bb0d18a5dc6091419a5a220" name="ab8a877013bb0d18a5dc6091419a5a220"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8a877013bb0d18a5dc6091419a5a220">&#9670;&nbsp;</a></span>QLEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define QLEN&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Стандартная очередь для listen. </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8cpp_source.html">Server.cpp</a> строка <a class="el" href="Server_8cpp_source.html#l00018">18</a></p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

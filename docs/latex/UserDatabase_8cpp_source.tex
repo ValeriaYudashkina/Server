@@ -1,0 +1,57 @@
+\hypertarget{UserDatabase_8cpp_source}{}\doxysection{User\+Database.\+cpp}
+\label{UserDatabase_8cpp_source}\index{src/UserDatabase.cpp@{src/UserDatabase.cpp}}
+\mbox{\hyperlink{UserDatabase_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{UserDatabase_8h}{UserDatabase.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Logger_8h}{Logger.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00009}00009 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00021}\mbox{\hyperlink{classUserDatabase_a497f3c17e810a8b4e47eedcbccbf29bb}{00021}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classUserDatabase_a497f3c17e810a8b4e47eedcbccbf29bb}{UserDatabase::load}}(\textcolor{keyword}{const} std::string\& db\_path, \mbox{\hyperlink{classLogger}{Logger}}\& logger) \{}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00022}00022     std::ifstream file(db\_path);}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00023}00023     \textcolor{keywordflow}{if} (!file.is\_open()) \{}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00024}00024         logger.\mbox{\hyperlink{classLogger_a1c5c7357b27b68b8bcd93b7bcf6b30b9}{logError}}(\textcolor{stringliteral}{"{}Cannot open database file: "{}} + db\_path, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00025}00025         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00026}00026     \}}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00028}00028     std::string line;}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00029}00029     \textcolor{keywordtype}{int} line\_number = 0;}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00030}00030     \textcolor{keywordflow}{while} (std::getline(file, line)) \{}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00031}00031         line\_number++;}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00032}00032         \textcolor{keywordflow}{if} (line.empty() || line[0] == \textcolor{charliteral}{'\#'}) \{}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00033}00033             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00034}00034         \}}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00035}00035         \textcolor{keywordtype}{size\_t} pos = line.find(\textcolor{charliteral}{':'});}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00036}00036         \textcolor{keywordflow}{if} (pos == std::string::npos) \{}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00037}00037             logger.\mbox{\hyperlink{classLogger_a1c5c7357b27b68b8bcd93b7bcf6b30b9}{logError}}(\textcolor{stringliteral}{"{}Invalid string format "{}} + std::to\_string(line\_number), \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00038}00038             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00039}00039         \}}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00040}00040         std::string login = line.substr(0, pos);}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00041}00041         std::string password = line.substr(pos + 1);}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00042}00042         \textcolor{keywordflow}{if} (login.empty() || password.empty()) \{}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00043}00043             logger.\mbox{\hyperlink{classLogger_a1c5c7357b27b68b8bcd93b7bcf6b30b9}{logError}}(\textcolor{stringliteral}{"{}Empty login or password on line "{}} + std::to\_string(line\_number), \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00044}00044             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00045}00045         \}}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00046}00046         \mbox{\hyperlink{classUserDatabase_a68c8cbf55dc4cb6bd58ed71d816baaca}{users}}[login] = password;}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00047}00047     \}}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00048}00048     file.close();}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00050}00050     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classUserDatabase_a68c8cbf55dc4cb6bd58ed71d816baaca}{users}}.empty()) \{}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00051}00051         logger.\mbox{\hyperlink{classLogger_a1c5c7357b27b68b8bcd93b7bcf6b30b9}{logError}}(\textcolor{stringliteral}{"{}User database is empty"{}}, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00052}00052         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00053}00053     \}}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00054}00054     logger.\mbox{\hyperlink{classLogger_a3b2e97470572358030fa427c649cf8d5}{logInfo}}(\textcolor{stringliteral}{"{}Loaded "{}} + std::to\_string(\mbox{\hyperlink{classUserDatabase_a68c8cbf55dc4cb6bd58ed71d816baaca}{users}}.size()) + \textcolor{stringliteral}{"{} users from database"{}});}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00055}00055     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00056}00056 \}}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00065}\mbox{\hyperlink{classUserDatabase_afb18364822551a4299d7b745f688d300}{00065}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classUserDatabase_afb18364822551a4299d7b745f688d300}{UserDatabase::getPassword}}(\textcolor{keyword}{const} std::string\& login, std::string\& out\_password)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00066}00066     \textcolor{keyword}{auto} it = \mbox{\hyperlink{classUserDatabase_a68c8cbf55dc4cb6bd58ed71d816baaca}{users}}.find(login);}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00067}00067     \textcolor{keywordflow}{if} (it != \mbox{\hyperlink{classUserDatabase_a68c8cbf55dc4cb6bd58ed71d816baaca}{users}}.end()) \{}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00068}00068         out\_password = it-\/>second;}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00069}00069         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00070}00070     \}}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00071}00071     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8cpp_source_l00072}00072 \}}
+
+\end{DoxyCode}

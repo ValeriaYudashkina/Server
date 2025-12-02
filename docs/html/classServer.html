@@ -1,0 +1,882 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Программная реализация сетевого сервера: Класс Server</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Программная реализация сетевого сервера<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Курсовая работа по разработке серверной программы для клиент-серверной системы обработки данных</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pub-static-attribs">Статические открытые данные</a> &#124;
+<a href="#pri-methods">Закрытые члены</a> &#124;
+<a href="#pri-attribs">Закрытые данные</a> &#124;
+<a href="classServer-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс Server</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Основной класс сервера  
+ <a href="classServer.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Server_8h_source.html">Server.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф связей класса Server:</div>
+<div class="dyncontent">
+<div class="center"><img src="classServer__coll__graph.png" border="0" usemap="#aServer_coll__map" alt="Collaboration graph"/></div>
+<map name="aServer_coll__map" id="aServer_coll__map">
+<area shape="rect" title="Основной класс сервера" alt="" coords="189,95,253,121"/>
+<area shape="rect" href="classLogger.html" title="Класс для ведения журнала работы сервера" alt="" coords="5,5,72,32"/>
+<area shape="rect" href="classUserDatabase.html" title="Предварительное объявление класса Logger." alt="" coords="96,5,211,32"/>
+<area shape="rect" href="classAuthenticator.html" title="Предварительное объявление класса Logger." alt="" coords="235,5,346,32"/>
+<area shape="rect" href="classDataProcessor.html" title="Предварительное объявление класса Logger." alt="" coords="370,5,486,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">см. легенду</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a7032ae06968af4af8562e6030a2b1394"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a7032ae06968af4af8562e6030a2b1394">Server</a> (unsigned short <a class="el" href="classServer.html#a7c65d69a3c9d46b673fc8d48ff61b710">port</a>, <a class="el" href="classLogger.html">Logger</a> &amp;<a class="el" href="classServer.html#a3c1f558b24a485a61822b50d3a02192a">logger</a>, <a class="el" href="classUserDatabase.html">UserDatabase</a> &amp;<a class="el" href="classServer.html#a078cf8e6df63d529d7da930c3657415a">userDb</a>, <a class="el" href="classAuthenticator.html">Authenticator</a> &amp;<a class="el" href="classServer.html#a43c6a06612353b620cce345e45e8bdf4">authenticator</a>, <a class="el" href="classDataProcessor.html">DataProcessor</a> &amp;<a class="el" href="classServer.html#ab5a99d29a47baef4cc802324538cdb3f">processor</a>)</td></tr>
+<tr class="memdesc:a7032ae06968af4af8562e6030a2b1394"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструктор сервера  <a href="classServer.html#a7032ae06968af4af8562e6030a2b1394">Подробнее...</a><br /></td></tr>
+<tr class="separator:a7032ae06968af4af8562e6030a2b1394"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b3aa2579cb1c8cd1d069582c14d0fa6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a4b3aa2579cb1c8cd1d069582c14d0fa6">~Server</a> ()</td></tr>
+<tr class="memdesc:a4b3aa2579cb1c8cd1d069582c14d0fa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Деструктор сервера  <a href="classServer.html#a4b3aa2579cb1c8cd1d069582c14d0fa6">Подробнее...</a><br /></td></tr>
+<tr class="separator:a4b3aa2579cb1c8cd1d069582c14d0fa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb27d30b40a94326e3fd629d3b30b7d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#abb27d30b40a94326e3fd629d3b30b7d5">run</a> ()</td></tr>
+<tr class="memdesc:abb27d30b40a94326e3fd629d3b30b7d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Основной метод запуска сервера  <a href="classServer.html#abb27d30b40a94326e3fd629d3b30b7d5">Подробнее...</a><br /></td></tr>
+<tr class="separator:abb27d30b40a94326e3fd629d3b30b7d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Статические открытые данные</h2></td></tr>
+<tr class="memitem:a989532e8add360ee55c8552018619f6c"><td class="memItemLeft" align="right" valign="top">static const unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a989532e8add360ee55c8552018619f6c">MIN_PORT</a> = 1024</td></tr>
+<tr class="memdesc:a989532e8add360ee55c8552018619f6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Минимальный допустимый порт  <a href="classServer.html#a989532e8add360ee55c8552018619f6c">Подробнее...</a><br /></td></tr>
+<tr class="separator:a989532e8add360ee55c8552018619f6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51ef8b668195a28c282d39ec7f091084"><td class="memItemLeft" align="right" valign="top">static const unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a51ef8b668195a28c282d39ec7f091084">MAX_PORT</a> = 49151</td></tr>
+<tr class="memdesc:a51ef8b668195a28c282d39ec7f091084"><td class="mdescLeft">&#160;</td><td class="mdescRight">Максимальный допустимый порт  <a href="classServer.html#a51ef8b668195a28c282d39ec7f091084">Подробнее...</a><br /></td></tr>
+<tr class="separator:a51ef8b668195a28c282d39ec7f091084"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Закрытые члены</h2></td></tr>
+<tr class="memitem:a5e5583aca8781d6325108073dfc29a5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a5e5583aca8781d6325108073dfc29a5b">validatePort</a> (unsigned short p) const</td></tr>
+<tr class="memdesc:a5e5583aca8781d6325108073dfc29a5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверка валидности номера порта  <a href="classServer.html#a5e5583aca8781d6325108073dfc29a5b">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5e5583aca8781d6325108073dfc29a5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a174332d05b2330e5682c5c5aad8917f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a174332d05b2330e5682c5c5aad8917f4">startListening</a> ()</td></tr>
+<tr class="memdesc:a174332d05b2330e5682c5c5aad8917f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализация и запуск сокета  <a href="classServer.html#a174332d05b2330e5682c5c5aad8917f4">Подробнее...</a><br /></td></tr>
+<tr class="separator:a174332d05b2330e5682c5c5aad8917f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa60931130c6081bd2b01b8122933f80e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#aa60931130c6081bd2b01b8122933f80e">handleClient</a> (int client_sock)</td></tr>
+<tr class="memdesc:aa60931130c6081bd2b01b8122933f80e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обработка одного клиента  <a href="classServer.html#aa60931130c6081bd2b01b8122933f80e">Подробнее...</a><br /></td></tr>
+<tr class="separator:aa60931130c6081bd2b01b8122933f80e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ffa6f86d5b5358e2f1816abd3e98c6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a3ffa6f86d5b5358e2f1816abd3e98c6a">processVectors</a> (int client_sock)</td></tr>
+<tr class="memdesc:a3ffa6f86d5b5358e2f1816abd3e98c6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обработка векторов данных от клиента  <a href="classServer.html#a3ffa6f86d5b5358e2f1816abd3e98c6a">Подробнее...</a><br /></td></tr>
+<tr class="separator:a3ffa6f86d5b5358e2f1816abd3e98c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88bded1a4ac8d3b855f4f6dc360b1a8d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a88bded1a4ac8d3b855f4f6dc360b1a8d">readTextMessage</a> (int sock) const</td></tr>
+<tr class="memdesc:a88bded1a4ac8d3b855f4f6dc360b1a8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Чтение текстового сообщения от клиента  <a href="classServer.html#a88bded1a4ac8d3b855f4f6dc360b1a8d">Подробнее...</a><br /></td></tr>
+<tr class="separator:a88bded1a4ac8d3b855f4f6dc360b1a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac56c92bb1dd7864776a90258f563dd73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#ac56c92bb1dd7864776a90258f563dd73">sendError</a> (int client_sock, const std::string &amp;message) const</td></tr>
+<tr class="memdesc:ac56c92bb1dd7864776a90258f563dd73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Отправка сообщения об ошибке клиенту  <a href="classServer.html#ac56c92bb1dd7864776a90258f563dd73">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac56c92bb1dd7864776a90258f563dd73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Закрытые данные</h2></td></tr>
+<tr class="memitem:a7c65d69a3c9d46b673fc8d48ff61b710"><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a7c65d69a3c9d46b673fc8d48ff61b710">port</a></td></tr>
+<tr class="memdesc:a7c65d69a3c9d46b673fc8d48ff61b710"><td class="mdescLeft">&#160;</td><td class="mdescRight">Порт сервера  <a href="classServer.html#a7c65d69a3c9d46b673fc8d48ff61b710">Подробнее...</a><br /></td></tr>
+<tr class="separator:a7c65d69a3c9d46b673fc8d48ff61b710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c1f558b24a485a61822b50d3a02192a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogger.html">Logger</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a3c1f558b24a485a61822b50d3a02192a">logger</a></td></tr>
+<tr class="memdesc:a3c1f558b24a485a61822b50d3a02192a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ссылка на журнал  <a href="classServer.html#a3c1f558b24a485a61822b50d3a02192a">Подробнее...</a><br /></td></tr>
+<tr class="separator:a3c1f558b24a485a61822b50d3a02192a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a078cf8e6df63d529d7da930c3657415a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUserDatabase.html">UserDatabase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a078cf8e6df63d529d7da930c3657415a">userDb</a></td></tr>
+<tr class="memdesc:a078cf8e6df63d529d7da930c3657415a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ссылка на базу данных пользователей  <a href="classServer.html#a078cf8e6df63d529d7da930c3657415a">Подробнее...</a><br /></td></tr>
+<tr class="separator:a078cf8e6df63d529d7da930c3657415a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43c6a06612353b620cce345e45e8bdf4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAuthenticator.html">Authenticator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a43c6a06612353b620cce345e45e8bdf4">authenticator</a></td></tr>
+<tr class="memdesc:a43c6a06612353b620cce345e45e8bdf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ссылка на аутентификатор  <a href="classServer.html#a43c6a06612353b620cce345e45e8bdf4">Подробнее...</a><br /></td></tr>
+<tr class="separator:a43c6a06612353b620cce345e45e8bdf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5a99d29a47baef4cc802324538cdb3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classDataProcessor.html">DataProcessor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#ab5a99d29a47baef4cc802324538cdb3f">processor</a></td></tr>
+<tr class="memdesc:ab5a99d29a47baef4cc802324538cdb3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ссылка на обработчик данных  <a href="classServer.html#ab5a99d29a47baef4cc802324538cdb3f">Подробнее...</a><br /></td></tr>
+<tr class="separator:ab5a99d29a47baef4cc802324538cdb3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc345f54a55757dce3a0a3b74a6a5b2d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#acc345f54a55757dce3a0a3b74a6a5b2d">listen_sock</a></td></tr>
+<tr class="memdesc:acc345f54a55757dce3a0a3b74a6a5b2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сокет  <a href="classServer.html#acc345f54a55757dce3a0a3b74a6a5b2d">Подробнее...</a><br /></td></tr>
+<tr class="separator:acc345f54a55757dce3a0a3b74a6a5b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94cd700bcc038e1cffe3b0849c49ba49"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; sockaddr_in &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#a94cd700bcc038e1cffe3b0849c49ba49">self_addr</a></td></tr>
+<tr class="memdesc:a94cd700bcc038e1cffe3b0849c49ba49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Адрес сервера  <a href="classServer.html#a94cd700bcc038e1cffe3b0849c49ba49">Подробнее...</a><br /></td></tr>
+<tr class="separator:a94cd700bcc038e1cffe3b0849c49ba49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2379f0fc836ff68fc10ca4ad2c1e951"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; sockaddr_in &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServer.html#ac2379f0fc836ff68fc10ca4ad2c1e951">foreign_addr</a></td></tr>
+<tr class="memdesc:ac2379f0fc836ff68fc10ca4ad2c1e951"><td class="mdescLeft">&#160;</td><td class="mdescRight">Адрес клиента  <a href="classServer.html#ac2379f0fc836ff68fc10ca4ad2c1e951">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac2379f0fc836ff68fc10ca4ad2c1e951"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p >Основной класс сервера </p>
+<p >Реализует сетевой сервер с аутентификацией и обработкой данных </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8h_source.html">Server.h</a> строка <a class="el" href="Server_8h_source.html#l00062">62</a></p>
+</div><h2 class="groupheader">Конструктор(ы)</h2>
+<a id="a7032ae06968af4af8562e6030a2b1394" name="a7032ae06968af4af8562e6030a2b1394"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7032ae06968af4af8562e6030a2b1394">&#9670;&nbsp;</a></span>Server()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Server::Server </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLogger.html">Logger</a> &amp;&#160;</td>
+          <td class="paramname"><em>logger</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classUserDatabase.html">UserDatabase</a> &amp;&#160;</td>
+          <td class="paramname"><em>userDb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classAuthenticator.html">Authenticator</a> &amp;&#160;</td>
+          <td class="paramname"><em>authenticator</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classDataProcessor.html">DataProcessor</a> &amp;&#160;</td>
+          <td class="paramname"><em>processor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Конструктор сервера </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>Порт </td></tr>
+    <tr><td class="paramname">logger</td><td>Ссылка на журнал </td></tr>
+    <tr><td class="paramname">userDb</td><td>Ссылка на базу данных пользователей </td></tr>
+    <tr><td class="paramname">authenticator</td><td>Ссылка на аутентификатор </td></tr>
+    <tr><td class="paramname">processor</td><td>Ссылка на обработчик данных </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>при невалидном порте </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8cpp_source.html">Server.cpp</a> строка <a class="el" href="Server_8cpp_source.html#l00030">30</a></p>
+
+</div>
+</div>
+<a id="a4b3aa2579cb1c8cd1d069582c14d0fa6" name="a4b3aa2579cb1c8cd1d069582c14d0fa6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b3aa2579cb1c8cd1d069582c14d0fa6">&#9670;&nbsp;</a></span>~Server()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Server::~Server </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Деструктор сервера </p>
+<p >Закрывает сокеты и освобождает ресурсы </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8cpp_source.html">Server.cpp</a> строка <a class="el" href="Server_8cpp_source.html#l00043">43</a></p>
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a id="aa60931130c6081bd2b01b8122933f80e" name="aa60931130c6081bd2b01b8122933f80e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa60931130c6081bd2b01b8122933f80e">&#9670;&nbsp;</a></span>handleClient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server::handleClient </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>client_sock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Обработка одного клиента </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client_sock</td><td>Сокет подключенного клиента </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classauth__error.html" title="Исключение для ошибок аутентификации">auth_error</a></td><td>при ошибках аутентификации </td></tr>
+    <tr><td class="paramname"><a class="el" href="classvector__error.html" title="Исключение для ошибок обработки векторов">vector_error</a></td><td>при ошибках обработки векторов</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client_sock</td><td>Сокет подключенного клиента </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classauth__error.html" title="Исключение для ошибок аутентификации">auth_error</a></td><td>при ошибках аутентификации </td></tr>
+    <tr><td class="paramname"><a class="el" href="classvector__error.html" title="Исключение для ошибок обработки векторов">vector_error</a></td><td>при ошибках обработки векторов</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Выполняет полный цикл взаимодействия:</p><ol type="1">
+<li>Чтение аутентификационного сообщения</li>
+<li>Проверка аутентификации</li>
+<li>Обработка векторов данных </li>
+</ol>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8cpp_source.html">Server.cpp</a> строка <a class="el" href="Server_8cpp_source.html#l00171">171</a></p>
+
+</div>
+</div>
+<a id="a3ffa6f86d5b5358e2f1816abd3e98c6a" name="a3ffa6f86d5b5358e2f1816abd3e98c6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ffa6f86d5b5358e2f1816abd3e98c6a">&#9670;&nbsp;</a></span>processVectors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server::processVectors </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Обработка векторов данных от клиента </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client_sock</td><td>Сокет клиента </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classvector__error.html" title="Исключение для ошибок обработки векторов">vector_error</a></td><td>при ошибках обработки векторов</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client_sock</td><td>Сокет клиента </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classvector__error.html" title="Исключение для ошибок обработки векторов">vector_error</a></td><td>при ошибках обработки векторов</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Протокол обработки векторов:</p><ol type="1">
+<li>Получение количества векторов (uint32_t)</li>
+<li>Для каждого вектора: а. Получение размера вектора (uint32_t) б. Получение данных вектора (int32_t[]) в. Вычисление среднего арифметического г. Отправка результата клиенту <dl class="section note"><dt>Заметки</dt><dd>Проверяет коректность размера вектора </dd></dl>
+</li>
+</ol>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8cpp_source.html">Server.cpp</a> строка <a class="el" href="Server_8cpp_source.html#l00214">214</a></p>
+
+</div>
+</div>
+<a id="a88bded1a4ac8d3b855f4f6dc360b1a8d" name="a88bded1a4ac8d3b855f4f6dc360b1a8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88bded1a4ac8d3b855f4f6dc360b1a8d">&#9670;&nbsp;</a></span>readTextMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Server::readTextMessage </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Чтение текстового сообщения от клиента </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>Сокет клиента </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Прочитанная строка </dd></dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::system_error</td><td>при ошибках чтения</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>Сокет клиента </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Прочитанная строка </dd></dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::system_error</td><td>при ошибках чтения</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Удаляет символы перевода строки из полученного сообщения </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8cpp_source.html">Server.cpp</a> строка <a class="el" href="Server_8cpp_source.html#l00084">84</a></p>
+
+</div>
+</div>
+<a id="abb27d30b40a94326e3fd629d3b30b7d5" name="abb27d30b40a94326e3fd629d3b30b7d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb27d30b40a94326e3fd629d3b30b7d5">&#9670;&nbsp;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server::run </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Основной метод запуска сервера </p>
+<p >Запускает бесконечный цикл обработки подключений </p><dl class="section note"><dt>Заметки</dt><dd>Метод не возвращает управление </dd></dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::system_error</td><td>при ошибках сетевого взаимодействия</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Запускает бесконечный цикл обработки подключений </p><dl class="section note"><dt>Заметки</dt><dd>Метод не возвращает управление в нормальных условиях </dd></dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::system_error</td><td>при ошибках сетевого взаимодействия </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8cpp_source.html">Server.cpp</a> строка <a class="el" href="Server_8cpp_source.html#l00137">137</a></p>
+
+</div>
+</div>
+<a id="ac56c92bb1dd7864776a90258f563dd73" name="ac56c92bb1dd7864776a90258f563dd73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac56c92bb1dd7864776a90258f563dd73">&#9670;&nbsp;</a></span>sendError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server::sendError </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>client_sock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Отправка сообщения об ошибке клиенту </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client_sock</td><td>Сокет клиента </td></tr>
+    <tr><td class="paramname">message</td><td>Текст сообщения для записи в журнал</td></tr>
+    <tr><td class="paramname">client_sock</td><td>Сокет клиента </td></tr>
+    <tr><td class="paramname">message</td><td>Текст сообщения для записи в журнал</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Отправляет строку "ERR" клиенту и записывает ошибку в журнал </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8cpp_source.html">Server.cpp</a> строка <a class="el" href="Server_8cpp_source.html#l00071">71</a></p>
+
+</div>
+</div>
+<a id="a174332d05b2330e5682c5c5aad8917f4" name="a174332d05b2330e5682c5c5aad8917f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a174332d05b2330e5682c5c5aad8917f4">&#9670;&nbsp;</a></span>startListening()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server::startListening </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Инициализация и запуск сокета </p>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::system_error</td><td>при ошибках создания сокета</td></tr>
+    <tr><td class="paramname">std::system_error</td><td>при ошибках создания сокета</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Создает TCP сокет, привязывает к указанному порту, устанавливает флаг SO_REUSEADDR </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8cpp_source.html">Server.cpp</a> строка <a class="el" href="Server_8cpp_source.html#l00105">105</a></p>
+
+</div>
+</div>
+<a id="a5e5583aca8781d6325108073dfc29a5b" name="a5e5583aca8781d6325108073dfc29a5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e5583aca8781d6325108073dfc29a5b">&#9670;&nbsp;</a></span>validatePort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Server::validatePort </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Проверка валидности номера порта </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>Проверяемый порт </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>при невалидном порте</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>Проверяемый порт </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Исключения</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>при невалидном порте</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Допустимый диапазон портов: 1024-49151 </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8cpp_source.html">Server.cpp</a> строка <a class="el" href="Server_8cpp_source.html#l00056">56</a></p>
+
+</div>
+</div>
+<h2 class="groupheader">Данные класса</h2>
+<a id="a43c6a06612353b620cce345e45e8bdf4" name="a43c6a06612353b620cce345e45e8bdf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43c6a06612353b620cce345e45e8bdf4">&#9670;&nbsp;</a></span>authenticator</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classAuthenticator.html">Authenticator</a>&amp; Server::authenticator</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ссылка на аутентификатор </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8h_source.html">Server.h</a> строка <a class="el" href="Server_8h_source.html#l00097">97</a></p>
+
+</div>
+</div>
+<a id="ac2379f0fc836ff68fc10ca4ad2c1e951" name="ac2379f0fc836ff68fc10ca4ad2c1e951"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2379f0fc836ff68fc10ca4ad2c1e951">&#9670;&nbsp;</a></span>foreign_addr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;sockaddr_in&gt; Server::foreign_addr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Адрес клиента </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8h_source.html">Server.h</a> строка <a class="el" href="Server_8h_source.html#l00102">102</a></p>
+
+</div>
+</div>
+<a id="acc345f54a55757dce3a0a3b74a6a5b2d" name="acc345f54a55757dce3a0a3b74a6a5b2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc345f54a55757dce3a0a3b74a6a5b2d">&#9670;&nbsp;</a></span>listen_sock</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Server::listen_sock</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Сокет </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8h_source.html">Server.h</a> строка <a class="el" href="Server_8h_source.html#l00100">100</a></p>
+
+</div>
+</div>
+<a id="a3c1f558b24a485a61822b50d3a02192a" name="a3c1f558b24a485a61822b50d3a02192a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c1f558b24a485a61822b50d3a02192a">&#9670;&nbsp;</a></span>logger</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogger.html">Logger</a>&amp; Server::logger</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ссылка на журнал </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8h_source.html">Server.h</a> строка <a class="el" href="Server_8h_source.html#l00095">95</a></p>
+
+</div>
+</div>
+<a id="a51ef8b668195a28c282d39ec7f091084" name="a51ef8b668195a28c282d39ec7f091084"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51ef8b668195a28c282d39ec7f091084">&#9670;&nbsp;</a></span>MAX_PORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned short Server::MAX_PORT = 49151</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Максимальный допустимый порт </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8h_source.html">Server.h</a> строка <a class="el" href="Server_8h_source.html#l00065">65</a></p>
+
+</div>
+</div>
+<a id="a989532e8add360ee55c8552018619f6c" name="a989532e8add360ee55c8552018619f6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a989532e8add360ee55c8552018619f6c">&#9670;&nbsp;</a></span>MIN_PORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned short Server::MIN_PORT = 1024</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Минимальный допустимый порт </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8h_source.html">Server.h</a> строка <a class="el" href="Server_8h_source.html#l00064">64</a></p>
+
+</div>
+</div>
+<a id="a7c65d69a3c9d46b673fc8d48ff61b710" name="a7c65d69a3c9d46b673fc8d48ff61b710"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c65d69a3c9d46b673fc8d48ff61b710">&#9670;&nbsp;</a></span>port</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short Server::port</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Порт сервера </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8h_source.html">Server.h</a> строка <a class="el" href="Server_8h_source.html#l00094">94</a></p>
+
+</div>
+</div>
+<a id="ab5a99d29a47baef4cc802324538cdb3f" name="ab5a99d29a47baef4cc802324538cdb3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5a99d29a47baef4cc802324538cdb3f">&#9670;&nbsp;</a></span>processor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classDataProcessor.html">DataProcessor</a>&amp; Server::processor</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ссылка на обработчик данных </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8h_source.html">Server.h</a> строка <a class="el" href="Server_8h_source.html#l00098">98</a></p>
+
+</div>
+</div>
+<a id="a94cd700bcc038e1cffe3b0849c49ba49" name="a94cd700bcc038e1cffe3b0849c49ba49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94cd700bcc038e1cffe3b0849c49ba49">&#9670;&nbsp;</a></span>self_addr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;sockaddr_in&gt; Server::self_addr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Адрес сервера </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8h_source.html">Server.h</a> строка <a class="el" href="Server_8h_source.html#l00101">101</a></p>
+
+</div>
+</div>
+<a id="a078cf8e6df63d529d7da930c3657415a" name="a078cf8e6df63d529d7da930c3657415a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a078cf8e6df63d529d7da930c3657415a">&#9670;&nbsp;</a></span>userDb</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classUserDatabase.html">UserDatabase</a>&amp; Server::userDb</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ссылка на базу данных пользователей </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Server_8h_source.html">Server.h</a> строка <a class="el" href="Server_8h_source.html#l00096">96</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>include/<a class="el" href="Server_8h_source.html">Server.h</a></li>
+<li>src/<a class="el" href="Server_8cpp_source.html">Server.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

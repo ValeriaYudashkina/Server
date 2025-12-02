@@ -1,0 +1,57 @@
+\hypertarget{Logger_8cpp_source}{}\doxysection{Logger.\+cpp}
+\label{Logger_8cpp_source}\index{src/Logger.cpp@{src/Logger.cpp}}
+\mbox{\hyperlink{Logger_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Logger_8h}{Logger.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00009}00009 \textcolor{preprocessor}{\#include <iomanip>}}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00010}00010 \textcolor{preprocessor}{\#include <ctime>}}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00016}\mbox{\hyperlink{classLogger_a4d0e16ee291866e1d68a4967d25cb29a}{00016}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogger_a4d0e16ee291866e1d68a4967d25cb29a}{Logger::init}}(\textcolor{keyword}{const} std::string\& log\_path) \{}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00017}00017     \mbox{\hyperlink{classLogger_af2d3e37c3764663b3e103f0fc2003cb6}{logPath}} = log\_path;}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00018}00018 \}}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00026}\mbox{\hyperlink{classLogger_a1c5c7357b27b68b8bcd93b7bcf6b30b9}{00026}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogger_a1c5c7357b27b68b8bcd93b7bcf6b30b9}{Logger::logError}}(\textcolor{keyword}{const} std::string\& message, \textcolor{keywordtype}{bool} isCritical) \{}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00027}00027     std::string level;}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00028}00028     \textcolor{keywordflow}{if} (isCritical) \{}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00029}00029         level = \textcolor{stringliteral}{"{}CRITICAL"{}};}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00030}00030     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00031}00031         level = \textcolor{stringliteral}{"{}ERROR"{}};}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00032}00032     \}}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00034}00034     std::ofstream file(\mbox{\hyperlink{classLogger_af2d3e37c3764663b3e103f0fc2003cb6}{logPath}}, std::ios::app);}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00035}00035     \textcolor{keywordflow}{if} (file.is\_open()) \{}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00036}00036         \textcolor{keyword}{auto} now = std::chrono::system\_clock::now();}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00037}00037         \textcolor{keyword}{auto} time\_t = std::chrono::system\_clock::to\_time\_t(now);}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00038}00038         file << std::put\_time(std::localtime(\&time\_t), \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d \%H:\%M:\%S"{}})}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00039}00039              << \textcolor{stringliteral}{"{}; "{}} << level << \textcolor{stringliteral}{"{}; "{}} << message << std::endl;}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00040}00040         file.flush();}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00041}00041         file.close();}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00042}00042     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00043}00043         std::cerr << \textcolor{stringliteral}{"{}LOGGER ERROR: Cannot write log to "{}} << \mbox{\hyperlink{classLogger_af2d3e37c3764663b3e103f0fc2003cb6}{logPath}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00044}00044     \}}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00046}00046     \textcolor{keywordflow}{if} (isCritical) \{}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00047}00047         std::cerr << \textcolor{stringliteral}{"{}CRITICAL ERROR: "{}} << message << std::endl;}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00048}00048     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00049}00049         std::cerr << \textcolor{stringliteral}{"{}ERROR: "{}} << message << std::endl;}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00050}00050     \}}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00051}00051 \}}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00058}\mbox{\hyperlink{classLogger_a3b2e97470572358030fa427c649cf8d5}{00058}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogger_a3b2e97470572358030fa427c649cf8d5}{Logger::logInfo}}(\textcolor{keyword}{const} std::string\& message) \{}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00059}00059     std::ofstream file(\mbox{\hyperlink{classLogger_af2d3e37c3764663b3e103f0fc2003cb6}{logPath}}, std::ios::app);}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00060}00060     \textcolor{keywordflow}{if} (file.is\_open()) \{}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00061}00061         \textcolor{keyword}{auto} now = std::chrono::system\_clock::now();}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00062}00062         \textcolor{keyword}{auto} time\_t = std::chrono::system\_clock::to\_time\_t(now);}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00063}00063         file << std::put\_time(std::localtime(\&time\_t), \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d \%H:\%M:\%S"{}})}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00064}00064              << \textcolor{stringliteral}{"{}; INFO; "{}} << message << std::endl;}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00065}00065         file.flush();}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00066}00066         file.close();}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00067}00067     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00068}00068         std::cerr << \textcolor{stringliteral}{"{}LOGGER ERROR: Cannot write log to "{}} << \mbox{\hyperlink{classLogger_af2d3e37c3764663b3e103f0fc2003cb6}{logPath}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00069}00069     \}}
+\DoxyCodeLine{\Hypertarget{Logger_8cpp_source_l00070}00070 \}}
+
+\end{DoxyCode}

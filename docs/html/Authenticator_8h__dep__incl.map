@@ -1,0 +1,7 @@
+<map id="include/Authenticator.h" name="include/Authenticator.h">
+<area shape="rect" id="node1" title="Заголовочный файл модуля Authenticator &#45; аутентификация пользователей" alt="" coords="109,5,281,32"/>
+<area shape="rect" id="node2" href="$Server_8h.html" title="Заголовочный файл модуля Server &#45; основной серверный модуль" alt="" coords="31,80,157,107"/>
+<area shape="rect" id="node4" href="$main_8cpp.html" title="Точка входа серверной программы" alt="" coords="143,155,248,181"/>
+<area shape="rect" id="node5" href="$Authenticator_8cpp.html" title="Реализация класса Authenticator для аутентификации пользователей" alt="" coords="233,80,392,107"/>
+<area shape="rect" id="node3" href="$Server_8cpp.html" title="Реализация основного серверного модуля" alt="" coords="5,155,119,181"/>
+</map>

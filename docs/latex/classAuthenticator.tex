@@ -1,0 +1,170 @@
+\hypertarget{classAuthenticator}{}\doxysection{Класс Authenticator}
+\label{classAuthenticator}\index{Authenticator@{Authenticator}}
+
+
+Предварительное объявление класса \mbox{\hyperlink{classLogger}{Logger}}.  
+
+
+
+
+{\ttfamily \#include $<$Authenticator.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classAuthenticator_a86f559ba38a9a161a84c99b114e568bc}{verify}} (const std\+::string \&login, const std\+::string \&salt\+\_\+hash\+\_\+client, \mbox{\hyperlink{classUserDatabase}{User\+Database}} \&db, \mbox{\hyperlink{classLogger}{Logger}} \&logger) const
+\begin{DoxyCompactList}\small\item\em Проверка аутентификационных данных \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classAuthenticator_ac33441deb2a9b3515db257bf889af21b}{is\+Valid\+Hex}} (const std\+::string \&str) const
+\begin{DoxyCompactList}\small\item\em Проверка строки на соотвествие шестнадцатеричному формату \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые статические данные}
+\begin{DoxyCompactItemize}
+\item 
+static const int \mbox{\hyperlink{classAuthenticator_ab2afdd321c2db24f5b0f969918619b54}{SALT16\+\_\+\+LENGTH}} = 16
+\begin{DoxyCompactList}\small\item\em Длина строки SALT в hex-\/формате \end{DoxyCompactList}\item 
+static const int \mbox{\hyperlink{classAuthenticator_a5dd4a90b5139fe73ffd083cc57753e32}{SHA1\+\_\+\+HEX\+\_\+\+LENGTH}} = 40
+\begin{DoxyCompactList}\small\item\em Длина хеша SHA-\/1 в hex-\/формате \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Предварительное объявление класса \mbox{\hyperlink{classLogger}{Logger}}. 
+
+Класс для аутентификации пользователей
+
+Реализует аутентификацию с использованием хеш-\/функции SHA-\/1 и соли, формируемой клиентом 
+
+См. определение в файле \mbox{\hyperlink{Authenticator_8h_source}{Authenticator.\+h}} строка \mbox{\hyperlink{Authenticator_8h_source_l00016}{16}}
+
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classAuthenticator_ac33441deb2a9b3515db257bf889af21b}\label{classAuthenticator_ac33441deb2a9b3515db257bf889af21b}} 
+\index{Authenticator@{Authenticator}!isValidHex@{isValidHex}}
+\index{isValidHex@{isValidHex}!Authenticator@{Authenticator}}
+\doxysubsubsection{\texorpdfstring{isValidHex()}{isValidHex()}}
+{\footnotesize\ttfamily bool Authenticator\+::is\+Valid\+Hex (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Проверка строки на соотвествие шестнадцатеричному формату 
+
+Проверка строки на соответствие шестнадцатеричному формату
+
+
+\begin{DoxyParams}{Аргументы}
+{\em str} & Проверяемая строка \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true -\/ строка содержит только hex-\/символы, false -\/ строка содержит недопустимые символы
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Аргументы}
+{\em str} & Проверяемая строка \\
+\hline
+{\em logger} & Ссылка на журнал для записи ошибок \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true -\/ строка содержит только hex-\/символы, false -\/ строка содержит недопустимые символы
+\end{DoxyReturn}
+Допустимые символы\+: 0-\/9, A-\/F, a-\/f 
+
+См. определение в файле \mbox{\hyperlink{Authenticator_8cpp_source}{Authenticator.\+cpp}} строка \mbox{\hyperlink{Authenticator_8cpp_source_l00026}{26}}
+
+\mbox{\Hypertarget{classAuthenticator_a86f559ba38a9a161a84c99b114e568bc}\label{classAuthenticator_a86f559ba38a9a161a84c99b114e568bc}} 
+\index{Authenticator@{Authenticator}!verify@{verify}}
+\index{verify@{verify}!Authenticator@{Authenticator}}
+\doxysubsubsection{\texorpdfstring{verify()}{verify()}}
+{\footnotesize\ttfamily bool Authenticator\+::verify (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{login,  }\item[{const std\+::string \&}]{salt\+\_\+hash\+\_\+client,  }\item[{\mbox{\hyperlink{classUserDatabase}{User\+Database}} \&}]{db,  }\item[{\mbox{\hyperlink{classLogger}{Logger}} \&}]{logger }\end{DoxyParamCaption}) const}
+
+
+
+Проверка аутентификационных данных 
+
+Проверка аутентификационных данных пользователя
+
+
+\begin{DoxyParams}{Аргументы}
+{\em login} & Логин пользователя \\
+\hline
+{\em salt\+\_\+hash\+\_\+client} & Строка формата SALT16 + HASH (56 символов) \\
+\hline
+{\em db} & Ссылка на базу данных пользователей \\
+\hline
+{\em logger} & Ссылка на журнал для записи событий \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true -\/ аутентификация успешна, false -\/ аутентификация не пройдена
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Аргументы}
+{\em login} & Логин пользователя \\
+\hline
+{\em salt\+\_\+hash\+\_\+client} & Строка формата SALT16 + HASH (56 символов) \\
+\hline
+{\em db} & Ссылка на базу данных пользователей \\
+\hline
+{\em logger} & Ссылка на журнал для записи ошибок \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true -\/ аутентификация успешна, false -\/ аутентификация не пройдена
+\end{DoxyReturn}
+Алгоритм проверки\+:
+\begin{DoxyEnumerate}
+\item Проверка длины сообщения (16+40=56 символов)
+\item Валидация hex-\/формата SALT и HASH
+\item Поиск пользователя в базе данных
+\item Вычисление хеша SHA-\/1 от (SALT + PASSWORD)
+\item Сравнение вычисленного хеша с полученным \begin{DoxyNote}{Заметки}
+Используется схема\+: HASH = SHA1(SALT $\vert$$\vert$ PASSWORD) 
+\end{DoxyNote}
+\begin{DoxyWarning}{Предупреждения}
+При несовпадении хешей в журнал записывается ошибка аутентификации 
+\end{DoxyWarning}
+
+\end{DoxyEnumerate}
+
+См. определение в файле \mbox{\hyperlink{Authenticator_8cpp_source}{Authenticator.\+cpp}} строка \mbox{\hyperlink{Authenticator_8cpp_source_l00049}{49}}
+
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{classAuthenticator_ab2afdd321c2db24f5b0f969918619b54}\label{classAuthenticator_ab2afdd321c2db24f5b0f969918619b54}} 
+\index{Authenticator@{Authenticator}!SALT16\_LENGTH@{SALT16\_LENGTH}}
+\index{SALT16\_LENGTH@{SALT16\_LENGTH}!Authenticator@{Authenticator}}
+\doxysubsubsection{\texorpdfstring{SALT16\_LENGTH}{SALT16\_LENGTH}}
+{\footnotesize\ttfamily const int Authenticator\+::\+SALT16\+\_\+\+LENGTH = 16\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Длина строки SALT в hex-\/формате 
+
+
+
+См. определение в файле \mbox{\hyperlink{Authenticator_8h_source}{Authenticator.\+h}} строка \mbox{\hyperlink{Authenticator_8h_source_l00039}{39}}
+
+\mbox{\Hypertarget{classAuthenticator_a5dd4a90b5139fe73ffd083cc57753e32}\label{classAuthenticator_a5dd4a90b5139fe73ffd083cc57753e32}} 
+\index{Authenticator@{Authenticator}!SHA1\_HEX\_LENGTH@{SHA1\_HEX\_LENGTH}}
+\index{SHA1\_HEX\_LENGTH@{SHA1\_HEX\_LENGTH}!Authenticator@{Authenticator}}
+\doxysubsubsection{\texorpdfstring{SHA1\_HEX\_LENGTH}{SHA1\_HEX\_LENGTH}}
+{\footnotesize\ttfamily const int Authenticator\+::\+SHA1\+\_\+\+HEX\+\_\+\+LENGTH = 40\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Длина хеша SHA-\/1 в hex-\/формате 
+
+
+
+См. определение в файле \mbox{\hyperlink{Authenticator_8h_source}{Authenticator.\+h}} строка \mbox{\hyperlink{Authenticator_8h_source_l00040}{40}}
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Authenticator_8h}{Authenticator.\+h}}\item 
+src/\mbox{\hyperlink{Authenticator_8cpp}{Authenticator.\+cpp}}\end{DoxyCompactItemize}

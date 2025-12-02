@@ -1,0 +1,68 @@
+\hypertarget{main_8cpp_source}{}\doxysection{main.\+cpp}
+\label{main_8cpp_source}\index{src/main.cpp@{src/main.cpp}}
+\mbox{\hyperlink{main_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00022}00022 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Interface_8h}{Interface.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00023}00023 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Logger_8h}{Logger.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00024}00024 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{UserDatabase_8h}{UserDatabase.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00025}00025 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{DataProcessor_8h}{DataProcessor.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00026}00026 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Authenticator_8h}{Authenticator.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00027}00027 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Server_8h}{Server.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00028}00028 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00029}00029 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00038}\mbox{\hyperlink{main_8cpp_a453e6d08d6e79d915a577ce2156b5896}{00038}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{main_8cpp_a453e6d08d6e79d915a577ce2156b5896}{isValidPort}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} port) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00039}00039     \textcolor{keywordflow}{return} port >= 1024 \&\& port <= 49151;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00040}00040 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00053}\mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{00053}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}** argv) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00054}00054     \mbox{\hyperlink{classLogger}{Logger}} logger; }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00055}00055     \mbox{\hyperlink{classInterface}{Interface}} iface; }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}00057     \textcolor{keywordflow}{if} (argc == 1) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00058}00058         iface.\mbox{\hyperlink{classInterface_a4887efaf3962df462f13a900143ad10f}{printHelp}}(); \textcolor{comment}{// вывод справки и запуск сервера}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00059}00059     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00065}00065     \textcolor{keywordflow}{if} (!iface.\mbox{\hyperlink{classInterface_a59fc9c5eb181b48cc55a4a6d8fee637f}{Parser}}(argc, argv)) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00066}00066         iface.\mbox{\hyperlink{classInterface_a4887efaf3962df462f13a900143ad10f}{printHelp}}(); \textcolor{comment}{// вывод справки и завершение программы}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00067}00067         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00068}00068     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00074}00074     \mbox{\hyperlink{structParams}{Params}} params = iface.\mbox{\hyperlink{classInterface_a1108830b84b28acadc167e128abd2ec1}{getParams}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00080}00080     logger.\mbox{\hyperlink{classLogger_a4d0e16ee291866e1d68a4967d25cb29a}{init}}(params.\mbox{\hyperlink{structParams_a0df9a020ab892dd684833c2ec4c2f41c}{logFile}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00081}00081     logger.\mbox{\hyperlink{classLogger_a3b2e97470572358030fa427c649cf8d5}{logInfo}}(\textcolor{stringliteral}{"{}Server configuration parsing completed"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00087}00087     \mbox{\hyperlink{classUserDatabase}{UserDatabase}} userDb;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00088}00088     \textcolor{keywordflow}{if} (!userDb.\mbox{\hyperlink{classUserDatabase_a497f3c17e810a8b4e47eedcbccbf29bb}{load}}(params.\mbox{\hyperlink{structParams_a6f4d509e8e2f912cf54499c614fc521c}{dbFile}}, logger)) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00089}00089         \textcolor{keywordflow}{return} 1; }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00090}00090     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00096}00096     \mbox{\hyperlink{classAuthenticator}{Authenticator}} auth;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00097}00097     \mbox{\hyperlink{classDataProcessor}{DataProcessor}} processor;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00098}00098     logger.\mbox{\hyperlink{classLogger_a3b2e97470572358030fa427c649cf8d5}{logInfo}}(\textcolor{stringliteral}{"{}Authenticator and DataProcessor initialized"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00104}00104     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{main_8cpp_a453e6d08d6e79d915a577ce2156b5896}{isValidPort}}(params.\mbox{\hyperlink{structParams_afe8ac84d583f6b4809d2e88ba6c00b21}{port}})) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00105}00105         std::string error\_msg = \textcolor{stringliteral}{"{}Invalid port number: "{}} + std::to\_string(params.\mbox{\hyperlink{structParams_afe8ac84d583f6b4809d2e88ba6c00b21}{port}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00106}00106         logger.\mbox{\hyperlink{classLogger_a1c5c7357b27b68b8bcd93b7bcf6b30b9}{logError}}(error\_msg, \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00107}00107         \textcolor{keywordflow}{return} 1; }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00108}00108     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00109}00109 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00114}00114     std::cout << \textcolor{stringliteral}{"{}Server configuration loaded successfully"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00115}00115     std::cout << \textcolor{stringliteral}{"{}Database file: "{}} << params.\mbox{\hyperlink{structParams_a6f4d509e8e2f912cf54499c614fc521c}{dbFile}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00116}00116     std::cout << \textcolor{stringliteral}{"{}Log file: "{}} << params.\mbox{\hyperlink{structParams_a0df9a020ab892dd684833c2ec4c2f41c}{logFile}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00117}00117     std::cout << \textcolor{stringliteral}{"{}Port: "{}} << params.\mbox{\hyperlink{structParams_afe8ac84d583f6b4809d2e88ba6c00b21}{port}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00123}00123     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00124}00124         \mbox{\hyperlink{classServer}{Server}} server(params.\mbox{\hyperlink{structParams_afe8ac84d583f6b4809d2e88ba6c00b21}{port}}, logger, userDb, auth, processor);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00125}00125         server.\mbox{\hyperlink{classServer_abb27d30b40a94326e3fd629d3b30b7d5}{run}}(); }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00126}00126     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& e) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00131}00131         logger.\mbox{\hyperlink{classLogger_a1c5c7357b27b68b8bcd93b7bcf6b30b9}{logError}}(\textcolor{stringliteral}{"{}Server fatal error: "{}} + std::string(e.what()), \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00132}00132         std::cerr << \textcolor{stringliteral}{"{}Server error: "{}} << e.what() << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00133}00133         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00134}00134     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00135}00135     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00136}00136 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,202 @@
+\hypertarget{classInterface}{}\doxysection{Класс Interface}
+\label{classInterface}\index{Interface@{Interface}}
+
+
+Класс для обработки параметров командной строки  
+
+
+
+
+{\ttfamily \#include $<$Interface.\+h$>$}
+
+
+
+Граф связей класса Interface\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=150pt]{classInterface__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classInterface_a4406d74c75bdfe150bf72be1f1cda8b1}{Interface}} ()
+\begin{DoxyCompactList}\small\item\em Конструктор класса \mbox{\hyperlink{classInterface}{Interface}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classInterface_a59fc9c5eb181b48cc55a4a6d8fee637f}{Parser}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Парсинг аргументов командной строки \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structParams}{Params}} \mbox{\hyperlink{classInterface_a1108830b84b28acadc167e128abd2ec1}{get\+Params}} () const
+\begin{DoxyCompactList}\small\item\em Получение параметров \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classInterface_a4887efaf3962df462f13a900143ad10f}{print\+Help}} () const
+\begin{DoxyCompactList}\small\item\em Вывод справки по использованию \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+po\+::options\+\_\+description \mbox{\hyperlink{classInterface_a795825f7ff6cb8cad3972af64a1d2ffc}{desc}}
+\begin{DoxyCompactList}\small\item\em Описание доступных опций командной строки \end{DoxyCompactList}\item 
+po\+::variables\+\_\+map \mbox{\hyperlink{classInterface_a6111e9544f9be79f4cf0fa4500e6d4ac}{vm}}
+\begin{DoxyCompactList}\small\item\em Карта для хранения результатов парсинга \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structParams}{Params}} \mbox{\hyperlink{classInterface_a98f3efba14c789b06833cf26c629f7fb}{params}}
+\begin{DoxyCompactList}\small\item\em Экземпляр структуры с параметрами \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для обработки параметров командной строки 
+
+Использует библиотеку Boost.\+program\+\_\+options для парсинга аргументов 
+
+См. определение в файле \mbox{\hyperlink{Interface_8h_source}{Interface.\+h}} строка \mbox{\hyperlink{Interface_8h_source_l00025}{25}}
+
+
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classInterface_a4406d74c75bdfe150bf72be1f1cda8b1}\label{classInterface_a4406d74c75bdfe150bf72be1f1cda8b1}} 
+\index{Interface@{Interface}!Interface@{Interface}}
+\index{Interface@{Interface}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{Interface()}{Interface()}}
+{\footnotesize\ttfamily Interface\+::\+Interface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Конструктор класса \mbox{\hyperlink{classInterface}{Interface}}. 
+
+Инициализирует парсер опциями\+: help, file, log, port
+
+Инициализирует парсер командной строки опциями\+: help, file, log, port 
+
+См. определение в файле \mbox{\hyperlink{Interface_8cpp_source}{Interface.\+cpp}} строка \mbox{\hyperlink{Interface_8cpp_source_l00014}{14}}
+
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classInterface_a1108830b84b28acadc167e128abd2ec1}\label{classInterface_a1108830b84b28acadc167e128abd2ec1}} 
+\index{Interface@{Interface}!getParams@{getParams}}
+\index{getParams@{getParams}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{getParams()}{getParams()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structParams}{Params}} Interface\+::get\+Params (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Получение параметров 
+
+\begin{DoxyReturn}{Возвращает}
+Структура \mbox{\hyperlink{structParams}{Params}} с заполненными значениями 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{Interface_8h_source}{Interface.\+h}} строка \mbox{\hyperlink{Interface_8h_source_l00052}{52}}
+
+\mbox{\Hypertarget{classInterface_a59fc9c5eb181b48cc55a4a6d8fee637f}\label{classInterface_a59fc9c5eb181b48cc55a4a6d8fee637f}} 
+\index{Interface@{Interface}!Parser@{Parser}}
+\index{Parser@{Parser}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{Parser()}{Parser()}}
+{\footnotesize\ttfamily bool Interface\+::\+Parser (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Парсинг аргументов командной строки 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em argc} & Количество аргументов \\
+\hline
+{\em argv} & Массив аргументов \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true -\/ успешный парсинг рабочих параметров, false -\/ запрошена справка (help) 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em po\+::error} & при ошибках парсинга\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Аргументы}
+{\em argc} & Количество аргументов \\
+\hline
+{\em argv} & Массив аргументов \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true -\/ успешный парсинг рабочих параметров, false -\/ запрошена справка (help) 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em po\+::error} & при ошибках парсинга \\
+\hline
+{\em std\+::exception} & при других ошибках \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{Interface_8cpp_source}{Interface.\+cpp}} строка \mbox{\hyperlink{Interface_8cpp_source_l00031}{31}}
+
+\mbox{\Hypertarget{classInterface_a4887efaf3962df462f13a900143ad10f}\label{classInterface_a4887efaf3962df462f13a900143ad10f}} 
+\index{Interface@{Interface}!printHelp@{printHelp}}
+\index{printHelp@{printHelp}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{printHelp()}{printHelp()}}
+{\footnotesize\ttfamily void Interface\+::print\+Help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Вывод справки по использованию 
+
+Вывод справки по использованию программы
+
+Выводит описание всех доступных параметров и их значений по умолчанию 
+
+См. определение в файле \mbox{\hyperlink{Interface_8cpp_source}{Interface.\+cpp}} строка \mbox{\hyperlink{Interface_8cpp_source_l00049}{49}}
+
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{classInterface_a795825f7ff6cb8cad3972af64a1d2ffc}\label{classInterface_a795825f7ff6cb8cad3972af64a1d2ffc}} 
+\index{Interface@{Interface}!desc@{desc}}
+\index{desc@{desc}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{desc}{desc}}
+{\footnotesize\ttfamily po\+::options\+\_\+description Interface\+::desc\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Описание доступных опций командной строки 
+
+
+
+См. определение в файле \mbox{\hyperlink{Interface_8h_source}{Interface.\+h}} строка \mbox{\hyperlink{Interface_8h_source_l00027}{27}}
+
+\mbox{\Hypertarget{classInterface_a98f3efba14c789b06833cf26c629f7fb}\label{classInterface_a98f3efba14c789b06833cf26c629f7fb}} 
+\index{Interface@{Interface}!params@{params}}
+\index{params@{params}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{params}{params}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structParams}{Params}} Interface\+::params\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Экземпляр структуры с параметрами 
+
+
+
+См. определение в файле \mbox{\hyperlink{Interface_8h_source}{Interface.\+h}} строка \mbox{\hyperlink{Interface_8h_source_l00029}{29}}
+
+\mbox{\Hypertarget{classInterface_a6111e9544f9be79f4cf0fa4500e6d4ac}\label{classInterface_a6111e9544f9be79f4cf0fa4500e6d4ac}} 
+\index{Interface@{Interface}!vm@{vm}}
+\index{vm@{vm}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{vm}{vm}}
+{\footnotesize\ttfamily po\+::variables\+\_\+map Interface\+::vm\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Карта для хранения результатов парсинга 
+
+
+
+См. определение в файле \mbox{\hyperlink{Interface_8h_source}{Interface.\+h}} строка \mbox{\hyperlink{Interface_8h_source_l00028}{28}}
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Interface_8h}{Interface.\+h}}\item 
+src/\mbox{\hyperlink{Interface_8cpp}{Interface.\+cpp}}\end{DoxyCompactItemize}

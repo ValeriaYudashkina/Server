@@ -1,3 +1,8 @@
+/**
+ * @file Server.cpp
+ * @brief Реализация основного серверного модуля
+ */
+
 #include "Server.h"
 #include <cstring>
 #include <system_error>
@@ -9,10 +14,19 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 
-#define BUFLEN 1024 // Максимальный размер буфера для текстового сообщения аутентификации
-#define QLEN 10 // Стандартная очередь для listen
-#define AUTH_DATA_LENGTH (16 + 40) // 16 символов SALT + 40 символов HASH
+#define BUFLEN 1024 ///< Максимальный размер буфера для текстового сообщения аутентификации
+#define QLEN 10 ///< Стандартная очередь для listen
+#define AUTH_DATA_LENGTH (16 + 40) ///< 16 символов SALT + 40 символов HASH
 
+/**
+ * @brief Конструктор сервера
+ * @param port Порт
+ * @param logger Ссылка на журнал
+ * @param userDb Ссылка на базу данных пользователей
+ * @param authenticator Ссылка на аутентификатор
+ * @param processor Ссылка на обработчик данных
+ * @throw std::runtime_error при невалидном порте
+ */
 Server::Server(unsigned short port, Logger& logger, UserDatabase& userDb, 
                Authenticator& authenticator, DataProcessor& processor)
     : port(port), logger(logger), userDb(userDb), 
@@ -22,6 +36,10 @@ Server::Server(unsigned short port, Logger& logger, UserDatabase& userDb,
     validatePort(port); 
 }
 
+/**
+ * @brief Деструктор сервера
+ * @details Закрывает сокеты и освобождает ресурсы
+ */
 Server::~Server() {
     if (listen_sock != -1) {
         close(listen_sock);
@@ -29,6 +47,12 @@ Server::~Server() {
     }
 }
 
+/**
+ * @brief Проверка валидности номера порта
+ * @param p Проверяемый порт
+ * @throw std::runtime_error при невалидном порте
+ * @details Допустимый диапазон портов: 1024-49151
+ */
 void Server::validatePort(unsigned short p) const {
     if (p < MIN_PORT || p > MAX_PORT) {
         std::string err_msg = "Port (" + std::to_string(p) + ") out of range " + 
@@ -38,12 +62,25 @@ void Server::validatePort(unsigned short p) const {
     }
 }
 
+/**
+ * @brief Отправка сообщения об ошибке клиенту
+ * @param client_sock Сокет клиента
+ * @param message Текст сообщения для записи в журнал
+ * @details Отправляет строку "ERR" клиенту и записывает ошибку в журнал
+ */
 void Server::sendError(int client_sock, const std::string& message) const {
     const char* err_msg = "ERR";
     send(client_sock, err_msg, strlen(err_msg), 0);
     logger.logError("Error sent to client: " + message, false);
 }
 
+/**
+ * @brief Чтение текстового сообщения от клиента
+ * @param sock Сокет клиента
+ * @return Прочитанная строка
+ * @throw std::system_error при ошибках чтения
+ * @details Удаляет символы перевода строки из полученного сообщения
+ */
 std::string Server::readTextMessage(int sock) const {
     char buffer[BUFLEN];
     ssize_t rc = recv(sock, buffer, BUFLEN - 1, 0); 
@@ -60,6 +97,11 @@ std::string Server::readTextMessage(int sock) const {
     return message;
 }
 
+/**
+ * @brief Инициализация и запуск сокета
+ * @throw std::system_error при ошибках создания сокета
+ * @details Создает TCP сокет, привязывает к указанному порту, устанавливает флаг SO_REUSEADDR
+ */
 void Server::startListening() {
     listen_sock = socket(AF_INET, SOCK_STREAM, 0);
     if (listen_sock == -1) {
@@ -86,6 +128,12 @@ void Server::startListening() {
     logger.logInfo("Server started and listening on port " + std::to_string(port));
 }
 
+/**
+ * @brief Основной метод запуска сервера
+ * @details Запускает бесконечный цикл обработки подключений
+ * @note Метод не возвращает управление в нормальных условиях
+ * @throw std::system_error при ошибках сетевого взаимодействия
+ */
 void Server::run() {
     startListening();
     socklen_t socklen = sizeof(sockaddr_in);
@@ -110,6 +158,16 @@ void Server::run() {
     }
 }
 
+/**
+ * @brief Обработка одного клиента
+ * @param client_sock Сокет подключенного клиента
+ * @throw auth_error при ошибках аутентификации
+ * @throw vector_error при ошибках обработки векторов
+ * @details Выполняет полный цикл взаимодействия:
+ *          1. Чтение аутентификационного сообщения
+ *          2. Проверка аутентификации
+ *          3. Обработка векторов данных
+ */
 void Server::handleClient(int client_sock) {
     try {
         std::string full_msg = readTextMessage(client_sock);
@@ -140,6 +198,19 @@ void Server::handleClient(int client_sock) {
     }
 }
 
+/**
+ * @brief Обработка векторов данных от клиента
+ * @param client_sock Сокет клиента
+ * @throw vector_error при ошибках обработки векторов
+ * @details Протокол обработки векторов:
+ *          1. Получение количества векторов (uint32_t)
+ *          2. Для каждого вектора:
+ *             а. Получение размера вектора (uint32_t)
+ *             б. Получение данных вектора (int32_t[])
+ *             в. Вычисление среднего арифметического
+ *             г. Отправка результата клиенту
+ * @note Проверяет коректность размера вектора
+ */
 void Server::processVectors(int sock) {
     uint32_t num_vectors;
     ssize_t rc;

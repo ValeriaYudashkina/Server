@@ -1,0 +1,72 @@
+\hypertarget{Server_8h_source}{}\doxysection{Server.\+h}
+\label{Server_8h_source}\index{include/Server.h@{include/Server.h}}
+\mbox{\hyperlink{Server_8h}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00006}00006 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00007}00007 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{UserDatabase_8h}{UserDatabase.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00008}00008 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Authenticator_8h}{Authenticator.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00009}00009 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{DataProcessor_8h}{DataProcessor.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00010}00010 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Logger_8h}{Logger.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00011}00011 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00012}00012 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00013}00013 \textcolor{preprocessor}{\#include <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00014}00014 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00015}00015 \textcolor{preprocessor}{\#include <sys/socket.h>}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00016}00016 \textcolor{preprocessor}{\#include <netinet/in.h>}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00022}\mbox{\hyperlink{classserver__error}{00022}} \textcolor{keyword}{class }\mbox{\hyperlink{classserver__error}{server\_error}} : \textcolor{keyword}{public} std::runtime\_error \{}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00023}00023 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00028}\mbox{\hyperlink{classserver__error_a357bdf45aae63897457f9cdfd80170c6}{00028}}     \textcolor{keyword}{explicit} \mbox{\hyperlink{classserver__error_a357bdf45aae63897457f9cdfd80170c6}{server\_error}}(\textcolor{keyword}{const} std::string\& message) }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00029}00029         : std::runtime\_error(message) \{\}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00030}00030 \};}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00035}\mbox{\hyperlink{classauth__error}{00035}} \textcolor{keyword}{class }\mbox{\hyperlink{classauth__error}{auth\_error}} : \textcolor{keyword}{public} \mbox{\hyperlink{classserver__error}{server\_error}} \{}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00036}00036 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00041}\mbox{\hyperlink{classauth__error_a98926d7ed1b78591427ba806f4eec415}{00041}}     \textcolor{keyword}{explicit} \mbox{\hyperlink{classauth__error_a98926d7ed1b78591427ba806f4eec415}{auth\_error}}(\textcolor{keyword}{const} std::string\& message) }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00042}00042         : \mbox{\hyperlink{classserver__error}{server\_error}}(\textcolor{stringliteral}{"{}Auth error: "{}} + message) \{\}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00043}00043 \};}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00048}\mbox{\hyperlink{classvector__error}{00048}} \textcolor{keyword}{class }\mbox{\hyperlink{classvector__error}{vector\_error}} : \textcolor{keyword}{public} \mbox{\hyperlink{classserver__error}{server\_error}} \{}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00049}00049 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00054}\mbox{\hyperlink{classvector__error_ae444f2161252b241651e071ccb5d2d14}{00054}}     \textcolor{keyword}{explicit} \mbox{\hyperlink{classvector__error_ae444f2161252b241651e071ccb5d2d14}{vector\_error}}(\textcolor{keyword}{const} std::string\& message) }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00055}00055         : \mbox{\hyperlink{classserver__error}{server\_error}}(\textcolor{stringliteral}{"{}Vector error: "{}} + message) \{\}}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00056}00056 \};}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00062}\mbox{\hyperlink{classServer}{00062}} \textcolor{keyword}{class }\mbox{\hyperlink{classServer}{Server}} \{}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00063}00063 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00064}\mbox{\hyperlink{classServer_a989532e8add360ee55c8552018619f6c}{00064}}     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} \mbox{\hyperlink{classServer_a989532e8add360ee55c8552018619f6c}{MIN\_PORT}} = 1024; }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00065}\mbox{\hyperlink{classServer_a51ef8b668195a28c282d39ec7f091084}{00065}}     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} \mbox{\hyperlink{classServer_a51ef8b668195a28c282d39ec7f091084}{MAX\_PORT}} = 49151;  }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00076}00076     \mbox{\hyperlink{classServer_a7032ae06968af4af8562e6030a2b1394}{Server}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} \mbox{\hyperlink{classServer_a7c65d69a3c9d46b673fc8d48ff61b710}{port}}, \mbox{\hyperlink{classLogger}{Logger}}\& \mbox{\hyperlink{classServer_a3c1f558b24a485a61822b50d3a02192a}{logger}}, \mbox{\hyperlink{classUserDatabase}{UserDatabase}}\& \mbox{\hyperlink{classServer_a078cf8e6df63d529d7da930c3657415a}{userDb}}, }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00077}00077            \mbox{\hyperlink{classAuthenticator}{Authenticator}}\& \mbox{\hyperlink{classServer_a43c6a06612353b620cce345e45e8bdf4}{authenticator}}, \mbox{\hyperlink{classDataProcessor}{DataProcessor}}\& \mbox{\hyperlink{classServer_ab5a99d29a47baef4cc802324538cdb3f}{processor}});}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00083}00083     \mbox{\hyperlink{classServer_a4b3aa2579cb1c8cd1d069582c14d0fa6}{\string~Server}}();}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00091}00091     \textcolor{keywordtype}{void} \mbox{\hyperlink{classServer_abb27d30b40a94326e3fd629d3b30b7d5}{run}}();}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00092}00092     }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00093}00093 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00094}\mbox{\hyperlink{classServer_a7c65d69a3c9d46b673fc8d48ff61b710}{00094}}     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} \mbox{\hyperlink{classServer_a7c65d69a3c9d46b673fc8d48ff61b710}{port}}; }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00095}\mbox{\hyperlink{classServer_a3c1f558b24a485a61822b50d3a02192a}{00095}}     \mbox{\hyperlink{classLogger}{Logger}}\& \mbox{\hyperlink{classServer_a3c1f558b24a485a61822b50d3a02192a}{logger}}; }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00096}\mbox{\hyperlink{classServer_a078cf8e6df63d529d7da930c3657415a}{00096}}     \mbox{\hyperlink{classUserDatabase}{UserDatabase}}\& \mbox{\hyperlink{classServer_a078cf8e6df63d529d7da930c3657415a}{userDb}}; }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00097}\mbox{\hyperlink{classServer_a43c6a06612353b620cce345e45e8bdf4}{00097}}     \mbox{\hyperlink{classAuthenticator}{Authenticator}}\& \mbox{\hyperlink{classServer_a43c6a06612353b620cce345e45e8bdf4}{authenticator}}; }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00098}\mbox{\hyperlink{classServer_ab5a99d29a47baef4cc802324538cdb3f}{00098}}     \mbox{\hyperlink{classDataProcessor}{DataProcessor}}\& \mbox{\hyperlink{classServer_ab5a99d29a47baef4cc802324538cdb3f}{processor}}; }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00099}00099     }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00100}\mbox{\hyperlink{classServer_acc345f54a55757dce3a0a3b74a6a5b2d}{00100}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{classServer_acc345f54a55757dce3a0a3b74a6a5b2d}{listen\_sock}}; }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00101}\mbox{\hyperlink{classServer_a94cd700bcc038e1cffe3b0849c49ba49}{00101}}     std::unique\_ptr<sockaddr\_in> \mbox{\hyperlink{classServer_a94cd700bcc038e1cffe3b0849c49ba49}{self\_addr}}; }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00102}\mbox{\hyperlink{classServer_ac2379f0fc836ff68fc10ca4ad2c1e951}{00102}}     std::unique\_ptr<sockaddr\_in> \mbox{\hyperlink{classServer_ac2379f0fc836ff68fc10ca4ad2c1e951}{foreign\_addr}}; }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00109}00109     \textcolor{keywordtype}{void} \mbox{\hyperlink{classServer_a5e5583aca8781d6325108073dfc29a5b}{validatePort}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} p) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00110}00110 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00115}00115     \textcolor{keywordtype}{void} \mbox{\hyperlink{classServer_a174332d05b2330e5682c5c5aad8917f4}{startListening}}();}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00123}00123     \textcolor{keywordtype}{void} \mbox{\hyperlink{classServer_aa60931130c6081bd2b01b8122933f80e}{handleClient}}(\textcolor{keywordtype}{int} client\_sock);}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00124}00124 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00130}00130     \textcolor{keywordtype}{void} \mbox{\hyperlink{classServer_a3ffa6f86d5b5358e2f1816abd3e98c6a}{processVectors}}(\textcolor{keywordtype}{int} client\_sock);}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00131}00131 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00138}00138     std::string \mbox{\hyperlink{classServer_a88bded1a4ac8d3b855f4f6dc360b1a8d}{readTextMessage}}(\textcolor{keywordtype}{int} sock) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00145}00145     \textcolor{keywordtype}{void} \mbox{\hyperlink{classServer_ac56c92bb1dd7864776a90258f563dd73}{sendError}}(\textcolor{keywordtype}{int} client\_sock, \textcolor{keyword}{const} std::string\& message) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Server_8h_source_l00146}00146 \};}
+
+\end{DoxyCode}

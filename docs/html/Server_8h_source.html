@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Программная реализация сетевого сервера: Исходный файл include/Server.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Программная реализация сетевого сервера<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Курсовая работа по разработке серверной программы для клиент-серверной системы обработки данных</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">Server.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="Server_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="UserDatabase_8h.html">UserDatabase.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="Authenticator_8h.html">Authenticator.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="DataProcessor_8h.html">DataProcessor.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="Logger_8h.html">Logger.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;sys/socket.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;netinet/in.h&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classserver__error.html">   22</a></span><span class="keyword">class </span><a class="code hl_class" href="classserver__error.html">server_error</a> : <span class="keyword">public</span> std::runtime_error {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classserver__error.html#a357bdf45aae63897457f9cdfd80170c6">   28</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classserver__error.html#a357bdf45aae63897457f9cdfd80170c6">server_error</a>(<span class="keyword">const</span> std::string&amp; message) </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        : std::runtime_error(message) {}</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>};</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classauth__error.html">   35</a></span><span class="keyword">class </span><a class="code hl_class" href="classauth__error.html">auth_error</a> : <span class="keyword">public</span> <a class="code hl_class" href="classserver__error.html">server_error</a> {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classauth__error.html#a98926d7ed1b78591427ba806f4eec415">   41</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classauth__error.html#a98926d7ed1b78591427ba806f4eec415">auth_error</a>(<span class="keyword">const</span> std::string&amp; message) </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        : <a class="code hl_class" href="classserver__error.html">server_error</a>(<span class="stringliteral">&quot;Auth error: &quot;</span> + message) {}</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>};</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classvector__error.html">   48</a></span><span class="keyword">class </span><a class="code hl_class" href="classvector__error.html">vector_error</a> : <span class="keyword">public</span> <a class="code hl_class" href="classserver__error.html">server_error</a> {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classvector__error.html#ae444f2161252b241651e071ccb5d2d14">   54</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classvector__error.html#ae444f2161252b241651e071ccb5d2d14">vector_error</a>(<span class="keyword">const</span> std::string&amp; message) </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        : <a class="code hl_class" href="classserver__error.html">server_error</a>(<span class="stringliteral">&quot;Vector error: &quot;</span> + message) {}</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>};</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classServer.html">   62</a></span><span class="keyword">class </span><a class="code hl_class" href="classServer.html">Server</a> {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classServer.html#a989532e8add360ee55c8552018619f6c">   64</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code hl_variable" href="classServer.html#a989532e8add360ee55c8552018619f6c">MIN_PORT</a> = 1024; </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classServer.html#a51ef8b668195a28c282d39ec7f091084">   65</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code hl_variable" href="classServer.html#a51ef8b668195a28c282d39ec7f091084">MAX_PORT</a> = 49151;  </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <a class="code hl_function" href="classServer.html#a7032ae06968af4af8562e6030a2b1394">Server</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code hl_variable" href="classServer.html#a7c65d69a3c9d46b673fc8d48ff61b710">port</a>, <a class="code hl_class" href="classLogger.html">Logger</a>&amp; <a class="code hl_variable" href="classServer.html#a3c1f558b24a485a61822b50d3a02192a">logger</a>, <a class="code hl_class" href="classUserDatabase.html">UserDatabase</a>&amp; <a class="code hl_variable" href="classServer.html#a078cf8e6df63d529d7da930c3657415a">userDb</a>, </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>           <a class="code hl_class" href="classAuthenticator.html">Authenticator</a>&amp; <a class="code hl_variable" href="classServer.html#a43c6a06612353b620cce345e45e8bdf4">authenticator</a>, <a class="code hl_class" href="classDataProcessor.html">DataProcessor</a>&amp; <a class="code hl_variable" href="classServer.html#ab5a99d29a47baef4cc802324538cdb3f">processor</a>);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <a class="code hl_function" href="classServer.html#a4b3aa2579cb1c8cd1d069582c14d0fa6">~Server</a>();</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classServer.html#abb27d30b40a94326e3fd629d3b30b7d5">run</a>();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="classServer.html#a7c65d69a3c9d46b673fc8d48ff61b710">   94</a></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code hl_variable" href="classServer.html#a7c65d69a3c9d46b673fc8d48ff61b710">port</a>; </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classServer.html#a3c1f558b24a485a61822b50d3a02192a">   95</a></span>    <a class="code hl_class" href="classLogger.html">Logger</a>&amp; <a class="code hl_variable" href="classServer.html#a3c1f558b24a485a61822b50d3a02192a">logger</a>; </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="classServer.html#a078cf8e6df63d529d7da930c3657415a">   96</a></span>    <a class="code hl_class" href="classUserDatabase.html">UserDatabase</a>&amp; <a class="code hl_variable" href="classServer.html#a078cf8e6df63d529d7da930c3657415a">userDb</a>; </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classServer.html#a43c6a06612353b620cce345e45e8bdf4">   97</a></span>    <a class="code hl_class" href="classAuthenticator.html">Authenticator</a>&amp; <a class="code hl_variable" href="classServer.html#a43c6a06612353b620cce345e45e8bdf4">authenticator</a>; </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classServer.html#ab5a99d29a47baef4cc802324538cdb3f">   98</a></span>    <a class="code hl_class" href="classDataProcessor.html">DataProcessor</a>&amp; <a class="code hl_variable" href="classServer.html#ab5a99d29a47baef4cc802324538cdb3f">processor</a>; </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classServer.html#acc345f54a55757dce3a0a3b74a6a5b2d">  100</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="classServer.html#acc345f54a55757dce3a0a3b74a6a5b2d">listen_sock</a>; </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classServer.html#a94cd700bcc038e1cffe3b0849c49ba49">  101</a></span>    std::unique_ptr&lt;sockaddr_in&gt; <a class="code hl_variable" href="classServer.html#a94cd700bcc038e1cffe3b0849c49ba49">self_addr</a>; </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="classServer.html#ac2379f0fc836ff68fc10ca4ad2c1e951">  102</a></span>    std::unique_ptr&lt;sockaddr_in&gt; <a class="code hl_variable" href="classServer.html#ac2379f0fc836ff68fc10ca4ad2c1e951">foreign_addr</a>; </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classServer.html#a5e5583aca8781d6325108073dfc29a5b">validatePort</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> p) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classServer.html#a174332d05b2330e5682c5c5aad8917f4">startListening</a>();</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classServer.html#aa60931130c6081bd2b01b8122933f80e">handleClient</a>(<span class="keywordtype">int</span> client_sock);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classServer.html#a3ffa6f86d5b5358e2f1816abd3e98c6a">processVectors</a>(<span class="keywordtype">int</span> client_sock);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    std::string <a class="code hl_function" href="classServer.html#a88bded1a4ac8d3b855f4f6dc360b1a8d">readTextMessage</a>(<span class="keywordtype">int</span> sock) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classServer.html#ac56c92bb1dd7864776a90258f563dd73">sendError</a>(<span class="keywordtype">int</span> client_sock, <span class="keyword">const</span> std::string&amp; message) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>};</div>
+<div class="ttc" id="aAuthenticator_8h_html"><div class="ttname"><a href="Authenticator_8h.html">Authenticator.h</a></div><div class="ttdoc">Заголовочный файл модуля Authenticator - аутентификация пользователей</div></div>
+<div class="ttc" id="aDataProcessor_8h_html"><div class="ttname"><a href="DataProcessor_8h.html">DataProcessor.h</a></div><div class="ttdoc">Заголовочный файл модуля DataProcessor - обработка числовых данных</div></div>
+<div class="ttc" id="aLogger_8h_html"><div class="ttname"><a href="Logger_8h.html">Logger.h</a></div><div class="ttdoc">Заголовочный файл модуля Logger - журналирование работы сервера</div></div>
+<div class="ttc" id="aUserDatabase_8h_html"><div class="ttname"><a href="UserDatabase_8h.html">UserDatabase.h</a></div><div class="ttdoc">Заголовочный файл модуля UserDatabase - работа с базой пользователей</div></div>
+<div class="ttc" id="aclassAuthenticator_html"><div class="ttname"><a href="classAuthenticator.html">Authenticator</a></div><div class="ttdoc">Предварительное объявление класса Logger.</div><div class="ttdef"><b>Definition:</b> <a href="Authenticator_8h_source.html#l00016">Authenticator.h:16</a></div></div>
+<div class="ttc" id="aclassDataProcessor_html"><div class="ttname"><a href="classDataProcessor.html">DataProcessor</a></div><div class="ttdoc">Предварительное объявление класса Logger.</div><div class="ttdef"><b>Definition:</b> <a href="DataProcessor_8h_source.html#l00016">DataProcessor.h:16</a></div></div>
+<div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="classLogger.html">Logger</a></div><div class="ttdoc">Класс для ведения журнала работы сервера</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00014">Logger.h:14</a></div></div>
+<div class="ttc" id="aclassServer_html"><div class="ttname"><a href="classServer.html">Server</a></div><div class="ttdoc">Основной класс сервера</div><div class="ttdef"><b>Definition:</b> <a href="Server_8h_source.html#l00062">Server.h:62</a></div></div>
+<div class="ttc" id="aclassServer_html_a078cf8e6df63d529d7da930c3657415a"><div class="ttname"><a href="classServer.html#a078cf8e6df63d529d7da930c3657415a">Server::userDb</a></div><div class="ttdeci">UserDatabase &amp; userDb</div><div class="ttdoc">Ссылка на базу данных пользователей</div><div class="ttdef"><b>Definition:</b> <a href="Server_8h_source.html#l00096">Server.h:96</a></div></div>
+<div class="ttc" id="aclassServer_html_a174332d05b2330e5682c5c5aad8917f4"><div class="ttname"><a href="classServer.html#a174332d05b2330e5682c5c5aad8917f4">Server::startListening</a></div><div class="ttdeci">void startListening()</div><div class="ttdoc">Инициализация и запуск сокета</div><div class="ttdef"><b>Definition:</b> <a href="Server_8cpp_source.html#l00105">Server.cpp:105</a></div></div>
+<div class="ttc" id="aclassServer_html_a3c1f558b24a485a61822b50d3a02192a"><div class="ttname"><a href="classServer.html#a3c1f558b24a485a61822b50d3a02192a">Server::logger</a></div><div class="ttdeci">Logger &amp; logger</div><div class="ttdoc">Ссылка на журнал</div><div class="ttdef"><b>Definition:</b> <a href="Server_8h_source.html#l00095">Server.h:95</a></div></div>
+<div class="ttc" id="aclassServer_html_a3ffa6f86d5b5358e2f1816abd3e98c6a"><div class="ttname"><a href="classServer.html#a3ffa6f86d5b5358e2f1816abd3e98c6a">Server::processVectors</a></div><div class="ttdeci">void processVectors(int client_sock)</div><div class="ttdoc">Обработка векторов данных от клиента</div><div class="ttdef"><b>Definition:</b> <a href="Server_8cpp_source.html#l00214">Server.cpp:214</a></div></div>
+<div class="ttc" id="aclassServer_html_a43c6a06612353b620cce345e45e8bdf4"><div class="ttname"><a href="classServer.html#a43c6a06612353b620cce345e45e8bdf4">Server::authenticator</a></div><div class="ttdeci">Authenticator &amp; authenticator</div><div class="ttdoc">Ссылка на аутентификатор</div><div class="ttdef"><b>Definition:</b> <a href="Server_8h_source.html#l00097">Server.h:97</a></div></div>
+<div class="ttc" id="aclassServer_html_a4b3aa2579cb1c8cd1d069582c14d0fa6"><div class="ttname"><a href="classServer.html#a4b3aa2579cb1c8cd1d069582c14d0fa6">Server::~Server</a></div><div class="ttdeci">~Server()</div><div class="ttdoc">Деструктор сервера</div><div class="ttdef"><b>Definition:</b> <a href="Server_8cpp_source.html#l00043">Server.cpp:43</a></div></div>
+<div class="ttc" id="aclassServer_html_a51ef8b668195a28c282d39ec7f091084"><div class="ttname"><a href="classServer.html#a51ef8b668195a28c282d39ec7f091084">Server::MAX_PORT</a></div><div class="ttdeci">static const unsigned short MAX_PORT</div><div class="ttdoc">Максимальный допустимый порт</div><div class="ttdef"><b>Definition:</b> <a href="Server_8h_source.html#l00065">Server.h:65</a></div></div>
+<div class="ttc" id="aclassServer_html_a5e5583aca8781d6325108073dfc29a5b"><div class="ttname"><a href="classServer.html#a5e5583aca8781d6325108073dfc29a5b">Server::validatePort</a></div><div class="ttdeci">void validatePort(unsigned short p) const</div><div class="ttdoc">Проверка валидности номера порта</div><div class="ttdef"><b>Definition:</b> <a href="Server_8cpp_source.html#l00056">Server.cpp:56</a></div></div>
+<div class="ttc" id="aclassServer_html_a7032ae06968af4af8562e6030a2b1394"><div class="ttname"><a href="classServer.html#a7032ae06968af4af8562e6030a2b1394">Server::Server</a></div><div class="ttdeci">Server(unsigned short port, Logger &amp;logger, UserDatabase &amp;userDb, Authenticator &amp;authenticator, DataProcessor &amp;processor)</div><div class="ttdoc">Конструктор сервера</div><div class="ttdef"><b>Definition:</b> <a href="Server_8cpp_source.html#l00030">Server.cpp:30</a></div></div>
+<div class="ttc" id="aclassServer_html_a7c65d69a3c9d46b673fc8d48ff61b710"><div class="ttname"><a href="classServer.html#a7c65d69a3c9d46b673fc8d48ff61b710">Server::port</a></div><div class="ttdeci">unsigned short port</div><div class="ttdoc">Порт сервера</div><div class="ttdef"><b>Definition:</b> <a href="Server_8h_source.html#l00094">Server.h:94</a></div></div>
+<div class="ttc" id="aclassServer_html_a88bded1a4ac8d3b855f4f6dc360b1a8d"><div class="ttname"><a href="classServer.html#a88bded1a4ac8d3b855f4f6dc360b1a8d">Server::readTextMessage</a></div><div class="ttdeci">std::string readTextMessage(int sock) const</div><div class="ttdoc">Чтение текстового сообщения от клиента</div><div class="ttdef"><b>Definition:</b> <a href="Server_8cpp_source.html#l00084">Server.cpp:84</a></div></div>
+<div class="ttc" id="aclassServer_html_a94cd700bcc038e1cffe3b0849c49ba49"><div class="ttname"><a href="classServer.html#a94cd700bcc038e1cffe3b0849c49ba49">Server::self_addr</a></div><div class="ttdeci">std::unique_ptr&lt; sockaddr_in &gt; self_addr</div><div class="ttdoc">Адрес сервера</div><div class="ttdef"><b>Definition:</b> <a href="Server_8h_source.html#l00101">Server.h:101</a></div></div>
+<div class="ttc" id="aclassServer_html_a989532e8add360ee55c8552018619f6c"><div class="ttname"><a href="classServer.html#a989532e8add360ee55c8552018619f6c">Server::MIN_PORT</a></div><div class="ttdeci">static const unsigned short MIN_PORT</div><div class="ttdoc">Минимальный допустимый порт</div><div class="ttdef"><b>Definition:</b> <a href="Server_8h_source.html#l00064">Server.h:64</a></div></div>
+<div class="ttc" id="aclassServer_html_aa60931130c6081bd2b01b8122933f80e"><div class="ttname"><a href="classServer.html#aa60931130c6081bd2b01b8122933f80e">Server::handleClient</a></div><div class="ttdeci">void handleClient(int client_sock)</div><div class="ttdoc">Обработка одного клиента</div><div class="ttdef"><b>Definition:</b> <a href="Server_8cpp_source.html#l00171">Server.cpp:171</a></div></div>
+<div class="ttc" id="aclassServer_html_ab5a99d29a47baef4cc802324538cdb3f"><div class="ttname"><a href="classServer.html#ab5a99d29a47baef4cc802324538cdb3f">Server::processor</a></div><div class="ttdeci">DataProcessor &amp; processor</div><div class="ttdoc">Ссылка на обработчик данных</div><div class="ttdef"><b>Definition:</b> <a href="Server_8h_source.html#l00098">Server.h:98</a></div></div>
+<div class="ttc" id="aclassServer_html_abb27d30b40a94326e3fd629d3b30b7d5"><div class="ttname"><a href="classServer.html#abb27d30b40a94326e3fd629d3b30b7d5">Server::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">Основной метод запуска сервера</div><div class="ttdef"><b>Definition:</b> <a href="Server_8cpp_source.html#l00137">Server.cpp:137</a></div></div>
+<div class="ttc" id="aclassServer_html_ac2379f0fc836ff68fc10ca4ad2c1e951"><div class="ttname"><a href="classServer.html#ac2379f0fc836ff68fc10ca4ad2c1e951">Server::foreign_addr</a></div><div class="ttdeci">std::unique_ptr&lt; sockaddr_in &gt; foreign_addr</div><div class="ttdoc">Адрес клиента</div><div class="ttdef"><b>Definition:</b> <a href="Server_8h_source.html#l00102">Server.h:102</a></div></div>
+<div class="ttc" id="aclassServer_html_ac56c92bb1dd7864776a90258f563dd73"><div class="ttname"><a href="classServer.html#ac56c92bb1dd7864776a90258f563dd73">Server::sendError</a></div><div class="ttdeci">void sendError(int client_sock, const std::string &amp;message) const</div><div class="ttdoc">Отправка сообщения об ошибке клиенту</div><div class="ttdef"><b>Definition:</b> <a href="Server_8cpp_source.html#l00071">Server.cpp:71</a></div></div>
+<div class="ttc" id="aclassServer_html_acc345f54a55757dce3a0a3b74a6a5b2d"><div class="ttname"><a href="classServer.html#acc345f54a55757dce3a0a3b74a6a5b2d">Server::listen_sock</a></div><div class="ttdeci">int listen_sock</div><div class="ttdoc">Сокет</div><div class="ttdef"><b>Definition:</b> <a href="Server_8h_source.html#l00100">Server.h:100</a></div></div>
+<div class="ttc" id="aclassUserDatabase_html"><div class="ttname"><a href="classUserDatabase.html">UserDatabase</a></div><div class="ttdoc">Предварительное объявление класса Logger.</div><div class="ttdef"><b>Definition:</b> <a href="UserDatabase_8h_source.html#l00016">UserDatabase.h:16</a></div></div>
+<div class="ttc" id="aclassauth__error_html"><div class="ttname"><a href="classauth__error.html">auth_error</a></div><div class="ttdoc">Исключение для ошибок аутентификации</div><div class="ttdef"><b>Definition:</b> <a href="Server_8h_source.html#l00035">Server.h:35</a></div></div>
+<div class="ttc" id="aclassauth__error_html_a98926d7ed1b78591427ba806f4eec415"><div class="ttname"><a href="classauth__error.html#a98926d7ed1b78591427ba806f4eec415">auth_error::auth_error</a></div><div class="ttdeci">auth_error(const std::string &amp;message)</div><div class="ttdoc">Конструктор исключения аутентификации</div><div class="ttdef"><b>Definition:</b> <a href="Server_8h_source.html#l00041">Server.h:41</a></div></div>
+<div class="ttc" id="aclassserver__error_html"><div class="ttname"><a href="classserver__error.html">server_error</a></div><div class="ttdoc">Базовый класс исключений сервера</div><div class="ttdef"><b>Definition:</b> <a href="Server_8h_source.html#l00022">Server.h:22</a></div></div>
+<div class="ttc" id="aclassserver__error_html_a357bdf45aae63897457f9cdfd80170c6"><div class="ttname"><a href="classserver__error.html#a357bdf45aae63897457f9cdfd80170c6">server_error::server_error</a></div><div class="ttdeci">server_error(const std::string &amp;message)</div><div class="ttdoc">Конструктор исключения</div><div class="ttdef"><b>Definition:</b> <a href="Server_8h_source.html#l00028">Server.h:28</a></div></div>
+<div class="ttc" id="aclassvector__error_html"><div class="ttname"><a href="classvector__error.html">vector_error</a></div><div class="ttdoc">Исключение для ошибок обработки векторов</div><div class="ttdef"><b>Definition:</b> <a href="Server_8h_source.html#l00048">Server.h:48</a></div></div>
+<div class="ttc" id="aclassvector__error_html_ae444f2161252b241651e071ccb5d2d14"><div class="ttname"><a href="classvector__error.html#ae444f2161252b241651e071ccb5d2d14">vector_error::vector_error</a></div><div class="ttdeci">vector_error(const std::string &amp;message)</div><div class="ttdoc">Конструктор исключения ошибок обработки векторов</div><div class="ttdef"><b>Definition:</b> <a href="Server_8h_source.html#l00054">Server.h:54</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

@@ -1,0 +1,515 @@
+\hypertarget{classServer}{}\doxysection{Класс Server}
+\label{classServer}\index{Server@{Server}}
+
+
+Основной класс сервера  
+
+
+
+
+{\ttfamily \#include $<$Server.\+h$>$}
+
+
+
+Граф связей класса Server\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classServer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classServer_a7032ae06968af4af8562e6030a2b1394}{Server}} (unsigned short \mbox{\hyperlink{classServer_a7c65d69a3c9d46b673fc8d48ff61b710}{port}}, \mbox{\hyperlink{classLogger}{Logger}} \&\mbox{\hyperlink{classServer_a3c1f558b24a485a61822b50d3a02192a}{logger}}, \mbox{\hyperlink{classUserDatabase}{User\+Database}} \&\mbox{\hyperlink{classServer_a078cf8e6df63d529d7da930c3657415a}{user\+Db}}, \mbox{\hyperlink{classAuthenticator}{Authenticator}} \&\mbox{\hyperlink{classServer_a43c6a06612353b620cce345e45e8bdf4}{authenticator}}, \mbox{\hyperlink{classDataProcessor}{Data\+Processor}} \&\mbox{\hyperlink{classServer_ab5a99d29a47baef4cc802324538cdb3f}{processor}})
+\begin{DoxyCompactList}\small\item\em Конструктор сервера \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classServer_a4b3aa2579cb1c8cd1d069582c14d0fa6}{$\sim$\+Server}} ()
+\begin{DoxyCompactList}\small\item\em Деструктор сервера \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServer_abb27d30b40a94326e3fd629d3b30b7d5}{run}} ()
+\begin{DoxyCompactList}\small\item\em Основной метод запуска сервера \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Статические открытые данные}
+\begin{DoxyCompactItemize}
+\item 
+static const unsigned short \mbox{\hyperlink{classServer_a989532e8add360ee55c8552018619f6c}{MIN\+\_\+\+PORT}} = 1024
+\begin{DoxyCompactList}\small\item\em Минимальный допустимый порт \end{DoxyCompactList}\item 
+static const unsigned short \mbox{\hyperlink{classServer_a51ef8b668195a28c282d39ec7f091084}{MAX\+\_\+\+PORT}} = 49151
+\begin{DoxyCompactList}\small\item\em Максимальный допустимый порт \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classServer_a5e5583aca8781d6325108073dfc29a5b}{validate\+Port}} (unsigned short p) const
+\begin{DoxyCompactList}\small\item\em Проверка валидности номера порта \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServer_a174332d05b2330e5682c5c5aad8917f4}{start\+Listening}} ()
+\begin{DoxyCompactList}\small\item\em Инициализация и запуск сокета \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServer_aa60931130c6081bd2b01b8122933f80e}{handle\+Client}} (int client\+\_\+sock)
+\begin{DoxyCompactList}\small\item\em Обработка одного клиента \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServer_a3ffa6f86d5b5358e2f1816abd3e98c6a}{process\+Vectors}} (int client\+\_\+sock)
+\begin{DoxyCompactList}\small\item\em Обработка векторов данных от клиента \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classServer_a88bded1a4ac8d3b855f4f6dc360b1a8d}{read\+Text\+Message}} (int sock) const
+\begin{DoxyCompactList}\small\item\em Чтение текстового сообщения от клиента \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classServer_ac56c92bb1dd7864776a90258f563dd73}{send\+Error}} (int client\+\_\+sock, const std\+::string \&message) const
+\begin{DoxyCompactList}\small\item\em Отправка сообщения об ошибке клиенту \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+unsigned short \mbox{\hyperlink{classServer_a7c65d69a3c9d46b673fc8d48ff61b710}{port}}
+\begin{DoxyCompactList}\small\item\em Порт сервера \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLogger}{Logger}} \& \mbox{\hyperlink{classServer_a3c1f558b24a485a61822b50d3a02192a}{logger}}
+\begin{DoxyCompactList}\small\item\em Ссылка на журнал \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classUserDatabase}{User\+Database}} \& \mbox{\hyperlink{classServer_a078cf8e6df63d529d7da930c3657415a}{user\+Db}}
+\begin{DoxyCompactList}\small\item\em Ссылка на базу данных пользователей \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAuthenticator}{Authenticator}} \& \mbox{\hyperlink{classServer_a43c6a06612353b620cce345e45e8bdf4}{authenticator}}
+\begin{DoxyCompactList}\small\item\em Ссылка на аутентификатор \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDataProcessor}{Data\+Processor}} \& \mbox{\hyperlink{classServer_ab5a99d29a47baef4cc802324538cdb3f}{processor}}
+\begin{DoxyCompactList}\small\item\em Ссылка на обработчик данных \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classServer_acc345f54a55757dce3a0a3b74a6a5b2d}{listen\+\_\+sock}}
+\begin{DoxyCompactList}\small\item\em Сокет \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ sockaddr\+\_\+in $>$ \mbox{\hyperlink{classServer_a94cd700bcc038e1cffe3b0849c49ba49}{self\+\_\+addr}}
+\begin{DoxyCompactList}\small\item\em Адрес сервера \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ sockaddr\+\_\+in $>$ \mbox{\hyperlink{classServer_ac2379f0fc836ff68fc10ca4ad2c1e951}{foreign\+\_\+addr}}
+\begin{DoxyCompactList}\small\item\em Адрес клиента \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Основной класс сервера 
+
+Реализует сетевой сервер с аутентификацией и обработкой данных 
+
+См. определение в файле \mbox{\hyperlink{Server_8h_source}{Server.\+h}} строка \mbox{\hyperlink{Server_8h_source_l00062}{62}}
+
+
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classServer_a7032ae06968af4af8562e6030a2b1394}\label{classServer_a7032ae06968af4af8562e6030a2b1394}} 
+\index{Server@{Server}!Server@{Server}}
+\index{Server@{Server}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{Server()}{Server()}}
+{\footnotesize\ttfamily Server\+::\+Server (\begin{DoxyParamCaption}\item[{unsigned short}]{port,  }\item[{\mbox{\hyperlink{classLogger}{Logger}} \&}]{logger,  }\item[{\mbox{\hyperlink{classUserDatabase}{User\+Database}} \&}]{user\+Db,  }\item[{\mbox{\hyperlink{classAuthenticator}{Authenticator}} \&}]{authenticator,  }\item[{\mbox{\hyperlink{classDataProcessor}{Data\+Processor}} \&}]{processor }\end{DoxyParamCaption})}
+
+
+
+Конструктор сервера 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em port} & Порт \\
+\hline
+{\em logger} & Ссылка на журнал \\
+\hline
+{\em user\+Db} & Ссылка на базу данных пользователей \\
+\hline
+{\em authenticator} & Ссылка на аутентификатор \\
+\hline
+{\em processor} & Ссылка на обработчик данных \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & при невалидном порте \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{Server_8cpp_source}{Server.\+cpp}} строка \mbox{\hyperlink{Server_8cpp_source_l00030}{30}}
+
+\mbox{\Hypertarget{classServer_a4b3aa2579cb1c8cd1d069582c14d0fa6}\label{classServer_a4b3aa2579cb1c8cd1d069582c14d0fa6}} 
+\index{Server@{Server}!````~Server@{$\sim$Server}}
+\index{````~Server@{$\sim$Server}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{$\sim$Server()}{~Server()}}
+{\footnotesize\ttfamily Server\+::$\sim$\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Деструктор сервера 
+
+Закрывает сокеты и освобождает ресурсы 
+
+См. определение в файле \mbox{\hyperlink{Server_8cpp_source}{Server.\+cpp}} строка \mbox{\hyperlink{Server_8cpp_source_l00043}{43}}
+
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classServer_aa60931130c6081bd2b01b8122933f80e}\label{classServer_aa60931130c6081bd2b01b8122933f80e}} 
+\index{Server@{Server}!handleClient@{handleClient}}
+\index{handleClient@{handleClient}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{handleClient()}{handleClient()}}
+{\footnotesize\ttfamily void Server\+::handle\+Client (\begin{DoxyParamCaption}\item[{int}]{client\+\_\+sock }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Обработка одного клиента 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em client\+\_\+sock} & Сокет подключенного клиента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classauth__error}{auth\+\_\+error}}} & при ошибках аутентификации \\
+\hline
+{\em \mbox{\hyperlink{classvector__error}{vector\+\_\+error}}} & при ошибках обработки векторов\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Аргументы}
+{\em client\+\_\+sock} & Сокет подключенного клиента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classauth__error}{auth\+\_\+error}}} & при ошибках аутентификации \\
+\hline
+{\em \mbox{\hyperlink{classvector__error}{vector\+\_\+error}}} & при ошибках обработки векторов\\
+\hline
+\end{DoxyExceptions}
+Выполняет полный цикл взаимодействия\+:
+\begin{DoxyEnumerate}
+\item Чтение аутентификационного сообщения
+\item Проверка аутентификации
+\item Обработка векторов данных 
+\end{DoxyEnumerate}
+
+См. определение в файле \mbox{\hyperlink{Server_8cpp_source}{Server.\+cpp}} строка \mbox{\hyperlink{Server_8cpp_source_l00171}{171}}
+
+\mbox{\Hypertarget{classServer_a3ffa6f86d5b5358e2f1816abd3e98c6a}\label{classServer_a3ffa6f86d5b5358e2f1816abd3e98c6a}} 
+\index{Server@{Server}!processVectors@{processVectors}}
+\index{processVectors@{processVectors}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{processVectors()}{processVectors()}}
+{\footnotesize\ttfamily void Server\+::process\+Vectors (\begin{DoxyParamCaption}\item[{int}]{sock }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Обработка векторов данных от клиента 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em client\+\_\+sock} & Сокет клиента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classvector__error}{vector\+\_\+error}}} & при ошибках обработки векторов\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Аргументы}
+{\em client\+\_\+sock} & Сокет клиента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classvector__error}{vector\+\_\+error}}} & при ошибках обработки векторов\\
+\hline
+\end{DoxyExceptions}
+Протокол обработки векторов\+:
+\begin{DoxyEnumerate}
+\item Получение количества векторов (uint32\+\_\+t)
+\item Для каждого вектора\+: а. Получение размера вектора (uint32\+\_\+t) б. Получение данных вектора (int32\+\_\+t\mbox{[}\mbox{]}) в. Вычисление среднего арифметического г. Отправка результата клиенту \begin{DoxyNote}{Заметки}
+Проверяет коректность размера вектора 
+\end{DoxyNote}
+
+\end{DoxyEnumerate}
+
+См. определение в файле \mbox{\hyperlink{Server_8cpp_source}{Server.\+cpp}} строка \mbox{\hyperlink{Server_8cpp_source_l00214}{214}}
+
+\mbox{\Hypertarget{classServer_a88bded1a4ac8d3b855f4f6dc360b1a8d}\label{classServer_a88bded1a4ac8d3b855f4f6dc360b1a8d}} 
+\index{Server@{Server}!readTextMessage@{readTextMessage}}
+\index{readTextMessage@{readTextMessage}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{readTextMessage()}{readTextMessage()}}
+{\footnotesize\ttfamily std\+::string Server\+::read\+Text\+Message (\begin{DoxyParamCaption}\item[{int}]{sock }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Чтение текстового сообщения от клиента 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em sock} & Сокет клиента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Прочитанная строка 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::system\+\_\+error} & при ошибках чтения\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Аргументы}
+{\em sock} & Сокет клиента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Прочитанная строка 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::system\+\_\+error} & при ошибках чтения\\
+\hline
+\end{DoxyExceptions}
+Удаляет символы перевода строки из полученного сообщения 
+
+См. определение в файле \mbox{\hyperlink{Server_8cpp_source}{Server.\+cpp}} строка \mbox{\hyperlink{Server_8cpp_source_l00084}{84}}
+
+\mbox{\Hypertarget{classServer_abb27d30b40a94326e3fd629d3b30b7d5}\label{classServer_abb27d30b40a94326e3fd629d3b30b7d5}} 
+\index{Server@{Server}!run@{run}}
+\index{run@{run}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Server\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Основной метод запуска сервера 
+
+Запускает бесконечный цикл обработки подключений \begin{DoxyNote}{Заметки}
+Метод не возвращает управление 
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::system\+\_\+error} & при ошибках сетевого взаимодействия\\
+\hline
+\end{DoxyExceptions}
+Запускает бесконечный цикл обработки подключений \begin{DoxyNote}{Заметки}
+Метод не возвращает управление в нормальных условиях 
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::system\+\_\+error} & при ошибках сетевого взаимодействия \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{Server_8cpp_source}{Server.\+cpp}} строка \mbox{\hyperlink{Server_8cpp_source_l00137}{137}}
+
+\mbox{\Hypertarget{classServer_ac56c92bb1dd7864776a90258f563dd73}\label{classServer_ac56c92bb1dd7864776a90258f563dd73}} 
+\index{Server@{Server}!sendError@{sendError}}
+\index{sendError@{sendError}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{sendError()}{sendError()}}
+{\footnotesize\ttfamily void Server\+::send\+Error (\begin{DoxyParamCaption}\item[{int}]{client\+\_\+sock,  }\item[{const std\+::string \&}]{message }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Отправка сообщения об ошибке клиенту 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em client\+\_\+sock} & Сокет клиента \\
+\hline
+{\em message} & Текст сообщения для записи в журнал\\
+\hline
+{\em client\+\_\+sock} & Сокет клиента \\
+\hline
+{\em message} & Текст сообщения для записи в журнал\\
+\hline
+\end{DoxyParams}
+Отправляет строку \char`\"{}\+ERR\char`\"{} клиенту и записывает ошибку в журнал 
+
+См. определение в файле \mbox{\hyperlink{Server_8cpp_source}{Server.\+cpp}} строка \mbox{\hyperlink{Server_8cpp_source_l00071}{71}}
+
+\mbox{\Hypertarget{classServer_a174332d05b2330e5682c5c5aad8917f4}\label{classServer_a174332d05b2330e5682c5c5aad8917f4}} 
+\index{Server@{Server}!startListening@{startListening}}
+\index{startListening@{startListening}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{startListening()}{startListening()}}
+{\footnotesize\ttfamily void Server\+::start\+Listening (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Инициализация и запуск сокета 
+
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::system\+\_\+error} & при ошибках создания сокета\\
+\hline
+{\em std\+::system\+\_\+error} & при ошибках создания сокета\\
+\hline
+\end{DoxyExceptions}
+Создает TCP сокет, привязывает к указанному порту, устанавливает флаг SO\+\_\+\+REUSEADDR 
+
+См. определение в файле \mbox{\hyperlink{Server_8cpp_source}{Server.\+cpp}} строка \mbox{\hyperlink{Server_8cpp_source_l00105}{105}}
+
+\mbox{\Hypertarget{classServer_a5e5583aca8781d6325108073dfc29a5b}\label{classServer_a5e5583aca8781d6325108073dfc29a5b}} 
+\index{Server@{Server}!validatePort@{validatePort}}
+\index{validatePort@{validatePort}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{validatePort()}{validatePort()}}
+{\footnotesize\ttfamily void Server\+::validate\+Port (\begin{DoxyParamCaption}\item[{unsigned short}]{p }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Проверка валидности номера порта 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em p} & Проверяемый порт \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & при невалидном порте\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Аргументы}
+{\em p} & Проверяемый порт \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & при невалидном порте\\
+\hline
+\end{DoxyExceptions}
+Допустимый диапазон портов\+: 1024-\/49151 
+
+См. определение в файле \mbox{\hyperlink{Server_8cpp_source}{Server.\+cpp}} строка \mbox{\hyperlink{Server_8cpp_source_l00056}{56}}
+
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{classServer_a43c6a06612353b620cce345e45e8bdf4}\label{classServer_a43c6a06612353b620cce345e45e8bdf4}} 
+\index{Server@{Server}!authenticator@{authenticator}}
+\index{authenticator@{authenticator}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{authenticator}{authenticator}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classAuthenticator}{Authenticator}}\& Server\+::authenticator\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на аутентификатор 
+
+
+
+См. определение в файле \mbox{\hyperlink{Server_8h_source}{Server.\+h}} строка \mbox{\hyperlink{Server_8h_source_l00097}{97}}
+
+\mbox{\Hypertarget{classServer_ac2379f0fc836ff68fc10ca4ad2c1e951}\label{classServer_ac2379f0fc836ff68fc10ca4ad2c1e951}} 
+\index{Server@{Server}!foreign\_addr@{foreign\_addr}}
+\index{foreign\_addr@{foreign\_addr}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{foreign\_addr}{foreign\_addr}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$sockaddr\+\_\+in$>$ Server\+::foreign\+\_\+addr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Адрес клиента 
+
+
+
+См. определение в файле \mbox{\hyperlink{Server_8h_source}{Server.\+h}} строка \mbox{\hyperlink{Server_8h_source_l00102}{102}}
+
+\mbox{\Hypertarget{classServer_acc345f54a55757dce3a0a3b74a6a5b2d}\label{classServer_acc345f54a55757dce3a0a3b74a6a5b2d}} 
+\index{Server@{Server}!listen\_sock@{listen\_sock}}
+\index{listen\_sock@{listen\_sock}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{listen\_sock}{listen\_sock}}
+{\footnotesize\ttfamily int Server\+::listen\+\_\+sock\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Сокет 
+
+
+
+См. определение в файле \mbox{\hyperlink{Server_8h_source}{Server.\+h}} строка \mbox{\hyperlink{Server_8h_source_l00100}{100}}
+
+\mbox{\Hypertarget{classServer_a3c1f558b24a485a61822b50d3a02192a}\label{classServer_a3c1f558b24a485a61822b50d3a02192a}} 
+\index{Server@{Server}!logger@{logger}}
+\index{logger@{logger}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLogger}{Logger}}\& Server\+::logger\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на журнал 
+
+
+
+См. определение в файле \mbox{\hyperlink{Server_8h_source}{Server.\+h}} строка \mbox{\hyperlink{Server_8h_source_l00095}{95}}
+
+\mbox{\Hypertarget{classServer_a51ef8b668195a28c282d39ec7f091084}\label{classServer_a51ef8b668195a28c282d39ec7f091084}} 
+\index{Server@{Server}!MAX\_PORT@{MAX\_PORT}}
+\index{MAX\_PORT@{MAX\_PORT}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{MAX\_PORT}{MAX\_PORT}}
+{\footnotesize\ttfamily const unsigned short Server\+::\+MAX\+\_\+\+PORT = 49151\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Максимальный допустимый порт 
+
+
+
+См. определение в файле \mbox{\hyperlink{Server_8h_source}{Server.\+h}} строка \mbox{\hyperlink{Server_8h_source_l00065}{65}}
+
+\mbox{\Hypertarget{classServer_a989532e8add360ee55c8552018619f6c}\label{classServer_a989532e8add360ee55c8552018619f6c}} 
+\index{Server@{Server}!MIN\_PORT@{MIN\_PORT}}
+\index{MIN\_PORT@{MIN\_PORT}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{MIN\_PORT}{MIN\_PORT}}
+{\footnotesize\ttfamily const unsigned short Server\+::\+MIN\+\_\+\+PORT = 1024\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Минимальный допустимый порт 
+
+
+
+См. определение в файле \mbox{\hyperlink{Server_8h_source}{Server.\+h}} строка \mbox{\hyperlink{Server_8h_source_l00064}{64}}
+
+\mbox{\Hypertarget{classServer_a7c65d69a3c9d46b673fc8d48ff61b710}\label{classServer_a7c65d69a3c9d46b673fc8d48ff61b710}} 
+\index{Server@{Server}!port@{port}}
+\index{port@{port}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{port}{port}}
+{\footnotesize\ttfamily unsigned short Server\+::port\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Порт сервера 
+
+
+
+См. определение в файле \mbox{\hyperlink{Server_8h_source}{Server.\+h}} строка \mbox{\hyperlink{Server_8h_source_l00094}{94}}
+
+\mbox{\Hypertarget{classServer_ab5a99d29a47baef4cc802324538cdb3f}\label{classServer_ab5a99d29a47baef4cc802324538cdb3f}} 
+\index{Server@{Server}!processor@{processor}}
+\index{processor@{processor}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{processor}{processor}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDataProcessor}{Data\+Processor}}\& Server\+::processor\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на обработчик данных 
+
+
+
+См. определение в файле \mbox{\hyperlink{Server_8h_source}{Server.\+h}} строка \mbox{\hyperlink{Server_8h_source_l00098}{98}}
+
+\mbox{\Hypertarget{classServer_a94cd700bcc038e1cffe3b0849c49ba49}\label{classServer_a94cd700bcc038e1cffe3b0849c49ba49}} 
+\index{Server@{Server}!self\_addr@{self\_addr}}
+\index{self\_addr@{self\_addr}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{self\_addr}{self\_addr}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$sockaddr\+\_\+in$>$ Server\+::self\+\_\+addr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Адрес сервера 
+
+
+
+См. определение в файле \mbox{\hyperlink{Server_8h_source}{Server.\+h}} строка \mbox{\hyperlink{Server_8h_source_l00101}{101}}
+
+\mbox{\Hypertarget{classServer_a078cf8e6df63d529d7da930c3657415a}\label{classServer_a078cf8e6df63d529d7da930c3657415a}} 
+\index{Server@{Server}!userDb@{userDb}}
+\index{userDb@{userDb}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{userDb}{userDb}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classUserDatabase}{User\+Database}}\& Server\+::user\+Db\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ссылка на базу данных пользователей 
+
+
+
+См. определение в файле \mbox{\hyperlink{Server_8h_source}{Server.\+h}} строка \mbox{\hyperlink{Server_8h_source_l00096}{96}}
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Server_8h}{Server.\+h}}\item 
+src/\mbox{\hyperlink{Server_8cpp}{Server.\+cpp}}\end{DoxyCompactItemize}

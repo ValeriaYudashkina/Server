@@ -1,0 +1,81 @@
+\hypertarget{Authenticator_8cpp_source}{}\doxysection{Authenticator.\+cpp}
+\label{Authenticator_8cpp_source}\index{src/Authenticator.cpp@{src/Authenticator.cpp}}
+\mbox{\hyperlink{Authenticator_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Authenticator_8h}{Authenticator.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{UserDatabase_8h}{UserDatabase.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Logger_8h}{Logger.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00009}00009 \textcolor{preprocessor}{\#include <cryptopp/sha.h>}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00010}00010 \textcolor{preprocessor}{\#include <cryptopp/hex.h>}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00011}00011 \textcolor{preprocessor}{\#include <cryptopp/filters.h>}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00013}00013 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00014}00014 \textcolor{preprocessor}{\#include <cctype>}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00016}00016 \textcolor{keyword}{namespace }CPP = CryptoPP;}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00026}\mbox{\hyperlink{classAuthenticator_ac33441deb2a9b3515db257bf889af21b}{00026}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classAuthenticator_ac33441deb2a9b3515db257bf889af21b}{Authenticator::isValidHex}}(\textcolor{keyword}{const} std::string\& str)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00027}00027     \textcolor{keywordflow}{return} std::all\_of(str.begin(), str.end(), [](\textcolor{keywordtype}{char} c) \{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00028}00028         return (c >= \textcolor{stringliteral}{'0'} \&\& c <= \textcolor{stringliteral}{'9'}) || (c >= \textcolor{stringliteral}{'A'} \&\& c <= \textcolor{stringliteral}{'F'}) || (c >= \textcolor{stringliteral}{'a'} \&\& c <= \textcolor{stringliteral}{'f'});}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00029}00029     \});}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00030}00030 \}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00049}\mbox{\hyperlink{classAuthenticator_a86f559ba38a9a161a84c99b114e568bc}{00049}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classAuthenticator_a86f559ba38a9a161a84c99b114e568bc}{Authenticator::verify}}(\textcolor{keyword}{const} std::string\& login, \textcolor{keyword}{const} std::string\& salt\_hash\_client, }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00050}00050                            \mbox{\hyperlink{classUserDatabase}{UserDatabase}}\& db, \mbox{\hyperlink{classLogger}{Logger}}\& logger)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00051}00051     }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00052}00052     \textcolor{keywordflow}{if} (salt\_hash\_client.length() != \mbox{\hyperlink{classAuthenticator_ab2afdd321c2db24f5b0f969918619b54}{SALT16\_LENGTH}} + \mbox{\hyperlink{classAuthenticator_a5dd4a90b5139fe73ffd083cc57753e32}{SHA1\_HEX\_LENGTH}}) \{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00053}00053         logger.\mbox{\hyperlink{classLogger_a1c5c7357b27b68b8bcd93b7bcf6b30b9}{logError}}(\textcolor{stringliteral}{"{}Authenticator: Message length mismatch. Expected: "{}} + }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00054}00054                        std::to\_string(\mbox{\hyperlink{classAuthenticator_ab2afdd321c2db24f5b0f969918619b54}{SALT16\_LENGTH}} + \mbox{\hyperlink{classAuthenticator_a5dd4a90b5139fe73ffd083cc57753e32}{SHA1\_HEX\_LENGTH}}) + }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00055}00055                        \textcolor{stringliteral}{"{}, got: "{}} + std::to\_string(salt\_hash\_client.length()), \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00056}00056         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00057}00057     \}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00058}00058     }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00059}00059     std::string salt16 = salt\_hash\_client.substr(0, \mbox{\hyperlink{classAuthenticator_ab2afdd321c2db24f5b0f969918619b54}{SALT16\_LENGTH}});}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00060}00060     std::string clientHash16 = salt\_hash\_client.substr(\mbox{\hyperlink{classAuthenticator_ab2afdd321c2db24f5b0f969918619b54}{SALT16\_LENGTH}});}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00061}00061     }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00062}00062     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classAuthenticator_ac33441deb2a9b3515db257bf889af21b}{isValidHex}}(salt16)) \{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00063}00063         logger.\mbox{\hyperlink{classLogger_a1c5c7357b27b68b8bcd93b7bcf6b30b9}{logError}}(\textcolor{stringliteral}{"{}Authenticator: Invalid hex format in SALT16: "{}} + salt16, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00064}00064         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00065}00065     \}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00066}00066     }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00067}00067     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classAuthenticator_ac33441deb2a9b3515db257bf889af21b}{isValidHex}}(clientHash16)) \{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00068}00068         logger.\mbox{\hyperlink{classLogger_a1c5c7357b27b68b8bcd93b7bcf6b30b9}{logError}}(\textcolor{stringliteral}{"{}Authenticator: Invalid hex format in client hash"{}}, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00069}00069         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00070}00070     \}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00071}00071     }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00072}00072     std::string password;}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00073}00073     \textcolor{keywordflow}{if} (!db.\mbox{\hyperlink{classUserDatabase_afb18364822551a4299d7b745f688d300}{getPassword}}(login, password)) \{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00074}00074         logger.\mbox{\hyperlink{classLogger_a1c5c7357b27b68b8bcd93b7bcf6b30b9}{logError}}(\textcolor{stringliteral}{"{}Authenticator: Login "{}} + login + \textcolor{stringliteral}{"{} not found"{}}, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00075}00075         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00076}00076     \}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00077}00077     }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00078}00078     std::string input = salt16 + password;}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00079}00079     std::string serverHash16;}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00080}00080     }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00081}00081     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00082}00082         CPP::SHA1 hash;}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00083}00083         }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00084}00084         CPP::StringSource(input, \textcolor{keyword}{true},}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00085}00085             \textcolor{keyword}{new} CPP::HashFilter(hash, }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00086}00086                 \textcolor{keyword}{new} CPP::HexEncoder(}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00087}00087                     \textcolor{keyword}{new} CPP::StringSink(serverHash16))));}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00088}00088         }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00089}00089     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} CPP::Exception\& e) \{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00090}00090         logger.\mbox{\hyperlink{classLogger_a1c5c7357b27b68b8bcd93b7bcf6b30b9}{logError}}(std::string(\textcolor{stringliteral}{"{}Crypto++ error: "{}}) + e.what(), \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00091}00091         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00092}00092     \}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00093}00093     }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00094}00094     std::transform(clientHash16.begin(), clientHash16.end(), clientHash16.begin(), ::toupper);}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00095}00095     std::transform(serverHash16.begin(), serverHash16.end(), serverHash16.begin(), ::toupper);}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00096}00096     }
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00097}00097     \textcolor{keywordflow}{if} (serverHash16 == clientHash16) \{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00098}00098         logger.\mbox{\hyperlink{classLogger_a3b2e97470572358030fa427c649cf8d5}{logInfo}}(\textcolor{stringliteral}{"{}Authenticator: Success for login "{}} + login);}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00099}00099         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00100}00100     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00101}00101         logger.\mbox{\hyperlink{classLogger_a1c5c7357b27b68b8bcd93b7bcf6b30b9}{logError}}(\textcolor{stringliteral}{"{}Authenticator: Password mismatch for login "{}} + login, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00102}00102         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00103}00103     \}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8cpp_source_l00104}00104 \}}
+
+\end{DoxyCode}

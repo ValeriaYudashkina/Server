@@ -1,0 +1,213 @@
+\begin{theindex}
+
+  \item {$\sim$Server}
+    \subitem {Server}, \hyperpage{24}
+
+  \indexspace
+
+  \item {AUTH\_DATA\_LENGTH}
+    \subitem {Server.cpp}, \hyperpage{57}
+  \item {auth\_error}, \hyperpage{9}
+    \subitem {auth\_error}, \hyperpage{10}
+  \item {Authenticator}, \hyperpage{11}
+    \subitem {isValidHex}, \hyperpage{11}
+    \subitem {SALT16\_LENGTH}, \hyperpage{13}
+    \subitem {SHA1\_HEX\_LENGTH}, \hyperpage{13}
+    \subitem {verify}, \hyperpage{12}
+  \item {authenticator}
+    \subitem {Server}, \hyperpage{29}
+
+  \indexspace
+
+  \item {BUFLEN}
+    \subitem {Server.cpp}, \hyperpage{57}
+
+  \indexspace
+
+  \item {calculateAverage}
+    \subitem {DataProcessor}, \hyperpage{14}
+
+  \indexspace
+
+  \item {DataProcessor}, \hyperpage{14}
+    \subitem {calculateAverage}, \hyperpage{14}
+  \item {dbFile}
+    \subitem {Params}, \hyperpage{22}
+  \item {desc}
+    \subitem {Interface}, \hyperpage{18}
+
+  \indexspace
+
+  \item {foreign\_addr}
+    \subitem {Server}, \hyperpage{29}
+
+  \indexspace
+
+  \item {getParams}
+    \subitem {Interface}, \hyperpage{17}
+  \item {getPassword}
+    \subitem {UserDatabase}, \hyperpage{33}
+
+  \indexspace
+
+  \item {handleClient}
+    \subitem {Server}, \hyperpage{25}
+
+  \indexspace
+
+  \item {include/Authenticator.h}, \hyperpage{39, 40}
+  \item {include/DataProcessor.h}, \hyperpage{40, 41}
+  \item {include/Interface.h}, \hyperpage{41}, \hyperpage{43}
+  \item {include/Logger.h}, \hyperpage{43, 44}
+  \item {include/Server.h}, \hyperpage{44, 45}
+  \item {include/UserDatabase.h}, \hyperpage{46, 47}
+  \item {init}
+    \subitem {Logger}, \hyperpage{20}
+  \item {Interface}, \hyperpage{16}
+    \subitem {desc}, \hyperpage{18}
+    \subitem {getParams}, \hyperpage{17}
+    \subitem {Interface}, \hyperpage{17}
+    \subitem {params}, \hyperpage{18}
+    \subitem {Parser}, \hyperpage{17}
+    \subitem {printHelp}, \hyperpage{18}
+    \subitem {vm}, \hyperpage{19}
+  \item {isValidHex}
+    \subitem {Authenticator}, \hyperpage{11}
+  \item {isValidPort}
+    \subitem {main.cpp}, \hyperpage{53}
+
+  \indexspace
+
+  \item {listen\_sock}
+    \subitem {Server}, \hyperpage{29}
+  \item {load}
+    \subitem {UserDatabase}, \hyperpage{34}
+  \item {logError}
+    \subitem {Logger}, \hyperpage{20}
+  \item {logFile}
+    \subitem {Params}, \hyperpage{22}
+  \item {Logger}, \hyperpage{19}
+    \subitem {init}, \hyperpage{20}
+    \subitem {logError}, \hyperpage{20}
+    \subitem {logInfo}, \hyperpage{20}
+    \subitem {logPath}, \hyperpage{21}
+  \item {logger}
+    \subitem {Server}, \hyperpage{29}
+  \item {logInfo}
+    \subitem {Logger}, \hyperpage{20}
+  \item {logPath}
+    \subitem {Logger}, \hyperpage{21}
+
+  \indexspace
+
+  \item {main}
+    \subitem {main.cpp}, \hyperpage{54}
+  \item {main.cpp}
+    \subitem {isValidPort}, \hyperpage{53}
+    \subitem {main}, \hyperpage{54}
+  \item {MAX\_PORT}
+    \subitem {Server}, \hyperpage{30}
+  \item {MIN\_PORT}
+    \subitem {Server}, \hyperpage{30}
+
+  \indexspace
+
+  \item {Params}, \hyperpage{21}
+    \subitem {dbFile}, \hyperpage{22}
+    \subitem {logFile}, \hyperpage{22}
+    \subitem {port}, \hyperpage{22}
+  \item {params}
+    \subitem {Interface}, \hyperpage{18}
+  \item {Parser}
+    \subitem {Interface}, \hyperpage{17}
+  \item {port}
+    \subitem {Params}, \hyperpage{22}
+    \subitem {Server}, \hyperpage{30}
+  \item {printHelp}
+    \subitem {Interface}, \hyperpage{18}
+  \item {processor}
+    \subitem {Server}, \hyperpage{30}
+  \item {processVectors}
+    \subitem {Server}, \hyperpage{25}
+
+  \indexspace
+
+  \item {QLEN}
+    \subitem {Server.cpp}, \hyperpage{57}
+
+  \indexspace
+
+  \item {readTextMessage}
+    \subitem {Server}, \hyperpage{26}
+  \item {run}
+    \subitem {Server}, \hyperpage{27}
+
+  \indexspace
+
+  \item {SALT16\_LENGTH}
+    \subitem {Authenticator}, \hyperpage{13}
+  \item {self\_addr}
+    \subitem {Server}, \hyperpage{30}
+  \item {sendError}
+    \subitem {Server}, \hyperpage{27}
+  \item {Server}, \hyperpage{22}
+    \subitem {$\sim$Server}, \hyperpage{24}
+    \subitem {authenticator}, \hyperpage{29}
+    \subitem {foreign\_addr}, \hyperpage{29}
+    \subitem {handleClient}, \hyperpage{25}
+    \subitem {listen\_sock}, \hyperpage{29}
+    \subitem {logger}, \hyperpage{29}
+    \subitem {MAX\_PORT}, \hyperpage{30}
+    \subitem {MIN\_PORT}, \hyperpage{30}
+    \subitem {port}, \hyperpage{30}
+    \subitem {processor}, \hyperpage{30}
+    \subitem {processVectors}, \hyperpage{25}
+    \subitem {readTextMessage}, \hyperpage{26}
+    \subitem {run}, \hyperpage{27}
+    \subitem {self\_addr}, \hyperpage{30}
+    \subitem {sendError}, \hyperpage{27}
+    \subitem {Server}, \hyperpage{24}
+    \subitem {startListening}, \hyperpage{28}
+    \subitem {userDb}, \hyperpage{31}
+    \subitem {validatePort}, \hyperpage{28}
+  \item {Server.cpp}
+    \subitem {AUTH\_DATA\_LENGTH}, \hyperpage{57}
+    \subitem {BUFLEN}, \hyperpage{57}
+    \subitem {QLEN}, \hyperpage{57}
+  \item {server\_error}, \hyperpage{31}
+    \subitem {server\_error}, \hyperpage{32}
+  \item {SHA1\_HEX\_LENGTH}
+    \subitem {Authenticator}, \hyperpage{13}
+  \item {src/Authenticator.cpp}, \hyperpage{47, 48}
+  \item {src/DataProcessor.cpp}, \hyperpage{49, 50}
+  \item {src/Interface.cpp}, \hyperpage{50, 51}
+  \item {src/Logger.cpp}, \hyperpage{51, 52}
+  \item {src/main.cpp}, \hyperpage{52}, \hyperpage{56}
+  \item {src/Server.cpp}, \hyperpage{56}, \hyperpage{58}
+  \item {src/UserDatabase.cpp}, \hyperpage{60, 61}
+  \item {startListening}
+    \subitem {Server}, \hyperpage{28}
+
+  \indexspace
+
+  \item {UserDatabase}, \hyperpage{33}
+    \subitem {getPassword}, \hyperpage{33}
+    \subitem {load}, \hyperpage{34}
+    \subitem {users}, \hyperpage{35}
+  \item {userDb}
+    \subitem {Server}, \hyperpage{31}
+  \item {users}
+    \subitem {UserDatabase}, \hyperpage{35}
+
+  \indexspace
+
+  \item {validatePort}
+    \subitem {Server}, \hyperpage{28}
+  \item {vector\_error}, \hyperpage{35}
+    \subitem {vector\_error}, \hyperpage{36}
+  \item {verify}
+    \subitem {Authenticator}, \hyperpage{12}
+  \item {vm}
+    \subitem {Interface}, \hyperpage{19}
+
+\end{theindex}

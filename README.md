@@ -4,6 +4,11 @@
 make clean
 make
 make unit_test
+make test_userdb
+make test_auth
+make test_processor
+make test_logger
+make test_interface
 
 # Просмотр справки
 ./server --help

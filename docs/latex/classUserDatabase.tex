@@ -1,0 +1,133 @@
+\hypertarget{classUserDatabase}{}\doxysection{Класс User\+Database}
+\label{classUserDatabase}\index{UserDatabase@{UserDatabase}}
+
+
+Предварительное объявление класса \mbox{\hyperlink{classLogger}{Logger}}.  
+
+
+
+
+{\ttfamily \#include $<$User\+Database.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classUserDatabase_a497f3c17e810a8b4e47eedcbccbf29bb}{load}} (const std\+::string \&db\+\_\+path, \mbox{\hyperlink{classLogger}{Logger}} \&logger)
+\begin{DoxyCompactList}\small\item\em Загрузка базы пользователей из файла \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classUserDatabase_afb18364822551a4299d7b745f688d300}{get\+Password}} (const std\+::string \&login, std\+::string \&out\+\_\+password) const
+\begin{DoxyCompactList}\small\item\em Получение пароля пользователя по логину \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classUserDatabase_a68c8cbf55dc4cb6bd58ed71d816baaca}{users}}
+\begin{DoxyCompactList}\small\item\em Контейнер для хранения пользователей \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Предварительное объявление класса \mbox{\hyperlink{classLogger}{Logger}}. 
+
+Класс для работы с базой данных пользователей
+
+Загружает пары \char`\"{}логин\+:пароль\char`\"{} из текстового файла и предоставляет доступ к ним для аутентификации 
+
+См. определение в файле \mbox{\hyperlink{UserDatabase_8h_source}{User\+Database.\+h}} строка \mbox{\hyperlink{UserDatabase_8h_source_l00016}{16}}
+
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classUserDatabase_afb18364822551a4299d7b745f688d300}\label{classUserDatabase_afb18364822551a4299d7b745f688d300}} 
+\index{UserDatabase@{UserDatabase}!getPassword@{getPassword}}
+\index{getPassword@{getPassword}!UserDatabase@{UserDatabase}}
+\doxysubsubsection{\texorpdfstring{getPassword()}{getPassword()}}
+{\footnotesize\ttfamily bool User\+Database\+::get\+Password (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{login,  }\item[{std\+::string \&}]{out\+\_\+password }\end{DoxyParamCaption}) const}
+
+
+
+Получение пароля пользователя по логину 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em login} & Логин пользователя \\
+\hline
+{\em out\+\_\+password} & Строка для записи пароля \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true -\/ пользователь найден, false -\/ пользователь не найден
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Аргументы}
+{\em login} & Логин пользователя \\
+\hline
+{\em out\+\_\+password} & Строка для записи пароля \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true -\/ пользователь найден, пароль записан в out\+\_\+password, false -\/ пользователь не найден 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{UserDatabase_8cpp_source}{User\+Database.\+cpp}} строка \mbox{\hyperlink{UserDatabase_8cpp_source_l00065}{65}}
+
+\mbox{\Hypertarget{classUserDatabase_a497f3c17e810a8b4e47eedcbccbf29bb}\label{classUserDatabase_a497f3c17e810a8b4e47eedcbccbf29bb}} 
+\index{UserDatabase@{UserDatabase}!load@{load}}
+\index{load@{load}!UserDatabase@{UserDatabase}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily bool User\+Database\+::load (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{db\+\_\+path,  }\item[{\mbox{\hyperlink{classLogger}{Logger}} \&}]{logger }\end{DoxyParamCaption})}
+
+
+
+Загрузка базы пользователей из файла 
+
+Загрузка базы данных пользователей из текстового файла
+
+
+\begin{DoxyParams}{Аргументы}
+{\em db\+\_\+path} & Путь к файлу базы данных \\
+\hline
+{\em logger} & Ссылка на объект журнала для записи ошибок \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true -\/ база успешно загружена, false -\/ произошла ошибка при загрузке
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Аргументы}
+{\em db\+\_\+path} & Путь к файлу базы данных \\
+\hline
+{\em logger} & Ссылка на журнал для записи ошибок \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true -\/ база успешно загружена, false -\/ произошла критическая ошибка
+\end{DoxyReturn}
+Формат файла\+: каждая строка \char`\"{}логин\+:пароль\char`\"{} Пустые строки и строки, начинающиеся с \textquotesingle{}\#\textquotesingle{}, игнорируются \begin{DoxyNote}{Заметки}
+Не критические ошибки (неверный формат строки) записываются в журнал, но не прерывают загрузку 
+\end{DoxyNote}
+
+
+См. определение в файле \mbox{\hyperlink{UserDatabase_8cpp_source}{User\+Database.\+cpp}} строка \mbox{\hyperlink{UserDatabase_8cpp_source_l00021}{21}}
+
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{classUserDatabase_a68c8cbf55dc4cb6bd58ed71d816baaca}\label{classUserDatabase_a68c8cbf55dc4cb6bd58ed71d816baaca}} 
+\index{UserDatabase@{UserDatabase}!users@{users}}
+\index{users@{users}!UserDatabase@{UserDatabase}}
+\doxysubsubsection{\texorpdfstring{users}{users}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, std\+::string$>$ User\+Database\+::users\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Контейнер для хранения пользователей 
+
+
+
+См. определение в файле \mbox{\hyperlink{UserDatabase_8h_source}{User\+Database.\+h}} строка \mbox{\hyperlink{UserDatabase_8h_source_l00018}{18}}
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{UserDatabase_8h}{User\+Database.\+h}}\item 
+src/\mbox{\hyperlink{UserDatabase_8cpp}{User\+Database.\+cpp}}\end{DoxyCompactItemize}

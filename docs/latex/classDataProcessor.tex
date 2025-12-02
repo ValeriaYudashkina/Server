@@ -1,0 +1,93 @@
+\hypertarget{classDataProcessor}{}\doxysection{Класс Data\+Processor}
+\label{classDataProcessor}\index{DataProcessor@{DataProcessor}}
+
+
+Предварительное объявление класса \mbox{\hyperlink{classLogger}{Logger}}.  
+
+
+
+
+{\ttfamily \#include $<$Data\+Processor.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+int32\+\_\+t \mbox{\hyperlink{classDataProcessor_a6da3b304be9b8b19cc75fdd9393c097a}{calculate\+Average}} (const std\+::vector$<$ int32\+\_\+t $>$ \&vector, \mbox{\hyperlink{classLogger}{Logger}} \&logger)
+\begin{DoxyCompactList}\small\item\em Вычисление среднего арифметического значений вектора \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Предварительное объявление класса \mbox{\hyperlink{classLogger}{Logger}}. 
+
+Класс для обработки числовых данных
+
+Выполняет вычисления над векторами целых чисел 
+
+См. определение в файле \mbox{\hyperlink{DataProcessor_8h_source}{Data\+Processor.\+h}} строка \mbox{\hyperlink{DataProcessor_8h_source_l00016}{16}}
+
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classDataProcessor_a6da3b304be9b8b19cc75fdd9393c097a}\label{classDataProcessor_a6da3b304be9b8b19cc75fdd9393c097a}} 
+\index{DataProcessor@{DataProcessor}!calculateAverage@{calculateAverage}}
+\index{calculateAverage@{calculateAverage}!DataProcessor@{DataProcessor}}
+\doxysubsubsection{\texorpdfstring{calculateAverage()}{calculateAverage()}}
+{\footnotesize\ttfamily int32\+\_\+t Data\+Processor\+::calculate\+Average (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ int32\+\_\+t $>$ \&}]{vector,  }\item[{\mbox{\hyperlink{classLogger}{Logger}} \&}]{logger }\end{DoxyParamCaption})}
+
+
+
+Вычисление среднего арифметического значений вектора 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em vector} & Вектор целых чисел для обработки \\
+\hline
+{\em logger} & Ссылка на объект журнала для записи ошибок \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Среднее арифметическое значений вектора 
+\end{DoxyReturn}
+\begin{DoxyNote}{Заметки}
+при переполнении возвращает INT32\+\_\+\+MAX или INT32\+\_\+\+Min 
+\end{DoxyNote}
+\begin{DoxyWarning}{Предупреждения}
+При пустом векторе возвращает 0
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Аргументы}
+{\em vector} & Вектор целых чисел для обработки \\
+\hline
+{\em logger} & Ссылка на журнал для записи ошибок \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Среднее арифметическое значений вектора
+\end{DoxyReturn}
+Алгоритм\+:
+\begin{DoxyEnumerate}
+\item Проверка на пустой вектор (возвращает 0)
+\item Суммирование значений с использованием int64\+\_\+t для предотвращения переполнения
+\item Деление суммы на количество элементов
+\item Проверка границ \begin{DoxyNote}{Заметки}
+При переполнении возвращает\+:
+\end{DoxyNote}
+
+\end{DoxyEnumerate}
+
+2147483647 (INT32\+\_\+\+MAX) при переполнении вверх
+\begin{DoxyItemize}
+\item -\/2147483647 (INT32\+\_\+\+MIN) при переполнении вниз \begin{DoxyWarning}{Предупреждения}
+При пустом векторе возвращает 0 и записывает предупреждение в журнал 
+\end{DoxyWarning}
+
+\end{DoxyItemize}
+
+См. определение в файле \mbox{\hyperlink{DataProcessor_8cpp_source}{Data\+Processor.\+cpp}} строка \mbox{\hyperlink{DataProcessor_8cpp_source_l00024}{24}}
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{DataProcessor_8h}{Data\+Processor.\+h}}\item 
+src/\mbox{\hyperlink{DataProcessor_8cpp}{Data\+Processor.\+cpp}}\end{DoxyCompactItemize}

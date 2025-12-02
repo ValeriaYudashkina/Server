@@ -1,0 +1,24 @@
+\hypertarget{Authenticator_8h_source}{}\doxysection{Authenticator.\+h}
+\label{Authenticator_8h_source}\index{include/Authenticator.h@{include/Authenticator.h}}
+\mbox{\hyperlink{Authenticator_8h}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00006}00006 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00007}00007 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00009}00009 \textcolor{keyword}{class }\mbox{\hyperlink{classUserDatabase}{UserDatabase}}; }
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00010}00010 \textcolor{keyword}{class }\mbox{\hyperlink{classLogger}{Logger}}; }
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00016}\mbox{\hyperlink{classAuthenticator}{00016}} \textcolor{keyword}{class }\mbox{\hyperlink{classAuthenticator}{Authenticator}} \{}
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00017}00017 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00027}00027     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classAuthenticator_a86f559ba38a9a161a84c99b114e568bc}{verify}}(\textcolor{keyword}{const} std::string\& login, \textcolor{keyword}{const} std::string\& salt\_hash\_client, }
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00028}00028                 \mbox{\hyperlink{classUserDatabase}{UserDatabase}}\& db, \mbox{\hyperlink{classLogger}{Logger}}\& logger) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00030}00030 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00037}00037     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classAuthenticator_ac33441deb2a9b3515db257bf889af21b}{isValidHex}}(\textcolor{keyword}{const} std::string\& str) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00039}\mbox{\hyperlink{classAuthenticator_ab2afdd321c2db24f5b0f969918619b54}{00039}}     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classAuthenticator_ab2afdd321c2db24f5b0f969918619b54}{SALT16\_LENGTH}} = 16; }
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00040}\mbox{\hyperlink{classAuthenticator_a5dd4a90b5139fe73ffd083cc57753e32}{00040}}     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{classAuthenticator_a5dd4a90b5139fe73ffd083cc57753e32}{SHA1\_HEX\_LENGTH}} = 40; }
+\DoxyCodeLine{\Hypertarget{Authenticator_8h_source_l00041}00041 \};}
+
+\end{DoxyCode}

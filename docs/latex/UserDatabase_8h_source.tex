@@ -1,0 +1,22 @@
+\hypertarget{UserDatabase_8h_source}{}\doxysection{User\+Database.\+h}
+\label{UserDatabase_8h_source}\index{include/UserDatabase.h@{include/UserDatabase.h}}
+\mbox{\hyperlink{UserDatabase_8h}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{UserDatabase_8h_source_l00006}00006 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8h_source_l00007}00007 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8h_source_l00008}00008 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8h_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{UserDatabase_8h_source_l00010}00010 \textcolor{keyword}{class }\mbox{\hyperlink{classLogger}{Logger}}; }
+\DoxyCodeLine{\Hypertarget{UserDatabase_8h_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{UserDatabase_8h_source_l00016}\mbox{\hyperlink{classUserDatabase}{00016}} \textcolor{keyword}{class }\mbox{\hyperlink{classUserDatabase}{UserDatabase}} \{}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8h_source_l00017}00017 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8h_source_l00018}\mbox{\hyperlink{classUserDatabase_a68c8cbf55dc4cb6bd58ed71d816baaca}{00018}}     std::map<std::string, std::string> \mbox{\hyperlink{classUserDatabase_a68c8cbf55dc4cb6bd58ed71d816baaca}{users}}; }
+\DoxyCodeLine{\Hypertarget{UserDatabase_8h_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{UserDatabase_8h_source_l00020}00020 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8h_source_l00028}00028     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classUserDatabase_a497f3c17e810a8b4e47eedcbccbf29bb}{load}}(\textcolor{keyword}{const} std::string\& db\_path, \mbox{\hyperlink{classLogger}{Logger}}\& logger);}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{UserDatabase_8h_source_l00037}00037     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classUserDatabase_afb18364822551a4299d7b745f688d300}{getPassword}}(\textcolor{keyword}{const} std::string\& login, std::string\& out\_password) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{UserDatabase_8h_source_l00038}00038 \};}
+
+\end{DoxyCode}

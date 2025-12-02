@@ -19,7 +19,7 @@ OBJECTS := $(SOURCES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 DEPS := $(INCLUDE_DIR)/Interface.h $(INCLUDE_DIR)/Logger.h $(INCLUDE_DIR)/UserDatabase.h $(INCLUDE_DIR)/DataProcessor.h $(INCLUDE_DIR)/Authenticator.h $(INCLUDE_DIR)/Server.h
 
-.PHONY: all clean format static sanitize debug help test unit_test clean_test
+.PHONY: all clean format static sanitize debug help test unit_test clean_test test_userdb test_auth test_processor test_logger test_interface
 
 all: $(PROJECT)
 
@@ -54,8 +54,10 @@ format:
 # Модульное тестирование
 TEST_DIR = tests
 TEST_SRC = $(wildcard $(TEST_DIR)/*.cpp)
-TEST_OBJ = $(filter-out $(OBJ_DIR)/main.o, $(OBJECTS)) $(TEST_SRC:$(TEST_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+TEST_OBJ = $(TEST_SRC:$(TEST_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 TEST_BIN = server_tests
+
+CORE_OBJECTS = $(filter-out $(OBJ_DIR)/main.o, $(OBJECTS))
 
 TEST_CXXFLAGS = -g -I./$(INCLUDE_DIR) -I$(TEST_DIR)
 TEST_LDFLAGS = -lUnitTest++ -lboost_program_options -lcryptopp
@@ -63,18 +65,43 @@ TEST_LDFLAGS = -lUnitTest++ -lboost_program_options -lcryptopp
 test: unit_test
 
 unit_test: $(TEST_BIN)
-	@echo "Модульное тестирование сервера"
+	@echo "Полное модульное тестирование сервера"
 	./$(TEST_BIN)
 
-$(TEST_BIN): $(TEST_OBJ)
+$(TEST_BIN): $(TEST_OBJ) $(CORE_OBJECTS)
 	$(CXX) $^ $(TEST_LDFLAGS) -o $@
+
+test_userdb: $(OBJ_DIR)/UserDatabaseTest.o $(OBJ_DIR)/UserDatabase.o $(OBJ_DIR)/Logger.o $(OBJ_DIR)/TestMain.o
+	$(CXX) $^ $(TEST_LDFLAGS) -o $(TEST_BIN)
+	@echo "Тестирование UserDatabase"
+	./$(TEST_BIN) "*UserDatabaseTest*"
+
+test_auth: $(OBJ_DIR)/AuthenticatorTest.o $(OBJ_DIR)/Authenticator.o $(OBJ_DIR)/UserDatabase.o $(OBJ_DIR)/Logger.o $(OBJ_DIR)/TestMain.o
+	$(CXX) $^ $(TEST_LDFLAGS) -o $(TEST_BIN)
+	@echo "Тестирование Authenticator"
+	./$(TEST_BIN) "*AuthenticatorTest*"
+
+test_processor: $(OBJ_DIR)/DataProcessorTest.o $(OBJ_DIR)/DataProcessor.o $(OBJ_DIR)/Logger.o $(OBJ_DIR)/TestMain.o
+	$(CXX) $^ $(TEST_LDFLAGS) -o $(TEST_BIN)
+	@echo "Тестирование DataProcessor"
+	./$(TEST_BIN) "*DataProcessorTest*"
+
+test_logger: $(OBJ_DIR)/LoggerTest.o $(OBJ_DIR)/Logger.o $(OBJ_DIR)/TestMain.o
+	$(CXX) $^ $(TEST_LDFLAGS) -o $(TEST_BIN)
+	@echo "Тестирование Logger"
+	./$(TEST_BIN) "*LoggerTest*"
+
+test_interface: $(OBJ_DIR)/InterfaceTest.o $(OBJ_DIR)/Interface.o $(OBJ_DIR)/Logger.o $(OBJ_DIR)/TestMain.o
+	$(CXX) $^ $(TEST_LDFLAGS) -o $(TEST_BIN)
+	@echo "Тестирование Interface"
+	./$(TEST_BIN) "*InterfaceTest*"
 
 $(OBJ_DIR)/%.o: $(TEST_DIR)/%.cpp
 	@mkdir -p $(OBJ_DIR)
 	$(CXX) -c $(TEST_CXXFLAGS) $< -o $@
 
 clean_test:
-	rm -f $(TEST_BIN) $(OBJ_DIR)/*Test.o $(OBJ_DIR)/Test*.o
+	rm -f $(TEST_BIN) $(OBJ_DIR)/*Test.o $(OBJ_DIR)/TestMain.o $(OBJ_DIR)/Test*.o
 	rm -f test_*.log test_db.conf
 
 clean: clean_test

@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Программная реализация сетевого сервера: Класс Authenticator</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Программная реализация сетевого сервера<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Курсовая работа по разработке серверной программы для клиент-серверной системы обработки данных</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pri-methods">Закрытые члены</a> &#124;
+<a href="#pri-static-attribs">Закрытые статические данные</a> &#124;
+<a href="classAuthenticator-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс Authenticator</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Предварительное объявление класса <a class="el" href="classLogger.html" title="Класс для ведения журнала работы сервера">Logger</a>.  
+ <a href="classAuthenticator.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Authenticator_8h_source.html">Authenticator.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a86f559ba38a9a161a84c99b114e568bc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAuthenticator.html#a86f559ba38a9a161a84c99b114e568bc">verify</a> (const std::string &amp;login, const std::string &amp;salt_hash_client, <a class="el" href="classUserDatabase.html">UserDatabase</a> &amp;db, <a class="el" href="classLogger.html">Logger</a> &amp;logger) const</td></tr>
+<tr class="memdesc:a86f559ba38a9a161a84c99b114e568bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверка аутентификационных данных  <a href="classAuthenticator.html#a86f559ba38a9a161a84c99b114e568bc">Подробнее...</a><br /></td></tr>
+<tr class="separator:a86f559ba38a9a161a84c99b114e568bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Закрытые члены</h2></td></tr>
+<tr class="memitem:ac33441deb2a9b3515db257bf889af21b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAuthenticator.html#ac33441deb2a9b3515db257bf889af21b">isValidHex</a> (const std::string &amp;str) const</td></tr>
+<tr class="memdesc:ac33441deb2a9b3515db257bf889af21b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверка строки на соотвествие шестнадцатеричному формату  <a href="classAuthenticator.html#ac33441deb2a9b3515db257bf889af21b">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac33441deb2a9b3515db257bf889af21b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Закрытые статические данные</h2></td></tr>
+<tr class="memitem:ab2afdd321c2db24f5b0f969918619b54"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAuthenticator.html#ab2afdd321c2db24f5b0f969918619b54">SALT16_LENGTH</a> = 16</td></tr>
+<tr class="memdesc:ab2afdd321c2db24f5b0f969918619b54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Длина строки SALT в hex-формате  <a href="classAuthenticator.html#ab2afdd321c2db24f5b0f969918619b54">Подробнее...</a><br /></td></tr>
+<tr class="separator:ab2afdd321c2db24f5b0f969918619b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dd4a90b5139fe73ffd083cc57753e32"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAuthenticator.html#a5dd4a90b5139fe73ffd083cc57753e32">SHA1_HEX_LENGTH</a> = 40</td></tr>
+<tr class="memdesc:a5dd4a90b5139fe73ffd083cc57753e32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Длина хеша SHA-1 в hex-формате  <a href="classAuthenticator.html#a5dd4a90b5139fe73ffd083cc57753e32">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5dd4a90b5139fe73ffd083cc57753e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p >Предварительное объявление класса <a class="el" href="classLogger.html" title="Класс для ведения журнала работы сервера">Logger</a>. </p>
+<p >Класс для аутентификации пользователей</p>
+<p >Реализует аутентификацию с использованием хеш-функции SHA-1 и соли, формируемой клиентом </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Authenticator_8h_source.html">Authenticator.h</a> строка <a class="el" href="Authenticator_8h_source.html#l00016">16</a></p>
+</div><h2 class="groupheader">Методы</h2>
+<a id="ac33441deb2a9b3515db257bf889af21b" name="ac33441deb2a9b3515db257bf889af21b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac33441deb2a9b3515db257bf889af21b">&#9670;&nbsp;</a></span>isValidHex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Authenticator::isValidHex </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Проверка строки на соотвествие шестнадцатеричному формату </p>
+<p >Проверка строки на соответствие шестнадцатеричному формату</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>Проверяемая строка </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true - строка содержит только hex-символы, false - строка содержит недопустимые символы</dd></dl>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>Проверяемая строка </td></tr>
+    <tr><td class="paramname">logger</td><td>Ссылка на журнал для записи ошибок </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true - строка содержит только hex-символы, false - строка содержит недопустимые символы</dd></dl>
+<p>Допустимые символы: 0-9, A-F, a-f </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Authenticator_8cpp_source.html">Authenticator.cpp</a> строка <a class="el" href="Authenticator_8cpp_source.html#l00026">26</a></p>
+
+</div>
+</div>
+<a id="a86f559ba38a9a161a84c99b114e568bc" name="a86f559ba38a9a161a84c99b114e568bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86f559ba38a9a161a84c99b114e568bc">&#9670;&nbsp;</a></span>verify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Authenticator::verify </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>login</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>salt_hash_client</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classUserDatabase.html">UserDatabase</a> &amp;&#160;</td>
+          <td class="paramname"><em>db</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLogger.html">Logger</a> &amp;&#160;</td>
+          <td class="paramname"><em>logger</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Проверка аутентификационных данных </p>
+<p >Проверка аутентификационных данных пользователя</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">login</td><td>Логин пользователя </td></tr>
+    <tr><td class="paramname">salt_hash_client</td><td>Строка формата SALT16 + HASH (56 символов) </td></tr>
+    <tr><td class="paramname">db</td><td>Ссылка на базу данных пользователей </td></tr>
+    <tr><td class="paramname">logger</td><td>Ссылка на журнал для записи событий </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true - аутентификация успешна, false - аутентификация не пройдена</dd></dl>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">login</td><td>Логин пользователя </td></tr>
+    <tr><td class="paramname">salt_hash_client</td><td>Строка формата SALT16 + HASH (56 символов) </td></tr>
+    <tr><td class="paramname">db</td><td>Ссылка на базу данных пользователей </td></tr>
+    <tr><td class="paramname">logger</td><td>Ссылка на журнал для записи ошибок </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true - аутентификация успешна, false - аутентификация не пройдена</dd></dl>
+<p>Алгоритм проверки:</p><ol type="1">
+<li>Проверка длины сообщения (16+40=56 символов)</li>
+<li>Валидация hex-формата SALT и HASH</li>
+<li>Поиск пользователя в базе данных</li>
+<li>Вычисление хеша SHA-1 от (SALT + PASSWORD)</li>
+<li>Сравнение вычисленного хеша с полученным <dl class="section note"><dt>Заметки</dt><dd>Используется схема: HASH = SHA1(SALT || PASSWORD) </dd></dl>
+<dl class="section warning"><dt>Предупреждения</dt><dd>При несовпадении хешей в журнал записывается ошибка аутентификации </dd></dl>
+</li>
+</ol>
+
+<p class="definition">См. определение в файле <a class="el" href="Authenticator_8cpp_source.html">Authenticator.cpp</a> строка <a class="el" href="Authenticator_8cpp_source.html#l00049">49</a></p>
+
+</div>
+</div>
+<h2 class="groupheader">Данные класса</h2>
+<a id="ab2afdd321c2db24f5b0f969918619b54" name="ab2afdd321c2db24f5b0f969918619b54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2afdd321c2db24f5b0f969918619b54">&#9670;&nbsp;</a></span>SALT16_LENGTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int Authenticator::SALT16_LENGTH = 16</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Длина строки SALT в hex-формате </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Authenticator_8h_source.html">Authenticator.h</a> строка <a class="el" href="Authenticator_8h_source.html#l00039">39</a></p>
+
+</div>
+</div>
+<a id="a5dd4a90b5139fe73ffd083cc57753e32" name="a5dd4a90b5139fe73ffd083cc57753e32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dd4a90b5139fe73ffd083cc57753e32">&#9670;&nbsp;</a></span>SHA1_HEX_LENGTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int Authenticator::SHA1_HEX_LENGTH = 40</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Длина хеша SHA-1 в hex-формате </p>
+
+<p class="definition">См. определение в файле <a class="el" href="Authenticator_8h_source.html">Authenticator.h</a> строка <a class="el" href="Authenticator_8h_source.html#l00040">40</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>include/<a class="el" href="Authenticator_8h_source.html">Authenticator.h</a></li>
+<li>src/<a class="el" href="Authenticator_8cpp_source.html">Authenticator.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

@@ -1,8 +1,23 @@
+/**
+ * @file UserDatabase.cpp
+ * @brief Реализация класса UserDatabase для работы с базой данных пользователей
+ */
+
 #include "UserDatabase.h"
 #include "Logger.h"
 #include <fstream>
 #include <iostream>
 
+/**
+ * @brief Загрузка базы данных пользователей из текстового файла
+ * @param db_path Путь к файлу базы данных
+ * @param logger Ссылка на журнал для записи ошибок
+ * @return true - база успешно загружена,
+ *         false - произошла критическая ошибка
+ * @details Формат файла: каждая строка "логин:пароль"
+ *          Пустые строки и строки, начинающиеся с '#', игнорируются
+ * @note Не критические ошибки (неверный формат строки) записываются в журнал, но не прерывают загрузку
+ */
 bool UserDatabase::load(const std::string& db_path, Logger& logger) {
     std::ifstream file(db_path);
     if (!file.is_open()) {
@@ -40,6 +55,13 @@ bool UserDatabase::load(const std::string& db_path, Logger& logger) {
     return true;
 }
 
+/**
+ * @brief Получение пароля пользователя по логину
+ * @param login Логин пользователя
+ * @param out_password Строка для записи пароля
+ * @return true - пользователь найден, пароль записан в out_password,
+ *         false - пользователь не найден
+ */
 bool UserDatabase::getPassword(const std::string& login, std::string& out_password) const {
     auto it = users.find(login);
     if (it != users.end()) {

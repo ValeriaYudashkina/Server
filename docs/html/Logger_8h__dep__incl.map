@@ -1,0 +1,10 @@
+<map id="include/Logger.h" name="include/Logger.h">
+<area shape="rect" id="node1" title="Заголовочный файл модуля Logger &#45; журналирование работы сервера" alt="" coords="342,5,470,32"/>
+<area shape="rect" id="node2" href="$Server_8h.html" title="Заголовочный файл модуля Server &#45; основной серверный модуль" alt="" coords="31,80,157,107"/>
+<area shape="rect" id="node4" href="$main_8cpp.html" title="Точка входа серверной программы" alt="" coords="143,155,248,181"/>
+<area shape="rect" id="node5" href="$Authenticator_8cpp.html" title="Реализация класса Authenticator для аутентификации пользователей" alt="" coords="233,80,392,107"/>
+<area shape="rect" id="node6" href="$DataProcessor_8cpp.html" title="Реализация класса DataProcessor для обработки числовых данных" alt="" coords="417,80,582,107"/>
+<area shape="rect" id="node7" href="$Logger_8cpp.html" title="Реализация класса Logger для ведения журнала работы сервера" alt="" coords="606,80,721,107"/>
+<area shape="rect" id="node8" href="$UserDatabase_8cpp.html" title="Реализация класса UserDatabase для работы с базой данных пользователей" alt="" coords="745,80,909,107"/>
+<area shape="rect" id="node3" href="$Server_8cpp.html" title="Реализация основного серверного модуля" alt="" coords="5,155,119,181"/>
+</map>

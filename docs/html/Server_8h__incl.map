@@ -1,0 +1,16 @@
+<map id="include/Server.h" name="include/Server.h">
+<area shape="rect" id="node1" title="Заголовочный файл модуля Server &#45; основной серверный модуль" alt="" coords="425,5,552,32"/>
+<area shape="rect" id="node2" href="$UserDatabase_8h.html" title="Заголовочный файл модуля UserDatabase &#45; работа с базой пользователей" alt="" coords="273,80,400,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="74,155,132,181"/>
+<area shape="rect" id="node5" href="$Authenticator_8h.html" title="Заголовочный файл модуля Authenticator &#45; аутентификация пользователей" alt="" coords="25,80,146,107"/>
+<area shape="rect" id="node6" href="$DataProcessor_8h.html" title="Заголовочный файл модуля DataProcessor &#45; обработка числовых данных" alt="" coords="476,80,602,107"/>
+<area shape="rect" id="node7" title=" " alt="" coords="412,155,474,181"/>
+<area shape="rect" id="node9" href="$Logger_8h.html" title="Заголовочный файл модуля Logger &#45; журналирование работы сервера" alt="" coords="171,80,248,107"/>
+<area shape="rect" id="node11" title=" " alt="" coords="627,80,704,107"/>
+<area shape="rect" id="node12" title=" " alt="" coords="729,80,816,107"/>
+<area shape="rect" id="node13" title=" " alt="" coords="840,80,942,107"/>
+<area shape="rect" id="node14" title=" " alt="" coords="967,80,1063,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="311,155,362,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="506,155,572,181"/>
+<area shape="rect" id="node10" title=" " alt="" coords="173,155,246,181"/>
+</map>

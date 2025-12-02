@@ -1,0 +1,34 @@
+\hypertarget{DataProcessor_8cpp_source}{}\doxysection{Data\+Processor.\+cpp}
+\label{DataProcessor_8cpp_source}\index{src/DataProcessor.cpp@{src/DataProcessor.cpp}}
+\mbox{\hyperlink{DataProcessor_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{DataProcessor_8h}{DataProcessor.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Logger_8h}{Logger.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00024}\mbox{\hyperlink{classDataProcessor_a6da3b304be9b8b19cc75fdd9393c097a}{00024}} int32\_t \mbox{\hyperlink{classDataProcessor_a6da3b304be9b8b19cc75fdd9393c097a}{DataProcessor::calculateAverage}}(\textcolor{keyword}{const} std::vector<int32\_t>\& vector, \mbox{\hyperlink{classLogger}{Logger}}\& logger) \{}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00025}00025     \textcolor{keywordflow}{if} (vector.empty()) \{}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00026}00026         logger.\mbox{\hyperlink{classLogger_a1c5c7357b27b68b8bcd93b7bcf6b30b9}{logError}}(\textcolor{stringliteral}{"{}Vector is empty"{}}, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00027}00027         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00028}00028     \}}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00029}00029     }
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00030}00030     int64\_t sum = 0; \textcolor{comment}{//предотвращение промежуточного переполнения}}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00031}00031     \textcolor{keywordflow}{for} (int32\_t val : vector) \{}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00032}00032         sum += val;}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00033}00033     \}}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00034}00034     }
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00035}00035     int64\_t avrg = sum / \textcolor{keyword}{static\_cast<}int64\_t\textcolor{keyword}{>}(vector.size());}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00036}00036     }
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00037}00037     \textcolor{keywordflow}{if} (avrg > 2147483647) \{ \textcolor{comment}{// 2\string^(31-\/1)}}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00038}00038         logger.\mbox{\hyperlink{classLogger_a1c5c7357b27b68b8bcd93b7bcf6b30b9}{logError}}(\textcolor{stringliteral}{"{}Overflow detected (upwards)"{}}, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00039}00039         \textcolor{keywordflow}{return} 2147483647;}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00040}00040     \}}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00041}00041     \textcolor{keywordflow}{if} (avrg < -\/2147483648) \{ \textcolor{comment}{// -\/2\string^31}}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00042}00042         logger.\mbox{\hyperlink{classLogger_a1c5c7357b27b68b8bcd93b7bcf6b30b9}{logError}}(\textcolor{stringliteral}{"{}Overflow detected (downwards)"{}}, \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00043}00043         \textcolor{keywordflow}{return} -\/2147483648;}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00044}00044     \}}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00045}00045     }
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00046}00046     \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}int32\_t\textcolor{keyword}{>}(avrg);}
+\DoxyCodeLine{\Hypertarget{DataProcessor_8cpp_source_l00047}00047 \}}
+
+\end{DoxyCode}

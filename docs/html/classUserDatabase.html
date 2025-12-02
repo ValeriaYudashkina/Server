@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Программная реализация сетевого сервера: Класс UserDatabase</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Программная реализация сетевого сервера<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Курсовая работа по разработке серверной программы для клиент-серверной системы обработки данных</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="#pri-attribs">Закрытые данные</a> &#124;
+<a href="classUserDatabase-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс UserDatabase</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Предварительное объявление класса <a class="el" href="classLogger.html" title="Класс для ведения журнала работы сервера">Logger</a>.  
+ <a href="classUserDatabase.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="UserDatabase_8h_source.html">UserDatabase.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a497f3c17e810a8b4e47eedcbccbf29bb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUserDatabase.html#a497f3c17e810a8b4e47eedcbccbf29bb">load</a> (const std::string &amp;db_path, <a class="el" href="classLogger.html">Logger</a> &amp;logger)</td></tr>
+<tr class="memdesc:a497f3c17e810a8b4e47eedcbccbf29bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузка базы пользователей из файла  <a href="classUserDatabase.html#a497f3c17e810a8b4e47eedcbccbf29bb">Подробнее...</a><br /></td></tr>
+<tr class="separator:a497f3c17e810a8b4e47eedcbccbf29bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb18364822551a4299d7b745f688d300"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUserDatabase.html#afb18364822551a4299d7b745f688d300">getPassword</a> (const std::string &amp;login, std::string &amp;out_password) const</td></tr>
+<tr class="memdesc:afb18364822551a4299d7b745f688d300"><td class="mdescLeft">&#160;</td><td class="mdescRight">Получение пароля пользователя по логину  <a href="classUserDatabase.html#afb18364822551a4299d7b745f688d300">Подробнее...</a><br /></td></tr>
+<tr class="separator:afb18364822551a4299d7b745f688d300"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Закрытые данные</h2></td></tr>
+<tr class="memitem:a68c8cbf55dc4cb6bd58ed71d816baaca"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUserDatabase.html#a68c8cbf55dc4cb6bd58ed71d816baaca">users</a></td></tr>
+<tr class="memdesc:a68c8cbf55dc4cb6bd58ed71d816baaca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Контейнер для хранения пользователей  <a href="classUserDatabase.html#a68c8cbf55dc4cb6bd58ed71d816baaca">Подробнее...</a><br /></td></tr>
+<tr class="separator:a68c8cbf55dc4cb6bd58ed71d816baaca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p >Предварительное объявление класса <a class="el" href="classLogger.html" title="Класс для ведения журнала работы сервера">Logger</a>. </p>
+<p >Класс для работы с базой данных пользователей</p>
+<p >Загружает пары "логин:пароль" из текстового файла и предоставляет доступ к ним для аутентификации </p>
+
+<p class="definition">См. определение в файле <a class="el" href="UserDatabase_8h_source.html">UserDatabase.h</a> строка <a class="el" href="UserDatabase_8h_source.html#l00016">16</a></p>
+</div><h2 class="groupheader">Методы</h2>
+<a id="afb18364822551a4299d7b745f688d300" name="afb18364822551a4299d7b745f688d300"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb18364822551a4299d7b745f688d300">&#9670;&nbsp;</a></span>getPassword()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool UserDatabase::getPassword </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>login</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>out_password</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Получение пароля пользователя по логину </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">login</td><td>Логин пользователя </td></tr>
+    <tr><td class="paramname">out_password</td><td>Строка для записи пароля </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true - пользователь найден, false - пользователь не найден</dd></dl>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">login</td><td>Логин пользователя </td></tr>
+    <tr><td class="paramname">out_password</td><td>Строка для записи пароля </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true - пользователь найден, пароль записан в out_password, false - пользователь не найден </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="UserDatabase_8cpp_source.html">UserDatabase.cpp</a> строка <a class="el" href="UserDatabase_8cpp_source.html#l00065">65</a></p>
+
+</div>
+</div>
+<a id="a497f3c17e810a8b4e47eedcbccbf29bb" name="a497f3c17e810a8b4e47eedcbccbf29bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a497f3c17e810a8b4e47eedcbccbf29bb">&#9670;&nbsp;</a></span>load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool UserDatabase::load </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>db_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLogger.html">Logger</a> &amp;&#160;</td>
+          <td class="paramname"><em>logger</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Загрузка базы пользователей из файла </p>
+<p >Загрузка базы данных пользователей из текстового файла</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">db_path</td><td>Путь к файлу базы данных </td></tr>
+    <tr><td class="paramname">logger</td><td>Ссылка на объект журнала для записи ошибок </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true - база успешно загружена, false - произошла ошибка при загрузке</dd></dl>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">db_path</td><td>Путь к файлу базы данных </td></tr>
+    <tr><td class="paramname">logger</td><td>Ссылка на журнал для записи ошибок </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true - база успешно загружена, false - произошла критическая ошибка</dd></dl>
+<p>Формат файла: каждая строка "логин:пароль" Пустые строки и строки, начинающиеся с '#', игнорируются </p><dl class="section note"><dt>Заметки</dt><dd>Не критические ошибки (неверный формат строки) записываются в журнал, но не прерывают загрузку </dd></dl>
+
+<p class="definition">См. определение в файле <a class="el" href="UserDatabase_8cpp_source.html">UserDatabase.cpp</a> строка <a class="el" href="UserDatabase_8cpp_source.html#l00021">21</a></p>
+
+</div>
+</div>
+<h2 class="groupheader">Данные класса</h2>
+<a id="a68c8cbf55dc4cb6bd58ed71d816baaca" name="a68c8cbf55dc4cb6bd58ed71d816baaca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68c8cbf55dc4cb6bd58ed71d816baaca">&#9670;&nbsp;</a></span>users</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, std::string&gt; UserDatabase::users</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Контейнер для хранения пользователей </p>
+
+<p class="definition">См. определение в файле <a class="el" href="UserDatabase_8h_source.html">UserDatabase.h</a> строка <a class="el" href="UserDatabase_8h_source.html#l00018">18</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li>include/<a class="el" href="UserDatabase_8h_source.html">UserDatabase.h</a></li>
+<li>src/<a class="el" href="UserDatabase_8cpp_source.html">UserDatabase.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

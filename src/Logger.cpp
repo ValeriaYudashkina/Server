@@ -1,13 +1,28 @@
+/**
+ * @file Logger.cpp
+ * @brief Реализация класса Logger для ведения журнала работы сервера
+ */
+
 #include "Logger.h"
 #include <iostream>
 #include <chrono>
 #include <iomanip>
 #include <ctime>
 
+/**
+ * @brief Инициализация журнала с указанием пути к файлу журнала
+ * @param log_path Путь к файлу журнала
+ */
 void Logger::init(const std::string& log_path) {
     logPath = log_path;
 }
 
+/**
+ * @brief Запись сообщения об ошибке в журнал
+ * @param message Текст сообщения об ошибке
+ * @param isCritical Флаг критичности ошибки
+ * @details Формат записи: "YYYY-MM-DD HH:MM:SS; УРОВЕНЬ; СООБЩЕНИЕ"
+ */
 void Logger::logError(const std::string& message, bool isCritical) {
     std::string level;
     if (isCritical) {
@@ -34,6 +49,12 @@ void Logger::logError(const std::string& message, bool isCritical) {
         std::cerr << "ERROR: " << message << std::endl;
     }
 }
+
+/**
+ * @brief Запись информационного сообщения в журнал
+ * @param message Текст информационного сообщения
+ * @details Формат записи: "YYYY-MM-DD HH:MM:SS; INFO; СООБЩЕНИЕ"
+ */
 void Logger::logInfo(const std::string& message) {
     std::ofstream file(logPath, std::ios::app);
     if (file.is_open()) {
